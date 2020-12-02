@@ -1,0 +1,10 @@
+Instructions for running the app:
+
+Open SQL Server and run the script in the "script" attachment on a new query page.
+Then open Visual Studio and run the attached project folder there.
+At the same time, open the VS Code workspace and run the attached folder named "IonicProject", using the terminal.
+The run command is ionic serve
+
+Good luck!!
+
+I uploaded the whole project again safely. Now the run should be simple and normal *

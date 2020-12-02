@@ -1,0 +1,59 @@
+<ion-header>
+    <button (click)="toHomePage()">
+        <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </button>
+    <ion-toolbar>
+        <ion-title>{{ 'sign up' }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<h4>Create your account</h4>
+
+<ion-item>
+    <ion-label fixed>{{ 'first name' }}</ion-label>
+    <ion-input type="text" [(ngModel)]="user.FirstName" name="first"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label fixed>{{ 'last name' }}</ion-label>
+    <ion-input type="text" [(ngModel)]="user.LastName"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label fixed>{{ 'phone' }}</ion-label>
+    <ion-input type="phone" [(ngModel)]="user.Phone"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label fixed>{{ 'email' }}</ion-label>
+    <ion-input type="email" [(ngModel)]="user.Email"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label fixed>{{ 'job description' }}</ion-label>
+    <ion-input type="text" placeholder="not required" [(ngModel)]="user.Job"></ion-input>
+</ion-item>
+<ion-list>
+    <ion-radio-group value="biff" [(ngModel)]="user.Gender">
+        <ion-list-header>
+            <ion-label>gender</ion-label>
+        </ion-list-header>
+        <ion-item>
+            <ion-label>male</ion-label>
+            <ion-radio slot="start" value="biff"></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label>female</ion-label>
+            <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+    </ion-radio-group>
+</ion-list>‏
+
+
+<ion-item>
+    <ion-label fixed>{{ 'password' }}</ion-label>
+    <ion-input type="password" [(ngModel)]="user.Password"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label fixed>{{ 'confirm password' }}</ion-label>
+    <ion-input type="password"></ion-input>
+</ion-item>
+
+<!-- <ion-button name="doSignUp" (click)="toMyAccountPage()">sign up</ion-button> -->
+<ion-button name="doSignUp" (click)="signUp()">sign up</ion-button>
+<!-- <ion-button name="toMyAccoun" (click)="toMyAccountPage()">to my account</ion-button> -->
