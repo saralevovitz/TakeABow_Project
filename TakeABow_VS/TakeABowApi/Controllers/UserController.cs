@@ -47,7 +47,7 @@ namespace TakeABowApi.Controllers
                 return false;
             if (logic.UpdateUser(u))
                 return true;
-            return false;
+            return false;  
         }
 
         [HttpGet]
