@@ -38,9 +38,22 @@ namespace TakeABowApi.Dal
             }
         }
 
-     
+
+        /*
+        
+        public static CourierCompanyEntities db = new CourierCompanyEntities();
+
+        public static List<MadeShipments> GetMyShipment(int customerId)
+        {
+            var MS = db.MadeShipments.Where(x => x.CustomerId == customerId).ToList();
+            return MS;‏
+        }
+                          
+             
+        */
+
         /*Feedback*/
-        public List<Feedbacks> GetAllfeedbackByUser( int  id)
+        public List<Feedbacks> GetAllfeedbackByUser(int id)
         {
             var feedbacks = data.Feedbacks.Where(f => f.ToUserId == id).ToList();
             return feedbacks;
