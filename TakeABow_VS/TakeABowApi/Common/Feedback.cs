@@ -20,14 +20,14 @@ namespace TakeABowApi.Common
         public Feedbacks()
         {
         }
-        public Feedbacks (int fui, int tui, string f, bool ia, bool ise, bool idel)
+        public Feedbacks (Feedbacks feedback)
         {
-            this.FromUserId = fui;
-            this.ToUserId = tui;
-            this.Feedback = f;
-            this.IsAnonymous = ia;
-            this.IsSeen=ise;
-            this.IsDeleted = idel;
+            this.FromUserId = feedback.FromUserId;
+            this.ToUserId = feedback.ToUserId;
+            this.Feedback = feedback.Feedback;
+            this.IsAnonymous = feedback.IsAnonymous;
+            this.IsSeen= feedback.IsSeen;
+            this.IsDeleted = feedback.IsDeleted;
             this.CreateDate = DateTime.Now;
         }
   

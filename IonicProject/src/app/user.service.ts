@@ -8,9 +8,9 @@ import { User } from './user';
 })
 export class UserService {
 
-  constructor(private http:HttpClient) {
-    
-   } 
+  constructor(private http:HttpClient) { } 
+
+  
   func(user:User):Observable<boolean>{
      debugger;
         return this.http.post<boolean>("http://localhost:63522/api/user/createUser",user);

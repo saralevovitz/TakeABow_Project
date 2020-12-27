@@ -23,7 +23,7 @@ export class SignUpPage implements OnInit {
   
   res: Observable<any>;
 
-constructor( public httpClient: HttpClient, private router: Router,private userService:UserService) { }
+constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
 
 ngOnInit() {}
 
@@ -39,7 +39,6 @@ httpOptions = {
   })
 }
 
-//לנתב להרשמה בסי שארפ
 
 signUp(){
   //this.userService.func(this.user);

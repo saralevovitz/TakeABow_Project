@@ -21,17 +21,27 @@ namespace TakeABowApi.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/feedback/createFeedback")]
-        public bool Get(int fromUserId, int toUserId, string feedback, bool isAnonymous, bool isSeen ,bool isDeleted)
+        public bool Post(Feedbacks feedback)
         {
-            Feedbacks f = new Feedbacks(fromUserId, toUserId, feedback, isAnonymous, false, false);
+            Feedbacks f = new Feedbacks(feedback);
             bool res = logic.saveNewFeedback(f);
             if(res)
                return true;
             return false;
 
         }
+
+        /*public bool Post(int fromUserId, int toUserId, string feedback, bool isAnonymous, bool isSeen, bool isDeleted)
+        {
+            Feedbacks f = new Feedbacks(fromUserId, toUserId, feedback, isAnonymous, false, false);
+            bool res = logic.saveNewFeedback(f);
+            if (res)
+                return true;
+            return false;
+
+        }*/
 
 
 

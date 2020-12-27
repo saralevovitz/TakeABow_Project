@@ -16,6 +16,10 @@ export class MyDetailsPage implements OnInit {
     this.router.navigate(['home']);
   }
 
+  onClickEdit(){
+
+  }
+  
   ngOnInit() {
   }
 }

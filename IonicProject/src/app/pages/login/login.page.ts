@@ -10,6 +10,9 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router) { }
 
+  // myStorage = window.localStorage;
+  // localStorage.setItem('user');
+
 
   //לקשר לסי שארפ
   login(){

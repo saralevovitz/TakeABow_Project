@@ -18,11 +18,11 @@
         <ion-item>
             <br>
             <ion-label fixed style="font-size: 20px;">{{ 'send to' }}</ion-label>
-            <ion-input type="text" placeholder="user name"></ion-input>
+            <ion-input type="text" placeholder="user name" [(ngModel)]="feedback.toUserId"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label style="font-size: 20px;">{{ 'feedback' }}</ion-label>
-            <ion-textarea placeholder="write your feedback" style="height: 200px;"></ion-textarea>
+            <ion-textarea placeholder="write your feedback" style="height: 200px;" [(ngModel)]="feedback.feedback"></ion-textarea>
         </ion-item>
 
         <ion-item>
