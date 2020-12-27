@@ -28,8 +28,8 @@
     <ion-label fixed>{{ 'job description' }}</ion-label>
     <ion-input type="text" placeholder="not required" [(ngModel)]="user.Job"></ion-input>
 </ion-item>
-<ion-list>
-    <ion-radio-group value="biff" [(ngModel)]="user.Gender">
+ <ion-list>
+ <ion-radio-group value="biff" [(ngModel)]="user.Gender">
         <ion-list-header>
             <ion-label>gender</ion-label>
         </ion-list-header>
@@ -43,8 +43,6 @@
         </ion-item>
     </ion-radio-group>
 </ion-list>‏
-
-
 <ion-item>
     <ion-label fixed>{{ 'password' }}</ion-label>
     <ion-input type="password" [(ngModel)]="user.Password"></ion-input>
