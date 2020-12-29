@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TakeABowDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BlockIP">
+          <Key>
+            <PropertyRef Name="ipAddress" />
+            <PropertyRef Name="blockTime" />
+          </Key>
+          <Property Name="ipAddress" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="blockTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedbacks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="int" Nullable="false" />
+          <Property Name="ToUserId" Type="int" Nullable="false" />
+          <Property Name="Feedback" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="IsSeen" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="WatchUserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="IsAllow" Type="bit" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Job" Type="nvarchar(max)" />
+          <Property Name="Is_Blocked" Type="bit" Nullable="false" />
+          <Property Name="Blocked_Date" Type="datetime" />
+          <Property Name="Is_Deleted" Type="bit" Nullable="false" />
+          <Property Name="Create_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersBlocked">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BlockedUserId" Type="int" Nullable="false" />
+          <Property Name="IsBlocked" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Feedbacks__FromU__04E4BC85">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedbacks__ToUse__06CD04F7">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permissions_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersBlocked_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersBlocked" Type="Self.UsersBlocked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersBlocked">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TakeABowDBModelStoreContainer">
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersBlocked" EntityType="Self.UsersBlocked" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlockIP" EntityType="Self.BlockIP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BlockIP].[ipAddress] AS [ipAddress], 
+    [BlockIP].[blockTime] AS [blockTime]
+    FROM [dbo].[BlockIP] AS [BlockIP]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Feedbacks__FromU__04E4BC85" Association="Self.FK__Feedbacks__FromU__04E4BC85">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedbacks__ToUse__06CD04F7" Association="Self.FK__Feedbacks__ToUse__06CD04F7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permissions_User" Association="Self.FK_Permissions_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersBlocked_User" Association="Self.FK_UsersBlocked_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersBlocked" EntitySet="UsersBlocked" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TakeABowDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="Int32" Nullable="false" />
+          <Property Name="ToUserId" Type="Int32" Nullable="false" />
+          <Property Name="Feedback1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="IsSeen" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Feedbacks__FromU__04E4BC85" FromRole="Feedbacks" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Feedbacks__ToUse__06CD04F7" FromRole="Feedbacks" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="WatchUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAllow" Type="Boolean" Nullable="false" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Permissions_User" FromRole="Permissions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Blocked" Type="Boolean" Nullable="false" />
+          <Property Name="Blocked_Date" Type="DateTime" Precision="3" />
+          <Property Name="Is_Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Create_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedbacks__FromU__04E4BC85" FromRole="Users" ToRole="Feedbacks" />
+          <NavigationProperty Name="Feedbacks1" Relationship="Self.FK__Feedbacks__ToUse__06CD04F7" FromRole="Users" ToRole="Feedbacks" />
+          <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_User" FromRole="Users" ToRole="Permissions" />
+          <NavigationProperty Name="UsersBlockeds" Relationship="Self.FK_UsersBlocked_User" FromRole="Users" ToRole="UsersBlocked" />
+        </EntityType>
+        <EntityType Name="UsersBlocked">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BlockedUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UsersBlocked_User" FromRole="UsersBlocked" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="BlockIP">
+          <Key>
+            <PropertyRef Name="ipAddress" />
+            <PropertyRef Name="blockTime" />
+          </Key>
+          <Property Name="ipAddress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="blockTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK__Feedbacks__FromU__04E4BC85">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedbacks__ToUse__06CD04F7">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permissions_User">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Permissions" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersBlocked_User">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UsersBlocked" Type="Self.UsersBlocked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersBlocked">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TakeABowDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersBlockeds" EntityType="Self.UsersBlocked" />
+          <EntitySet Name="BlockIPs" EntityType="Self.BlockIP" />
+          <AssociationSet Name="FK__Feedbacks__FromU__04E4BC85" Association="Self.FK__Feedbacks__FromU__04E4BC85">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedbacks__ToUse__06CD04F7" Association="Self.FK__Feedbacks__ToUse__06CD04F7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permissions_User" Association="Self.FK_Permissions_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersBlocked_User" Association="Self.FK_UsersBlocked_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersBlocked" EntitySet="UsersBlockeds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TakeABowDBModelStoreContainer" CdmEntityContainer="TakeABowDBEntities">
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="TakeABowDBModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedbacks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="Feedback1" ColumnName="Feedback" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="IsSeen" ColumnName="IsSeen" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="TakeABowDBModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WatchUserId" ColumnName="WatchUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsAllow" ColumnName="IsAllow" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TakeABowDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TakeABowDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Is_Blocked" ColumnName="Is_Blocked" />
+                <ScalarProperty Name="Blocked_Date" ColumnName="Blocked_Date" />
+                <ScalarProperty Name="Is_Deleted" ColumnName="Is_Deleted" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersBlockeds">
+            <EntityTypeMapping TypeName="TakeABowDBModel.UsersBlocked">
+              <MappingFragment StoreEntitySet="UsersBlocked">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BlockedUserId" ColumnName="BlockedUserId" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlockIPs">
+            <EntityTypeMapping TypeName="TakeABowDBModel.BlockIP">
+              <MappingFragment StoreEntitySet="BlockIP">
+                <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+                <ScalarProperty Name="blockTime" ColumnName="blockTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

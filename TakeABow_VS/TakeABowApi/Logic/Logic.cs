@@ -16,7 +16,7 @@ namespace TakeABowApi.Logic
 
 
         /*Users*/
-        public User FindUser(User u)
+        public Common.User FindUser(Common.User u)
         {
             var users = get.GetUsers();
             return users.FirstOrDefault(user => user.Id == u.Id);

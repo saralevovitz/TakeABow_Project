@@ -53,7 +53,15 @@ namespace TakeABowApi.Controllers
          
         }
 
-    
+        [HttpGet]
+        [Route("api/feedback/usersFeedback/{userId}")]
+        public List<Feedbacks> GetByUserId(int userId)
+        {
+            return logic.GetAllFeedbackByUser(userId);
+
+        }
+
+
     }
 
 
