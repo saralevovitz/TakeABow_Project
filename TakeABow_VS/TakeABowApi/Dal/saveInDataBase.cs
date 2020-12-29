@@ -12,7 +12,7 @@ namespace TakeABowApi.Dal
 {
     public  class saveInDataBase
     {
-        private TakaABowContext data = new TakaABowContext();
+        private TakeABowDBEntities data = new TakeABowDBEntities();
         static string connectionString = WebConfigurationManager.AppSettings["TakeABowDB"];
         /*Users*/
 
@@ -124,7 +124,7 @@ namespace TakeABowApi.Dal
         {
             try
             {
-                data.UsersBlocked.Add(ub);
+                data.UsersBlockeds.Add(ub);
                 data.SaveChanges();
                 return true;
             }

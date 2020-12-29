@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Feedback } from 'src/app/feedback';
 import { FeedbackService } from 'src/app/feedback.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable} from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 
@@ -34,7 +34,7 @@ export class NewFeedbackPage implements OnInit {
   sendFeedback(){
      this.res = this.httpClient.post('http://localhost:63522/api/feedback/createFeedback',JSON.stringify(this.feedback),this.httpOptions);
      this.res.subscribe(data=>{
-       console.log('my-data: ', data);
+     console.log('my-data: ', data);
      })
   }
 

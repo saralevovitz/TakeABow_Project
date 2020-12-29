@@ -18,8 +18,8 @@ namespace TakeABowApi.Dal
 {
     public  class getFromDataBase
     {
-        private TakaABowContext data = new TakaABowContext();
-        static string connectionString = WebConfigurationManager.AppSettings["TakeABowDB"];
+        private Dal.TakeABowDBEntities data = new TakeABowDBEntities();
+        //static string connectionString = WebConfigurationManager.AppSettings["TakeABowDB"];
         private IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> feedbacks;
 
         /*User*/
@@ -53,19 +53,19 @@ namespace TakeABowApi.Dal
         */
 
         /*Feedback*/
-        public List<Feedbacks> GetAllfeedbackByUser(int id)
+        public List<Dal.Feedback> GetAllfeedbackByUser(int id)
         {
             var feedbacks = data.Feedbacks.Where(f => f.ToUserId == id).ToList();
             return feedbacks;
         }
 
-        public IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> GetTopFeedbacks()
+        public IOrderedEnumerable<KeyValuePair<int, List<Dal.Feedback>>> GetTopFeedbacks()
         {
             try
             {
                 var c = WebConfigurationManager.AppSettings["TakeABowDB"];
                 DateTime twoWeeksAgo = DateTime.Today.Subtract(TimeSpan.FromDays(14));
-                return feedbacks;
+                return null ;
             
             }
             catch (Exception ex)
