@@ -25,16 +25,16 @@ namespace TakeABowApi.Controllers
 
         [HttpPost]
         [Route("api/user/createUser")]
-        public bool CreateUsert(Common.User user)
+        public int CreateUsert(Common.User user)
         {
             User u = new User(user);
             bool isExist = logic.IsUserExist(u);
             if (isExist)
             {
-                return false;
+                return 0;
             }
-            bool res = logic.saveNewUser(u);
-            return res;
+            int userId = logic.saveNewUser(u);
+            return userId;
         }
 
         [HttpPost]
@@ -61,9 +61,16 @@ namespace TakeABowApi.Controllers
             }
 
             return u.Id;
-        }      
-       
         }
+
+        [Route("GetUser/{userId}"), HttpGet]
+        public User GetUserById(int userId)
+        {
+            return logic.GetUser(userId);
+        }
+      
+
+    }
     
     }
 

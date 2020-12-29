@@ -16,6 +16,12 @@ namespace TakeABowApi.Logic
 
 
         /*Users*/
+        public User GetUser(int userId)
+        {
+            var user = get.GetUserById(userId);
+            return user;
+
+        }
         public User FindUser(User u)
         {
             var users = get.GetUsers();
@@ -39,7 +45,7 @@ namespace TakeABowApi.Logic
 
         }
 
-        public bool saveNewUser(User u)
+        public int saveNewUser(User u)
         {
             var res = save.saveNewUser(u);
             return res;

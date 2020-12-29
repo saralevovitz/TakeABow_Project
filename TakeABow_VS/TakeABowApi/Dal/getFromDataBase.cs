@@ -74,5 +74,10 @@ namespace TakeABowApi.Dal
                 throw;
             }
         }
+
+        public User GetUserById(int userId)
+        {
+            return data.Users.FirstOrDefault(u => u.Id == userId);
+        }
     }
 }

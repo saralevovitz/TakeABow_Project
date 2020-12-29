@@ -43,9 +43,9 @@ httpOptions = {
 signUp(){
   //this.userService.func(this.user);
   this.res = this.httpClient.post('http://localhost:63522/api/user/createUser', JSON.stringify(this.user),this.httpOptions);
-  this.res
-  .subscribe(data => {
-    console.log('my data: ', data);
+  this.res.subscribe(userId => {
+    localStorage.setItem('userId', userId)//שומר את הידיץ
+    console.log('my-Id: ', userId);
   })
   // if(this.res){
   //   alert('User registered successfully');

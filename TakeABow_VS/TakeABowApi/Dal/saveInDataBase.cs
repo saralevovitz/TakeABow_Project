@@ -21,17 +21,17 @@ namespace TakeABowApi.Dal
              return new List<User>();
         }
 
-        public  bool saveNewUser(User u)
+        public  int saveNewUser(User u)
         {
             try
             {
                 data.Users.Add(u);
                 data.SaveChanges();
-                return true;
+                return u.Id;
             }
             catch (Exception ex)
             {
-                return false;
+                return 0;
                 throw;
             }
         }
