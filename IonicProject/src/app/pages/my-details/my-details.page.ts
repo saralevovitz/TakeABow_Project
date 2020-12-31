@@ -24,7 +24,7 @@ export class MyDetailsPage implements OnInit {
   }
   
   ngOnInit() {
-  localStorage.setItem()  
+  //localStorage.setItem()  
    // this.id =+ localStorage.getItem('userId')
     console.log(this.getDetails())
   }
