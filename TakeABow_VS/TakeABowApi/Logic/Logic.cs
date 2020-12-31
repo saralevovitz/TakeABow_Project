@@ -15,18 +15,17 @@ namespace TakeABowApi.Logic
         public getFromDataBase get = new getFromDataBase();
 
 
-        /*Users*/
-<<<<<<< HEAD
+
         public User GetUser(int userId)
         {
             var user = get.GetUserById(userId);
             return user;
 
         }
-        public User FindUser(User u)
-=======
-        public Common.User FindUser(Common.User u)
->>>>>>> a859485378d730fb1c97da4c9fc35c594cd17a39
+      //  public User FindUser(User u)
+
+        public Common.User FindUser(Converters.ConvertToDal.US u)
+
         {
             var users = get.GetUsers();
             return users.FirstOrDefault(user => user.Id == u.Id);

@@ -2,8 +2,8 @@ import { getLocaleFirstDayOfWeek } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/user';
-import { UserService } from 'src/app/user.service';
+import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable} from 'rxjs/internal/Observable';

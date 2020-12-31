@@ -39,7 +39,7 @@ namespace TakeABowApi.Controllers
 
         [HttpPost]
         [Route("api/user/updateUser")]
-        public bool POST(User u)
+        public bool updateUser(User u)
         {
             
             User user = logic.FindUser(u);

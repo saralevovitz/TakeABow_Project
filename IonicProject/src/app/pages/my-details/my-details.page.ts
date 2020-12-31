@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/user.service';
-import { User } from 'src/app/user';
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-my-details',
@@ -12,9 +12,10 @@ import { User } from 'src/app/user';
 export class MyDetailsPage implements OnInit {
 
   constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
-user:User
-id:Number
-  toHomePage(){
+   user:User
+   id:Number
+  
+   toHomePage(){
     this.router.navigate(['home']);
   }
 
@@ -23,13 +24,13 @@ id:Number
   }
   
   ngOnInit() {
-    this.id =+ localStorage.getItem('userId')
+  localStorage.setItem()  
+   // this.id =+ localStorage.getItem('userId')
     console.log(this.getDetails())
   }
 
 
-getDetails()
-{
+ getDetails(){
   this.userService.GetUser(this.id).subscribe(res=>{this.user=res})
 }
 }
