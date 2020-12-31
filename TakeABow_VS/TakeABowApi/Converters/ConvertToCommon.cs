@@ -11,9 +11,15 @@ namespace TakeABowApi.Converters
         {
             return new Common.User
             {
-                Phone = u.Phone,
                 Id = u.Id,
-                Email = u.Email
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Phone = u.Phone,
+                Email = u.Email,
+                Job = u.Job,
+                //Gender= u.Gender,
+                Create_Date = u.Create_Date,
+                Password = u.Password
             };
         }
     }

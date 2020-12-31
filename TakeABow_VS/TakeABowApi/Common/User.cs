@@ -34,7 +34,7 @@ namespace TakeABowApi.Common
             this.Phone = user.Phone;
             this.Email = user.Email;
             this.Job = user.Job;
-            //this.Gender = user.Gender;
+            this.Gender = user.Gender;
             this.Password = user.Password;
             this.Is_Blocked = false;
             this.Blocked_Date = null;
