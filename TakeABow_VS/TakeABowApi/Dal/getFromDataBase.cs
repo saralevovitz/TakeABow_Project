@@ -28,7 +28,8 @@ namespace TakeABowApi.Dal
             try
             {
                 var c = WebConfigurationManager.AppSettings["TakeABowDB"];
-                var users = data.Users.Where(u => u.Is_Deleted == false).ToList();
+                List<User> users = new List<User>();
+                users = data.Users.Where(u => u.Is_Deleted == false).ToList();
                 return users;
             }
             catch (Exception ex)
@@ -53,27 +54,30 @@ namespace TakeABowApi.Dal
         */
 
         /*Feedback*/
-        public List<Dal.Feedback> GetAllfeedbackByUser(int id)
-        {
-            var feedbacks = data.Feedbacks.Where(f => f.ToUserId == id).ToList();
-            return feedbacks;
-        }
+        //מיותר???
 
-        public IOrderedEnumerable<KeyValuePair<int, List<Dal.Feedback>>> GetTopFeedbacks()
-        {
-            try
-            {
-                var c = WebConfigurationManager.AppSettings["TakeABowDB"];
-                DateTime twoWeeksAgo = DateTime.Today.Subtract(TimeSpan.FromDays(14));
-                return null ;
+        //public List<Dal.Feedback> GetAllfeedbackByUser(int id)
+        //{
+        //    var List<Feedback> userFeedbacks = new List<Feedback>();
+        //    userFeedbacks = data.Feedbacks.Where(f => f.ToUserId == id).ToList();
+        //    return feedbacks;
+        //}
+
+        //public IOrderedEnumerable<KeyValuePair<int, List<Dal.Feedback>>> GetTopFeedbacks()
+        //{
+        //    try
+        //    {
+        //        var c = WebConfigurationManager.AppSettings["TakeABowDB"];
+        //        DateTime twoWeeksAgo = DateTime.Today.Subtract(TimeSpan.FromDays(14));
+        //        return null ;
             
-            }
-            catch (Exception ex)
-            {
-                return null;
-                throw;
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //        throw;
+        //    }
+        //}
 
         public User GetUserById(int userId)
         {

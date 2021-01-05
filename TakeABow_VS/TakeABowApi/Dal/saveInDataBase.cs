@@ -73,7 +73,7 @@ namespace TakeABowApi.Dal
             }
         }
         /*Feedbacks*/
-        public  bool saveNewFeedback(Feedbacks f)
+        public  bool saveNewFeedback(Feedback f)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace TakeABowApi.Dal
         {
             try
             {
-                data.Permissions.Add(p);
+                data.Permissions.Add(Converters.ConvertToDal.Permissions(p));
                 data.SaveChanges();
                 return true;
 

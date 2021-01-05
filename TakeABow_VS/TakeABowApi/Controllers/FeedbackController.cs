@@ -45,21 +45,21 @@ namespace TakeABowApi.Controllers
 
 
 
-        [HttpGet]
-        [Route("api/feedback/topFeedBack")]
-        public IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> GET()
-        {
-            return logic.getTopFeedbacks();
+        //[HttpGet]
+        //[Route("api/feedback/topFeedBack")]
+        //public IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> GET()
+        //{
+        //    return logic.getTopFeedbacks();
          
-        }
+        //}
 
-        [HttpGet]
-        [Route("api/feedback/usersFeedback/{userId}")]
-        public List<Feedbacks> GetByUserId(int userId)
-        {
-            return logic.GetAllFeedbackByUser(userId);
+        //[HttpGet]
+        //[Route("api/feedback/usersFeedback/{userId}")]
+        //public List<Feedbacks> GetByUserId(int userId)
+        //{
+        //    return logic.GetAllFeedbackByUser(userId);
 
-        }
+        //}
 
 
     }
