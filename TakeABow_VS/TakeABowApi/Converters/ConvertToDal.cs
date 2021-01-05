@@ -12,7 +12,6 @@ namespace TakeABowApi.Converters
             return new Dal.User
             {
                 Id = u.Id,
-<<<<<<< HEAD
                 Password = u.Password‏,
                 FirstName = u.FirstName,
                 LastName = u.LastName,
@@ -77,16 +76,6 @@ namespace TakeABowApi.Converters
             {
                 ipAddress = bi.ipAddress,
                 blockTime = bi.blockTime
-=======
-                FirstName=u.FirstName,
-                LastName=u.LastName,
-                Phone = u.Phone,
-                Email =u.Email,
-                Job=u.Job,
-                //Gender= u.Gender,
-                Create_Date = u.Create_Date,
-                Password=u.Password
->>>>>>> 50df03f997f60a00a6c4efe8517f81837b4e877e
             };
         }
     }

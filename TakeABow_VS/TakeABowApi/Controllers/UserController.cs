@@ -16,12 +16,21 @@ namespace TakeABowApi.Controllers
 
         TakeABowApi.Logic.Logic logic = new TakeABowApi.Logic.Logic();
 
+
         [HttpGet]
         [Route("api/user/test")]
         public bool Get()
         {
             return true;
         }
+
+        [HttpGet]
+        [Route("api/user/getTopUsers")]
+        public List<Common.User> GetTopUsers()
+        {
+            return logic.TopUsers(5);
+        }
+
 
         [HttpPost]
         [Route("api/user/createUser")]
@@ -39,14 +48,19 @@ namespace TakeABowApi.Controllers
 
         [HttpPost]
         [Route("api/user/updateUser")]
-<<<<<<< HEAD
+
         public bool updateUser(User u)
-=======
+        {
+            return logic.UpdateUser(u);
+        }
+
+        [HttpPost]
+        [Route("api/user/findUser")]
+        //  findUser?
         public bool POST(Common.User u)
->>>>>>> 50df03f997f60a00a6c4efe8517f81837b4e877e
         {
             
-            User user = logic.FindUser(u);
+            User user = logic.FindUser(u.Id);
             if (user==null)
                 return false;
             if (logic.UpdateUser(u))
@@ -71,8 +85,7 @@ namespace TakeABowApi.Controllers
         public User GetUserById(int userId)
         {
             return logic.GetUser(userId);
-        }
-      
+        }     
 
     }
     

@@ -23,4 +23,9 @@ export class UserService {
  {
      return this.http.get<User>(environment.url + `user/GetUserById/${userId}`);
  }
+
+ getTopUsers():Observable<User>
+ {
+   return this.http.get<User>(environment.url + `user/getTopUsers/${5}`);
+ }
 }

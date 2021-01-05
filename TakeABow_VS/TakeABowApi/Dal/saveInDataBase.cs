@@ -107,7 +107,7 @@ namespace TakeABowApi.Dal
         {
             try
             {
-                data.Permissions.Add(p);
+                data.Permissions.Add(Converters.ConvertToDal.Permissions(p));
                 data.SaveChanges();
                 return true;
 
