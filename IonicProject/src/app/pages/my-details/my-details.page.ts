@@ -12,9 +12,9 @@ import { User } from 'src/app/shared/models/user.model';
 export class MyDetailsPage implements OnInit {
 
   constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
-   user:User
-   id:Number
-  
+   user:User=new User();
+   id:Number=1934
+   id2:number
    toHomePage(){
     this.router.navigate(['home']);
   }
@@ -24,9 +24,12 @@ export class MyDetailsPage implements OnInit {
   }
   
   ngOnInit() {
-  //localStorage.setItem()  
-   // this.id =+ localStorage.getItem('userId')
-    console.log(this.getDetails())
+  //   let u:User=new User();
+  // localStorage.setItem("key",JSON.stringify(u)) 
+  //  u=JSON.parse(localStorage.getItem("key"))
+   localStorage.setItem('userId',this.id.toString())
+   this.id2 =+ localStorage.getItem('userId')
+    console.log(this.id2)
   }
 
 

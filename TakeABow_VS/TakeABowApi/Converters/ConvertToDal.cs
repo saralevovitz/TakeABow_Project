@@ -27,5 +27,56 @@ namespace TakeABowApi.Converters
             };
         }
 
+
+        public static Dal.Feedback Feedbacks(Common.Feedbacks f)
+        {
+            return new Dal.Feedback
+            {
+                Id = f.Id,
+                FromUserId = f.FromUserId,
+                ToUserId = f.ToUserId,
+                Feedback1 = f.Feedback,
+                IsAnonymous = f.IsAnonymous,
+                IsSeen = f.IsSeen,
+                IsDeleted = f.IsDeleted,
+                CreateDate = f.CreateDate
+            };
+        }
+
+
+        public static Dal.Permission Permissions(Common.Permissions p)
+        {
+            return new Dal.Permission
+            {
+                ID = p.Id, 
+                UserId = p.UserId,
+                WatchUserId = p.WatchUserId,
+                CreateDate = p.CreateDate,
+                IsAllow = p.IsAllow,
+                ExpireDate = p.ExpireDate
+
+            };
+        }
+
+        public static Dal.UsersBlocked UsersBlocked(Common.UsersBlocked ub)
+        {
+            return new Dal.UsersBlocked
+            {
+                ID = ub.Id,
+                UserId = ub.UserId,
+                BlockedUserId = ub.BlockedUserId,
+                IsBlocked = ub.IsBlocked,
+                CreatedDate = ub.CreatedDate
+            };
+        }
+
+        public static Dal.BlockIP BlockIP(Common.BlockIP bi)
+        {
+            return new Dal.BlockIP
+            {
+                ipAddress = bi.ipAddress,
+                blockTime = bi.blockTime
+            };
+        }
     }
 }

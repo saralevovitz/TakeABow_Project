@@ -16,19 +16,18 @@ namespace TakeABowApi.Logic
 
 
 
-        public User GetUser(int userId)
+        public Common.User GetUser(int userId)
         {
             var user = get.GetUserById(userId);
-            return user;
+            return  user;
 
         }
       //  public User FindUser(User u)
 
-        public Common.User FindUser(Converters.ConvertToDal.US u)
-
+        public Common.User FindUser(int userId )
         {
             var users = get.GetUsers();
-            return users.FirstOrDefault(user => user.Id == u.Id);
+            return  Converters.ConvertToCommon.U( users.FirstOrDefault(user => user.Id ==userId));
            
         }
         public bool UpdateUser(User u)
@@ -48,9 +47,10 @@ namespace TakeABowApi.Logic
 
         }
 
-        public int saveNewUser(User u)
+        public int saveNewUser(Common.User u)
         {
-            var res = save.saveNewUser(u);
+            var dalUser = Converters.ConvertToDal.US(u);
+            var res = save.saveNewUser(dalUser);
             return res;
         }
 
@@ -93,6 +93,13 @@ namespace TakeABowApi.Logic
         public bool Block(UsersBlocked ub)
         {
             return save.Block(ub);
+        }
+
+        public List<Common.User> TopUsers(int num)
+        {
+           List<Dal.User> allUsers=  new getFromDataBase().GetUsers();
+           allUsers=  allUsers.OrderByDescending(u => u.Feedbacks.ToList().Count(f => DateTime.Today.AddDays(-14) <= f.CreateDate)).ToList();
+            return allUsers.Take(5).Select(u => Converters.ConvertToCommon.U(u)).ToList();
         }
 
         /*BlockIP*/

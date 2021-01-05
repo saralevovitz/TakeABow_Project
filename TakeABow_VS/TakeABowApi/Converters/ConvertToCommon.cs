@@ -26,7 +26,6 @@ namespace TakeABowApi.Converters
             };
         }
 
-
         public static Common.Feedbacks Feedbacks(Dal.Feedback f)
         {
             return new Common.Feedbacks

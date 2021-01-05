@@ -73,7 +73,7 @@ namespace TakeABowApi.Dal
             }
         }
         /*Feedbacks*/
-        public  bool saveNewFeedback(Feedbacks f)
+        public  bool saveNewFeedback(Feedback f)
         {
             try
             {

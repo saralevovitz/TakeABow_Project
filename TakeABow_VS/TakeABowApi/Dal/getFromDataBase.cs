@@ -27,7 +27,7 @@ namespace TakeABowApi.Dal
         {
             try
             {
-                var c = WebConfigurationManager.AppSettings["TakeABowDB"];
+                //var c = WebConfigurationManager.AppSettings["TakeABowDB"];
                 var users = data.Users.Where(u => u.Is_Deleted == false).ToList();
                 return users;
             }
