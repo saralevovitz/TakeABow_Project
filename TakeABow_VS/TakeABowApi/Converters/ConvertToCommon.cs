@@ -12,13 +12,17 @@ namespace TakeABowApi.Converters
             return new Common.User
             {
                 Id = u.Id,
+<<<<<<< HEAD
                 Password = u.Password‏,
+=======
+>>>>>>> 50df03f997f60a00a6c4efe8517f81837b4e877e
                 FirstName = u.FirstName,
                 LastName = u.LastName,
                 Phone = u.Phone,
                 Email = u.Email,
                 Job = u.Job,
                 //Gender= u.Gender,
+<<<<<<< HEAD
                 Is_Blocked=u.Is_Blocked,
                 Blocked_Date= u.Blocked_Date,
                 Is_Deleted= u.Is_Deleted,
@@ -74,6 +78,10 @@ namespace TakeABowApi.Converters
             {
               ipAddress=bi.ipAddress,
               blockTime= bi.blockTime
+=======
+                Create_Date = u.Create_Date,
+                Password = u.Password
+>>>>>>> 50df03f997f60a00a6c4efe8517f81837b4e877e
             };
         }
     }
