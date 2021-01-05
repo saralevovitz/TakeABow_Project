@@ -16,40 +16,39 @@ namespace TakeABowApi.Logic
 
 
         /*Users*/
-<<<<<<< HEAD
-        public User GetUser(int userId)
+
+        public Dal.User GetUser(int userId)
         {
             var user = get.GetUserById(userId);
             return user;
 
         }
-        public User FindUser(User u)
-=======
+        //public Dal.User FindUser(Common.User u)
+
         public Common.User FindUser(Common.User u)
->>>>>>> a859485378d730fb1c97da4c9fc35c594cd17a39
         {
             var users = get.GetUsers();
             return users.FirstOrDefault(user => user.Id == u.Id);
            
         }
-        public bool UpdateUser(User u)
+        public bool UpdateUser(Common.User u)
         {
             return save.updateUser(u);
         }
-        public bool IsUserExist(User u)
+        public bool IsUserExist(Common.User u)
         {
             var users = get.GetUsers();
             return users.Any(user => user.Email == u.Email);
         }
 
-        public User Login(int id, string pass)
+        public Dal.User Login(int id, string pass)
         {
             var users = get.GetUsers();
             return users.FirstOrDefault(user => user.Id == id && user.Password == pass);
 
         }
 
-        public int saveNewUser(User u)
+        public int saveNewUser(Common.User u)
         {
             var res = save.saveNewUser(u);
             return res;
@@ -91,7 +90,7 @@ namespace TakeABowApi.Logic
 
         /*UsersBlocked*/
 
-        public bool Block(UsersBlocked ub)
+        public bool Block(Common.UsersBlocked ub)
         {
             return save.Block(ub);
         }
