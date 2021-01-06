@@ -15,6 +15,10 @@ export class MyDetailsPage implements OnInit {
    user:User=new User();
    id:Number=1934
    id2:number
+
+   userList: User []= []//הגדרת רשיימה של יוזר
+
+
    toHomePage(){
     this.router.navigate(['home']);
   }
