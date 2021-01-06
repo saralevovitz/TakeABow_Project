@@ -14,16 +14,22 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class HomePage {
 
-  user:User=new User();
+   user:User=new User();
   res: Observable<any>;
-
+  userList: User []= [];
   constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) {
-  }
+
+   }
   
-  getTopUsers(){
+    getTopUsers(){
     // this.res = this.httpClient.get('http://localhost:63522/api/user/getTopUsers', JSON.stringify(this.user),this.httpOptions);
     this.userService.getTopUsers().subscribe(res=>{this.user=res})
-  }
+   }
+
+  // getDetails(){
+  //   this.userService.GetUser(this.id).subscribe(res=>{this.user=res})
+  // }
+
 
   toSignUpPage(){  
     this.router.navigate(['sign-up']);
