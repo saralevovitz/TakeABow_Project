@@ -54,15 +54,17 @@ namespace TakeABowApi.Dal
         */
 
         /*Feedback*/
+
+        public List<Feedback> GetAllfeedbackByUser(int id)
+        {
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
+            {
+                var us= db.Users.FirstOrDefault(u => u.Id == id);
+                return us.Feedbacks1.ToList();
+            }
+        }
+
         //מיותר???
-
-        //public List<Dal.Feedback> GetAllfeedbackByUser(int id)
-        //{
-        //    var List<Feedback> userFeedbacks = new List<Feedback>();
-        //    userFeedbacks = data.Feedbacks.Where(f => f.ToUserId == id).ToList();
-        //    return feedbacks;
-        //}
-
         //public IOrderedEnumerable<KeyValuePair<int, List<Dal.Feedback>>> GetTopFeedbacks()
         //{
         //    try
@@ -70,7 +72,7 @@ namespace TakeABowApi.Dal
         //        var c = WebConfigurationManager.AppSettings["TakeABowDB"];
         //        DateTime twoWeeksAgo = DateTime.Today.Subtract(TimeSpan.FromDays(14));
         //        return null ;
-            
+
         //    }
         //    catch (Exception ex)
         //    {
@@ -81,7 +83,12 @@ namespace TakeABowApi.Dal
 
         public User GetUserById(int userId)
         {
-            return data.Users.FirstOrDefault(u => u.Id == userId);
+            using(TakeABowDBEntities db = new TakeABowDBEntities()) 
+            {
+                return db.Users.FirstOrDefault(u => u.Id == userId);
+            }
+          
+            
         }
     }
 }

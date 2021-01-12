@@ -10,7 +10,12 @@ export class FeedbackService {
 
   constructor(private http:HttpClient) { }
 
+//   getAllFeedbacks():Observable<boolean>{
+//    debugger;
+//    return this.http.get<Feedback>(environment.url + `user/GetUserById/${userId}`);
 
+
+//  } 
 
   
   //  func(feedback:Feedback):Observable<boolean>{

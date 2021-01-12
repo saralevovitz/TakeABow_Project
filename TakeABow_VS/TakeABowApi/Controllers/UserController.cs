@@ -70,9 +70,9 @@ namespace TakeABowApi.Controllers
 
         [HttpGet]
         [Route("api/user/login")]
-        public int login(int id, string password)
+        public int login(User userLogin)
          {
-            User u = logic.Login(id, password);
+            User u = logic.Login(userLogin.Id, userLogin.Password);
             if(u == null)
             {
                 return 0;
@@ -81,7 +81,7 @@ namespace TakeABowApi.Controllers
             return u.Id;
         }
 
-        [Route("GetUser/{userId}"), HttpGet]
+        [Route("api/user/GetUserById/{userId}"), HttpGet]
         public User GetUserById(int userId)
         {
             return logic.GetUser(userId);

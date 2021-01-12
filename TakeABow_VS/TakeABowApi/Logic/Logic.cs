@@ -76,8 +76,24 @@ namespace TakeABowApi.Logic
         /*Feedbacks*/
         public bool saveNewFeedback(Common.Feedbacks f)
         {
-            return save.saveNewFeedback(Converters.ConvertToDal.Feedbacks(f));
+            return save.saveNewFeedback(Converters.ConvertToDal.Feedback(f));
         }
+
+
+        //public List<Common.Feedbacks> getFeedback(int id)
+        //{
+        //    List<Feedback> a = get.GetAllfeedbackByUser(id);
+        //    return Converters.ConvertToCommon.Feedback(a.ForEach(f => { f.Feedback1.ToList()});
+
+        //}
+
+        //public List<Common.Feedbacks> getFeedback(User id)
+        //{
+        //    List<Feedback> ab = get.GetAllfeedbackByUser(id);
+        //    return ab.ForEach(return { a => a.Feedback1.ToList()})
+        //        //Converters.ConvertToCommon.Feedback();
+
+        //}
 
 
         //מיותר???

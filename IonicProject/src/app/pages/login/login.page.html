@@ -7,18 +7,17 @@
     </ion-toolbar>
 </ion-header>
 
-
 <ion-content style="font-family: sans-serif; font-size: 25px;">
     <form>
         <p> Insert your details: </p>
         <ion-item>
-            <ion-label>{{ 'user name' }}</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label>{{'user name'}}</ion-label>
+            <ion-input  name="name" type="text" [(ngModel)]="userLogin.Id"></ion-input>
         </ion-item>
 
-        <ion-item>
+           <ion-item>
             <ion-label fixed>{{ 'password' }}</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input  name="password" type="password" [(ngModel)]="userLogin.Password"></ion-input>
         </ion-item>
     </form>
     <br>

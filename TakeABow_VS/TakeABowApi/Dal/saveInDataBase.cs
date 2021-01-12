@@ -38,21 +38,23 @@ namespace TakeABowApi.Dal
 
         public  bool updateUser(User u)
         {
-            try
+            try          
             {
-                var userDb = data.Users.First(x => x.Email == u.Email);
+                using (TakeABowDBEntities db = new TakeABowDBEntities())
+               {               
+                var userDb = db.Users.First(x => x.Id == u.Id);
                 userDb.FirstName = u.FirstName;
                 userDb.LastName = u.LastName;
                 userDb.Phone = u.Phone;
                 userDb.Job = u.Job;
                 userDb.Password = u.Password;
-                data.SaveChanges();
+                db.SaveChanges();
                 return true;
-
+               }
             }
             catch (Exception ex)
             {
-                return false;
+                //return false;
                 throw;
             }
         }
@@ -102,7 +104,8 @@ namespace TakeABowApi.Dal
                     throw;
                 }    
         }
-        /*Permission*/
+
+               /*Permission*/
         public bool AddPermission(Permissions p)
         {
             try

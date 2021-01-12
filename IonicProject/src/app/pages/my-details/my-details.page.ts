@@ -13,31 +13,33 @@ export class MyDetailsPage implements OnInit {
 
   constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
    user:User=new User();
+   user1:User=new User();
    id:Number=1934
-   id2:number
+  
+   idU: Number=+localStorage.getItem('userIdLogin')
 
    userList: User []= []//הגדרת רשיימה של יוזר
-
 
    toHomePage(){
     this.router.navigate(['home']);
   }
 
-  onClickEdit(){
-
-  }
-  
   ngOnInit() {
   //   let u:User=new User();
   // localStorage.setItem("key",JSON.stringify(u)) 
   //  u=JSON.parse(localStorage.getItem("key"))
-   localStorage.setItem('userId',this.id.toString())
-   this.id2 =+ localStorage.getItem('userId')
-    console.log(this.id2)
+
+   this.getDetails()
+   }
+
+  onClickEdit(){
+    this.userService.UpDate(this.user).subscribe()
   }
 
-
  getDetails(){
-  this.userService.GetUser(this.id).subscribe(res=>{this.user=res})
-}
+  this.userService.GetUser(this.idU).subscribe((res:User)=>{this.user=res;
+    },err=>console.error(err))
+
+  }
+
 }

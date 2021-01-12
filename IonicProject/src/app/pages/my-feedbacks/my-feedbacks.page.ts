@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Feedback } from 'src/app/shared/models/feedback.model';
 
 @Component({
   selector: 'app-my-feedbacks',
@@ -10,6 +11,8 @@ export class MyFeedbacksPage implements OnInit {
 
   constructor(private router: Router) { }
 
+  feedback: Feedback= new Feedback()
+  
   toHomePage(){
     this.router.navigate(['home']);
   }
@@ -19,6 +22,8 @@ export class MyFeedbacksPage implements OnInit {
   }
 
   ngOnInit() {
+    this.feedback.ToUserId=+localStorage.getItem('userIdLogin')
+    console.log(this.feedback.Feedback+"uygdrs")
   }
 
 }

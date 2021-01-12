@@ -33,6 +33,18 @@ namespace TakeABowApi.Controllers
 
         }
 
+        //[HttpGet]
+        //[Route("api/feedback/getAllFeedback")]
+        //public List<Feedbacks> getAllFeedback(int userId)
+        //{
+        //    List<Feedbacks> f = logic.getFeedback(userId);
+        //    if (f!=null)
+        //        return f;
+        //    return null;
+
+        //}
+
+
         /*public bool Post(int fromUserId, int toUserId, string feedback, bool isAnonymous, bool isSeen, bool isDeleted)
         {
             Feedbacks f = new Feedbacks(fromUserId, toUserId, feedback, isAnonymous, false, false);
@@ -50,7 +62,7 @@ namespace TakeABowApi.Controllers
         //public IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> GET()
         //{
         //    return logic.getTopFeedbacks();
-         
+
         //}
 
         //[HttpGet]
