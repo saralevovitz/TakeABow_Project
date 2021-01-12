@@ -25,7 +25,7 @@ namespace TakeABowApi.Converters
             };
         }
 
-        public static Common.Feedbacks Feedbacks(Dal.Feedback f)
+        public static Common.Feedbacks Feedback(Dal.Feedback f)
         {
             return new Common.Feedbacks
             {
@@ -71,7 +71,7 @@ namespace TakeABowApi.Converters
         {
             return new Common.BlockIP
             {
-              ipAddress=bi.ipAddress,
+              IPAddress=bi.ipAddress,
               blockTime= bi.blockTime
              /*Create_Date = bi.Create_Date,
               Password = bi.Password*/

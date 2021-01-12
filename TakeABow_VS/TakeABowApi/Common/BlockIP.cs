@@ -7,7 +7,7 @@ namespace TakeABowApi.Common
 {
     public class BlockIP
     {
-        public string ipAddress { get; set; }
+        public string IPAddress { get; set; }
         public DateTime blockTime { get; set; }
 
         public BlockIP()
@@ -16,7 +16,7 @@ namespace TakeABowApi.Common
         }
         public BlockIP(string ipA, DateTime bt)
         {
-            this.ipAddress = ipA;
+            this.IPAddress = ipA;
             this.blockTime = bt;
         }
     }

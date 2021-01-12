@@ -28,7 +28,7 @@ namespace TakeABowApi.Converters
         }
 
 
-        public static Dal.Feedback Feedbacks(Common.Feedbacks f)
+        public static Dal.Feedback Feedback(Common.Feedbacks f)
         {
             return new Dal.Feedback
             {
@@ -74,7 +74,7 @@ namespace TakeABowApi.Converters
         {
             return new Dal.BlockIP
             {
-                ipAddress= bi.ipAddress,
+                ipAddress= bi.IPAddress,
                 blockTime= bi.blockTime
             };
         }
