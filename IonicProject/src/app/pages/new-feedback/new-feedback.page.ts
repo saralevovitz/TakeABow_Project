@@ -6,6 +6,7 @@ import { Feedback } from 'src/app/shared/models/feedback.model';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 
@@ -30,17 +31,16 @@ export class NewFeedbackPage implements OnInit {
   })
 }
 
-  //לחבר לסי שארפ- הוספת פידבק
-  sendFeedback(){
-     this.res = this.httpClient.post('http://localhost:63522/api/feedback/createFeedback',JSON.stringify(this.feedback),this.httpOptions);
-     this.res.subscribe(data=>{
-     console.log('my-data: ', data);
-     })
+  // הוספת פידבק
+  sendFeedback(){ 
+         this.res = this.httpClient.post('http://localhost:63522/api/feedback/createFeedback',JSON.stringify(this.feedback),this.httpOptions)
+         this.res.subscribe(data=>{
+         console.log('my-data: ', data);
+        })
   }
 
   toHomePage(){
     this.router.navigate(['home']);
   }
-  
 
 }

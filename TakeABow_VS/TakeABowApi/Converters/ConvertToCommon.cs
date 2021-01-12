@@ -13,19 +13,13 @@ namespace TakeABowApi.Converters
             {
                 Id = u.Id,
                 Password = u.Password‏,
-<<<<<<< HEAD
-=======
 
->>>>>>> 7cf19012d10fb805796500b4263c9c912b0ced6a
                 FirstName = u.FirstName,
                 LastName = u.LastName,
                 Phone = u.Phone,
                 Email = u.Email,
                 Job = u.Job,
-<<<<<<< HEAD
-=======
                 //Gender= u.Gender,
->>>>>>> 7cf19012d10fb805796500b4263c9c912b0ced6a
                 Is_Blocked=u.Is_Blocked,
                 Blocked_Date= u.Blocked_Date,
                 Is_Deleted= u.Is_Deleted,
@@ -81,14 +75,14 @@ namespace TakeABowApi.Converters
             {
               ipAddress=bi.ipAddress,
               blockTime= bi.blockTime,
-<<<<<<< HEAD
+
              /* Create_Date = bi.Create_Date,
               Password = bi.Password
 */
-=======
+
               //Create_Date = u.Create_Date,
               //Password = u.Password
->>>>>>> 7cf19012d10fb805796500b4263c9c912b0ced6a
+
             };
         }
     }
