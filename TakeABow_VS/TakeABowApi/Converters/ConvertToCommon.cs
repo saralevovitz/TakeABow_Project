@@ -13,7 +13,6 @@ namespace TakeABowApi.Converters
             {
                 Id = u.Id,
                 Password = u.Password‏,
-
                 FirstName = u.FirstName,
                 LastName = u.LastName,
                 Phone = u.Phone,
