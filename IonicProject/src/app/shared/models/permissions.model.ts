@@ -1,7 +1,7 @@
 export class Permissions {
-     Id: number
-     UserId: number
-     WatchUserId: number
+     Id: Number
+     UserId: Number
+     WatchUserId: Number
      CreateDate: Date
      IsAllow: boolean
      ExpireDate:Date

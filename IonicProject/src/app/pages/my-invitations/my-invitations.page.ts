@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/shared/services/user.service';
+import { Permissions } from 'src/app/shared/models/permissions.model';
+import { PermissionsService } from 'src/app/shared/services/permissions.service';
+
+
+
 
 @Component({
   selector: 'app-my-invitations',
@@ -9,14 +13,28 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class MyInvitationsPage implements OnInit {
 
-  constructor(private router: Router,private userService:UserService) { }
+  constructor(private router: Router, private permissionService: PermissionsService) { }
+ 
+  permission: Permissions= new Permissions();
+ 
 
-
-  toHomePage(){
-    this.router.navigate(['home']);
+  tomyAccountPage(){
+    this.router.navigate(['my-account']);
   }
 
   ngOnInit() {
+  this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
+   
   }
 
+  send(){
+    this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
+   this.permissionService.sendPermission(this.permission.UserId, this.permission.WatchUserId ).subscribe(res=>{
+     if(res==true)
+     alert('true')
+     alert('false')})
+    this.router.navigate(['my-account']);
+  }
 }
+
+

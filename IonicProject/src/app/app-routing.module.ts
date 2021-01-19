@@ -38,7 +38,19 @@ const routes: Routes = [
   {
     path: 'my-invitations',
     loadChildren: () => import('./pages/my-invitations/my-invitations.module').then( m => m.MyInvitationsPageModule)
+  },  {
+    path: 'top-feedbacks',
+    loadChildren: () => import('./pages/top-feedbacks/top-feedbacks.module').then( m => m.TopFeedbacksPageModule)
   },
+  {
+    path: 'view-requests',
+    loadChildren: () => import('./pages/view-requests/view-requests.module').then( m => m.ViewRequestsPageModule)
+  },
+  {
+    path: 'list-feedback',
+    loadChildren: () => import('./pages/list-feedback/list-feedback.module').then( m => m.ListFeedbackPageModule)
+  },
+
 ];
 
 @NgModule({

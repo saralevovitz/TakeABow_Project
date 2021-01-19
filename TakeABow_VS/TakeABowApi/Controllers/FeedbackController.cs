@@ -33,48 +33,57 @@ namespace TakeABowApi.Controllers
 
         }
 
-        //[HttpGet]
-        //[Route("api/feedback/getAllFeedback")]
-        //public List<Feedbacks> getAllFeedback(int userId)
-        //{
-        //    List<Feedbacks> f = logic.getFeedback(userId);
-        //    if (f!=null)
-        //        return f;
-        //    return null;
-
-        //}
-
-
-        /*public bool Post(int fromUserId, int toUserId, string feedback, bool isAnonymous, bool isSeen, bool isDeleted)
+        [HttpGet]
+        [Route("api/feedback/getAllFeedbackByUser/{userId}")]
+        public List<Common.Feedbacks> getAllFeedbackByUser(int userId)
         {
-            Feedbacks f = new Feedbacks(fromUserId, toUserId, feedback, isAnonymous, false, false);
-            bool res = logic.saveNewFeedback(f);
-            if (res)
-                return true;
-            return false;
 
-        }*/
+            if (logic.getAllFeedbackByUser(userId) == null)
+                return null;
+            return logic.getAllFeedbackByUser(userId);
+
+        }
+
+        [HttpGet]
+        [Route("api/feedback/getNameUserToFeedback/{userId}")]//לבדוק אם משתמשים בה
+        public string getNameUserToFeedback(int userId)
+        {
+            User u= logic.GetUser(userId);
+            var name = u.FirstName+"  "+u.LastName ;
+
+            return name;
+        }
+
+        [HttpPost]
+        [Route("api/feedback/deleteFeedback")]
+        public bool deleteFeedback(int idFeedback)
+        {
+
+            var res = logic.deleteFeedback(idFeedback);
+            return res;
+        }
+
+        [HttpPost]
+        [Route("api/feedback/readFeeback/{idFeedback}")]
+        public bool readFeedback([FromUri] int idFeedback, [FromBody] int FromUserId)
+        {
+            var res = logic.readFeedback(idFeedback, FromUserId);
+
+            return res;
+        }
 
 
+        [HttpGet]
+        [Route("api/feedback/getAllFeedbacksTop/{userId}")]
+        public List<Common.Feedbacks> getAllFeedbacksTop(int userId)
+        {
+            List<Feedbacks> f = logic.getFeedbackTop(userId);
+            
 
-        //[HttpGet]
-        //[Route("api/feedback/topFeedBack")]
-        //public IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> GET()
-        //{
-        //    return logic.getTopFeedbacks();
-
-        //}
-
-        //[HttpGet]
-        //[Route("api/feedback/usersFeedback/{userId}")]
-        //public List<Feedbacks> GetByUserId(int userId)
-        //{
-        //    return logic.GetAllFeedbackByUser(userId);
-
-        //}
-
-
+            return f;
+        }
     }
+    
 
 
 }

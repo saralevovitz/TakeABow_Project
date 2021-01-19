@@ -105,6 +105,25 @@ namespace TakeABowApi.Dal
                 }    
         }
 
+        public bool readFeedback(int  idFeedback,  int FromUserId)
+        {
+            try
+            {
+                using (TakeABowDBEntities db = new TakeABowDBEntities())
+                {
+                    var feedbackDb = db.Feedbacks.First(f => f.Id == idFeedback);
+                    feedbackDb.IsSeen = true;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //return false;
+                throw;
+            }
+        }
+
                /*Permission*/
         public bool AddPermission(Permissions p)
         {

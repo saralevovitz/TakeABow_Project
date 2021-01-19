@@ -29,9 +29,9 @@ export class UserService {
      
  }
 
- getTopUsers():Observable<User>
+ getTopUsers():Observable<User[]>
  {
-   return this.http.get<User>(environment.url + `user/getTopUsers/${5}`);
+   return this.http.get<User[]>(environment.url + `user/getTopUsers/${2}`);
  }
 
 

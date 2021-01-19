@@ -41,6 +41,7 @@ httpOptions = {
 
 
 signUp(){
+  //console.log(f)
   //this.userService.func(this.user);
   this.res = this.httpClient.post('http://localhost:63522/api/user/createUser', JSON.stringify(this.user),this.httpOptions);
   this.res.subscribe(userId => {

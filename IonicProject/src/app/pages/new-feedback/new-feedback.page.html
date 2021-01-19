@@ -1,36 +1,38 @@
 <ion-header>
-    <button (click)="toHomePage()">
+    <ion-button (click)="tomyAccountPage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-    </button>
+    </ion-button>
     <ion-toolbar>
-        <ion-title>add-new-feedback</ion-title>
+        <ion-title>הוספת פידבק חדש</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
     <br>
-    <ion-button name="sendFeedback" (click)="sendFeedback()">invite a friend</ion-button>
+    <ion-button name="sendFeedback" (click)="AddFeedback()">invite a friend</ion-button>
     <br>
     <br>
 
     <body>
         <ion-item>
             <br>
-            <ion-label fixed style="font-size: 20px;">{{ 'send to' }}</ion-label>
-            <ion-input type="text" placeholder="user name" [(ngModel)]="feedback.toUserId"></ion-input>
+            <ion-label fixed style="font-size: 20px;">{{ 'שלח ל' }}</ion-label>
+            <ion-input type="text" placeholder="שם משתמש" [(ngModel)]="feedback.ToUserId"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label style="font-size: 20px;">{{ 'feedback' }}</ion-label>
-            <ion-textarea placeholder="write your feedback" style="height: 200px;" [(ngModel)]="feedback.feedback"></ion-textarea>
+            <ion-label style="font-size: 20px;">{{ 'פידבק' }}</ion-label>
+            <br>
+            <ion-textarea placeholder="כתוב את הפידבק..." style="height: 200px;" [(ngModel)]="feedback.Feedback"></ion-textarea>
         </ion-item>
 
-        <ion-item>
-            <ion-label style="font-size: 20px;"> anonymous </ion-label>
-            <ion-checkbox slot="start"></ion-checkbox>
-        </ion-item>
+    
         <br>
-        <ion-button name="sendFeedback" (click)="sendFeedback()">add feedback</ion-button>
+        <ion-button style="width: 85px;" (click)="AddFeedback()" type="submit"> 
+            <ion-icon name="send-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
+            </ion-icon>
+              </ion-button>
+     
     </body>
 
 

@@ -14,16 +14,26 @@
             <ion-title size="large">Blank</ion-title>
         </ion-toolbar>
     </ion-header>
+    <ion-button (click)="tomyAccountPage()" *ngIf="isLoggedInUser()">
+        <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </ion-button>
 
     <div id="container">
         <strong>Welcome To 'Take A Bow' App</strong>
+        <ion-list *ngFor ="let user of userList">
+            <ion-item>
+                <ion-label>{{user.FirstName + "  " + user.LastName +"   " +user.Job}}</ion-label>
+                <ion-button style="width: 50px;" (click)="topFeedbacks(user.Id)" > 
+                    <ion-icon name="eye-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
+                    </ion-icon>
+                      </ion-button>
+            </ion-item>
+            
+      </ion-list>
     </div>
 
-    <!-- <ion-list getTopUsers()>
-        <h1>Top 5:</h1>
-        <p>{{}}</p>
-    </ion-list> -->
+    <ion-button *ngIf="!isLoggedInUser()" name="toSignUp" (click)="toSignUpPage()">sign up</ion-button>
+    <ion-button *ngIf="!isLoggedInUser()" name="toLogin" (click)="toLoginPage()">sign in</ion-button>
+    <ion-button *ngIf="isLoggedInUser()"  name="toLogOut" (click)="logOut()">יציאה</ion-button>
 
-    <ion-button name="toSignUp" (click)="toSignUpPage()">sign up</ion-button>
-    <ion-button name="toLogin" (click)="toLoginPage()">sign in</ion-button>
 </ion-content>

@@ -57,10 +57,23 @@ namespace TakeABowApi.Dal
 
         public List<Feedback> GetAllfeedbackByUser(int id)
         {
+
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
-                var us= db.Users.FirstOrDefault(u => u.Id == id);
-                return us.Feedbacks1.ToList();
+                List<Feedback> allFeedbacks = new List<Feedback>();
+                allFeedbacks= db.Feedbacks.Where(f => f.ToUserId == id).ToList();
+                return allFeedbacks;
+            }
+          
+        }
+
+        public List<Feedback> getFeedbackTop(int userId)
+        {
+            using(TakeABowDBEntities db= new TakeABowDBEntities())
+            {
+                List<Feedback> allFeedbacks = new List<Feedback>();
+                allFeedbacks = db.Feedbacks.Where((f => f.ToUserId == userId && f.IsSeen== true && f.IsDeleted== false)).ToList();
+                return allFeedbacks;
             }
         }
 
@@ -90,5 +103,8 @@ namespace TakeABowApi.Dal
           
             
         }
+
+
+   
     }
 }

@@ -1,32 +1,32 @@
 <ion-header>
-    <button (click)="toHomePage()">
+    <ion-button (click)="toHomePage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-    </button>
+    </ion-button>
     <ion-toolbar>
-        <ion-title>myAccount</ion-title>
+        <ion-title>החשבון שלי</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-header>
-    <ion-title class="title" style="text-align: center; font-size: 20px;">{{ 'Hello ****' }}</ion-title>
+    <ion-title class="title" style="text-align: center; font-size: 20px;">שלום ל{{user.FirstName+' '+ user.LastName}} </ion-title>
 </ion-header>
 
 <ion-content>
     <ion-card-header>
-
-
-
         <ion-router-outlet id="main"></ion-router-outlet>
         <div style="width: 300px; height: 50px;">
 
         </div>
-        <ion-button expand="full" color="success" (click)="toMyFeedbacks()">feedbacks recived</ion-button>
-        <ion-button expand="full" color="success" (click)="addFeedback()">add feedback</ion-button>
-        <!-- <ion-icon name="icons8-folder" style="height: 150px; width: 150px;">icons8-filder</ion-icon> -->
-        <ion-button expand="full" color="success" (click)="toMyInvitations()">friendship requests</ion-button>
-        <ion-button expand="full" color="success" (click)="toMyDetails()">my-profile</ion-button>
+        <ion-button expand="full" color="success" (click)="toMyFeedbacks()">רשימת פידבקים</ion-button>
+        <ion-button expand="full" color="success" (click)="addFeedback()">הוסף פידבק</ion-button>
+        <ion-button expand="full" color="success" (click)="toMyInvitations()">הזמן חבר</ion-button>
+        <ion-button expand="full" color="success" (click)="toMyDetails()">הפרופיל שלי</ion-button>
+        <ion-button expand="full" color="success" (click)="toView()">צפיה בבקשות </ion-button>
+        <ion-button expand="full" color="success" (click)="toListFeedbacks()">פידבקים שכתבתי</ion-button>
         <br>
-        <ion-button expand="block" (click)="exit()">Exit</ion-button>
+        <ion-button  (click)="exit()">
+                <ion-icon name="exit-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;">יציאה</ion-icon>  
+    </ion-button>
     </ion-card-header>
 
 

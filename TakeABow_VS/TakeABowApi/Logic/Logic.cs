@@ -80,40 +80,29 @@ namespace TakeABowApi.Logic
         }
 
 
-        //public List<Common.Feedbacks> getFeedback(int id)
-        //{
-        //    List<Feedback> a = get.GetAllfeedbackByUser(id);
-        //    return Converters.ConvertToCommon.Feedback(a.ForEach(f => { f.Feedback1.ToList()});
+        public List<Common.Feedbacks> getAllFeedbackByUser(int id)
+        {
+            List<Dal.Feedback> allFeedback = new getFromDataBase().GetAllfeedbackByUser(id);
+            return allFeedback.Select(f=> Converters.ConvertToCommon.Feedback(f)).ToList();
 
-        //}
-
-        //public List<Common.Feedbacks> getFeedback(User id)
-        //{
-        //    List<Feedback> ab = get.GetAllfeedbackByUser(id);
-        //    return ab.ForEach(return { a => a.Feedback1.ToList()})
-        //        //Converters.ConvertToCommon.Feedback();
-
-        //}
-
-
-        //מיותר???
-
-        //public List<Feedbacks> GetAllFeedbackByUser(int id)
-        //{
-        //    List<Feedback> userFeedbacks = new List<Feedback>();
-        //    userFeedbacks = get.GetAllfeedbackByUser(id);
-        //    userFeedbacks.Select(uf => Converters.ConvertToCommon.Feedbacks(uf).ToString().ToList();
-        //    return 
-        //        Converters.ConvertToCommon.Feedbacks(userFeedbacks);
-
-        //}
+        }
 
         public bool deleteFeedback(int fId)
         {
             return save.deleteFeedback(fId);
         }
 
+        public bool readFeedback(int idFeedback, int FromUserId)
+        {
+            return save.readFeedback(idFeedback, FromUserId);
+        }
 
+        public List<Common.Feedbacks> getFeedbackTop(int userId)
+        {
+            List<Dal.Feedback> allFeedback = new getFromDataBase().getFeedbackTop(userId);
+            return allFeedback.Select(f => Converters.ConvertToCommon.Feedback(f)).ToList();
+           
+        }
         /*Permission*/
 
         public bool AddPermission(Permissions p)

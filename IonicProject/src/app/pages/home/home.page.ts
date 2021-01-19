@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RouteConfigLoadEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, RouteConfigLoadEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
+import { TopFeedbacksPage } from '../top-feedbacks/top-feedbacks.page';
 
 //test
 
@@ -14,21 +15,27 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class HomePage {
 
+   userList: User []= []
    user:User=new User();
-  res: Observable<any>;
-  userList: User []= [];
+   res: Observable<any>;
+   userToTOP: Number=1004;
+
   constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) {
 
    }
-  
-    getTopUsers(){
-    // this.res = this.httpClient.get('http://localhost:63522/api/user/getTopUsers', JSON.stringify(this.user),this.httpOptions);
-    this.userService.getTopUsers().subscribe(res=>{this.user=res})
+   ngOnInit() {
+     this.getTopUsers()
    }
-
-  // getDetails(){
-  //   this.userService.GetUser(this.id).subscribe(res=>{this.user=res})
-  // }
+    getTopUsers(){
+      this.userService.getTopUsers().subscribe(u=>{
+        console.log(u)
+        this.userList=u
+        
+      })
+   }
+   tomyAccountPage(){
+    this.router.navigate(['my-account']);
+   }
 
 
   toSignUpPage(){  
@@ -38,5 +45,19 @@ export class HomePage {
     toLoginPage(){
     this.router.navigate(['login']);
     }
-  
+
+    isLoggedInUser()
+    {
+      return localStorage.getItem("userIdLogin")!=null;
+    }
+
+    logOut()
+    {
+      localStorage.clear();
+    }
+    topFeedbacks(userId:Number){
+      this.userToTOP=userId;
+          this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);
+          console.log("the id:" +this.userToTOP)
+    }
 }

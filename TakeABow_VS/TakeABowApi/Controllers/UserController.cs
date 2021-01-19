@@ -25,10 +25,10 @@ namespace TakeABowApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/user/getTopUsers")]
+        [Route("api/user/getTopUsers/{2}")]
         public List<Common.User> GetTopUsers()
         {
-            return logic.TopUsers(5);
+            return logic.TopUsers(2);
         }
 
 

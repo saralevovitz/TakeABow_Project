@@ -1,57 +1,63 @@
 <ion-header>
-    <button (click)="toHomePage()">
+    <ion-button (click)="toHomePage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-    </button>
+    </ion-button>
     <ion-toolbar>
         <ion-title>{{ 'sign up' }}</ion-title>
     </ion-toolbar>
 </ion-header>
-<h4>Create your account</h4>
+<h4>צור את החשבון שלך</h4>
+
+<form #f="ngForm" name="signUpForm">
+<ion-item>
+    <ion-input  name="firstName" type="text" placeholder="שם פרטי" [(ngModel)]="user.FirstName" required></ion-input>
+</ion-item>
 
 <ion-item>
-    <ion-label fixed>{{ 'first name' }}</ion-label>
-    <ion-input type="text" [(ngModel)]="user.FirstName" name="first"></ion-input>
+    <ion-input  name="lastName" type="text" #LastName="ngModel" placeholder="שם משפחה" [(ngModel)]="user.LastName" required></ion-input>
 </ion-item>
+
 <ion-item>
-    <ion-label fixed>{{ 'last name' }}</ion-label>
-    <ion-input type="text" [(ngModel)]="user.LastName"></ion-input>
+    <ion-input  name="phone" type="text" placeholder="טלפון" [(ngModel)]="user.Phone" required></ion-input>
 </ion-item>
+
 <ion-item>
-    <ion-label fixed>{{ 'phone' }}</ion-label>
-    <ion-input type="phone" [(ngModel)]="user.Phone"></ion-input>
+    <ion-input  name="email" type="email" placeholder="מייל" [(ngModel)]="user.Email" required email></ion-input>
 </ion-item>
+
 <ion-item>
-    <ion-label fixed>{{ 'email' }}</ion-label>
-    <ion-input type="email" [(ngModel)]="user.Email"></ion-input>
+    <ion-input  name="job" type="text" placeholder="תפקיד" [(ngModel)]="user.Job" required></ion-input>
 </ion-item>
-<ion-item>
-    <ion-label fixed>{{ 'job description' }}</ion-label>
-    <ion-input type="text" placeholder="not required" [(ngModel)]="user.Job"></ion-input>
-</ion-item>
+
  <ion-list>
- <ion-radio-group value="biff" [(ngModel)]="user.Gender">
-        <ion-list-header>
-            <ion-label>gender</ion-label>
-        </ion-list-header>
+     <ion-label>מין</ion-label>
+ <ion-radio-group [(ngModel)]="user.Gender">
+            <ion-item>
+              <ion-label>זכר</ion-label>
+              <ion-radio slot="start"></ion-radio>
+            </ion-item>
         <ion-item>
-            <ion-label>male</ion-label>
-            <ion-radio slot="start" value="biff"></ion-radio>
+            <ion-label>נקבה</ion-label>
+            <ion-radio slot="start"></ion-radio>
         </ion-item>
         <ion-item>
-            <ion-label>female</ion-label>
-            <ion-radio slot="start" value="griff"></ion-radio>
+            <ion-label>לא מעונין</ion-label>
+            <ion-radio slot="start"></ion-radio>
         </ion-item>
     </ion-radio-group>
-</ion-list>‏
+</ion-list>
+
 <ion-item>
-    <ion-label fixed>{{ 'password' }}</ion-label>
-    <ion-input type="password" [(ngModel)]="user.Password"></ion-input>
+    <ion-input  name="password" type="password" placeholder="סיסמא" [(ngModel)]="user.Password" required ></ion-input>
 </ion-item>
+‏
 <ion-item>
-    <ion-label fixed>{{ 'confirm password' }}</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input  name="password2" type="password" placeholder="אשר סיסמא" [(ngModel)]="user.Password" required></ion-input>
 </ion-item>
 
-<!-- <ion-button name="doSignUp" (click)="toMyAccountPage()">sign up</ion-button> -->
-<ion-button name="doSignUp" (click)="signUp()">sign up</ion-button>
-<!-- <ion-button name="toMyAccoun" (click)="toMyAccountPage()">to my account</ion-button> -->
+<ion-button  (click)="f.valid && signUp()" >
+    <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;">יציאה</ion-icon>  
+</ion-button>
+
+
+</form>

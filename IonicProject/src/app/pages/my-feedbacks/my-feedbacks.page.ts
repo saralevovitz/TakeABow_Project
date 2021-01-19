@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/shared/models/feedback.model';
+import { FeedbackService } from 'src/app/shared/services/feedback.service';
 
 @Component({
   selector: 'app-my-feedbacks',
@@ -9,21 +10,45 @@ import { Feedback } from 'src/app/shared/models/feedback.model';
 })
 export class MyFeedbacksPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private feedbackService: FeedbackService) { }
 
-  feedback: Feedback= new Feedback()
+  feedbacksList: Feedback[]=[]
+  feedback: Feedback= new Feedback();
+  nameUser:String;
+  idF:Number;
+  tomyAccountPage(){
+    this.router.navigate(['my-account']);
+  }
+
+   ngOnInit() {
+    this.feedback.FromUserId=+localStorage.getItem('userIdLogin')
+    this.feedbackService.getAllFeedbacksByUser(this.feedback.FromUserId).subscribe(f=>{
+      this.feedbacksList=f
+      console.log(f)
+    })
+
+    this.feedbackService.getNameUserToFeedback(this.feedback.FromUserId).subscribe(res=>
+      this.nameUser=res)
+    console.log(this.nameUser)
+  }
+
+  toDeleteFeedback(idf:number){
   
-  toHomePage(){
-    this.router.navigate(['home']);
+console.log(idf )
+    this.feedbackService.deleteFeedback(idf).subscribe(res=>{
+      if(res==true)
+      alert('true')
+     else alert('false')})
+   
+  }
+  readFeedback(idFeedback:Number, FromUserId:Number){
+    console.log(idFeedback)
+    this.feedbackService.readFeeback(idFeedback, FromUserId).subscribe(res=>{
+      if(res==true)
+      alert('true')
+     else alert('false')})
   }
 
-  toDeleteFeedback(){
     
-  }
-
-  ngOnInit() {
-    this.feedback.ToUserId=+localStorage.getItem('userIdLogin')
-    console.log(this.feedback.Feedback+"uygdrs")
-  }
-
+ 
 }

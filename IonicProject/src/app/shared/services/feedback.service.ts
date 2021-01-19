@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Feedback } from '../models/feedback.model';
 
 @Injectable({
@@ -10,15 +11,31 @@ export class FeedbackService {
 
   constructor(private http:HttpClient) { }
 
-//   getAllFeedbacks():Observable<boolean>{
-//    debugger;
-//    return this.http.get<Feedback>(environment.url + `user/GetUserById/${userId}`);
 
-
-//  } 
-
+  addFeedback(feedback: Feedback):Observable<Boolean>{
+    return this.http.post<boolean>(environment.url + 'feedback/createFeedback',feedback);
+    
+  }
   
-  //  func(feedback:Feedback):Observable<boolean>{
-  //      return this.http.post<boolean>("http://localhost:63522/api/feedback/createFeedback", feedback);
-  //  }‏
+  deleteFeedback(idFeedback:number):Observable<Boolean>{
+    return this.http.post<boolean>(environment.url + 'feedback/deleteFeedback', idFeedback);
+  }
+   getAllFeedbacksByUser(userId:Number):Observable<Feedback[]>{ 
+    //debugger;
+   return this.http.get<Feedback[]>(environment.url + `feedback/getAllFeedbackByUser/${userId}`);
+  } 
+
+  getNameUserToFeedback(userId:Number):Observable<String>{
+      return this.http.get<String>(environment.url+`feedback/getNameUserToFeedback/${userId}`);
+  }
+
+
+  readFeeback(idFeedback:Number, FromUserId:Number):Observable<Boolean>{
+    return this.http.post<boolean>(environment.url + `feedback/readFeeback/${idFeedback}`, FromUserId);
+  }
+
+  getAllFeedbacksTop(userId:Number):Observable<Feedback[]>{
+    return this.http.get<Feedback[]>(environment.url+ `feedback/getAllFeedbacksTop/${userId}`);
+  }
+ 
 }

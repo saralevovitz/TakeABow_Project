@@ -16,11 +16,14 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class NewFeedbackPage implements OnInit {
 
-  feedback: Feedback = new Feedback();
-  res: Observable<any>;
+  
 
   constructor(public httpClient: HttpClient, private router: Router,private feedbackService:FeedbackService) { }
 
+  idU: number=+localStorage.getItem('userIdLogin')
+  feedback: Feedback = new Feedback();
+  //res: Observable<any>;
+  
   ngOnInit() {}
 
   // Http Options
@@ -30,16 +33,19 @@ export class NewFeedbackPage implements OnInit {
   })
 }
 
-  //לחבר לסי שארפ- הוספת פידבק
-  sendFeedback(){
-     this.res = this.httpClient.post('http://localhost:63522/api/feedback/createFeedback',JSON.stringify(this.feedback),this.httpOptions);
-     this.res.subscribe(data=>{
-     console.log('my-data: ', data);
-     })
-  }
+  AddFeedback(){
+    
+    this.feedback.FromUserId=this.idU
+     this.feedbackService.addFeedback(this.feedback).subscribe(res=>{
+       if(res==true)
+        alert('הפידבק נשלח בהצלחה')
+      else  alert('שגיאה, נסה שוב')})
+       
+     
+   }
 
-  toHomePage(){
-    this.router.navigate(['home']);
+  tomyAccountPage(){
+    this.router.navigate(['my-account']);
   }
   
 

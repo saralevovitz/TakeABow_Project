@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     this.userService.checkLogin(this.userLogin).subscribe(Boolean)
     localStorage.setItem('userIdLogin', this.userLogin.Id.toString())
     this.IdLogin=+ localStorage.getItem('userIdLogin')
-    this.router.navigate(['my-account']);
+    this.router.navigate(['home']);
   }
 
   toHomePage(){
