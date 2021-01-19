@@ -74,7 +74,7 @@ namespace TakeABowApi.Converters
         {
             return new Dal.BlockIP
             {
-                ipAddress= bi.IPAddress,
+                ipAddress= bi.ipAddress,
                 blockTime= bi.blockTime
             };
         }
