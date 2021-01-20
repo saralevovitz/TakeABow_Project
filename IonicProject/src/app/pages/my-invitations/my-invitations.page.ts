@@ -7,6 +7,7 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 
 
 
+
 @Component({
   selector: 'app-my-invitations',
   templateUrl: './my-invitations.page.html',
