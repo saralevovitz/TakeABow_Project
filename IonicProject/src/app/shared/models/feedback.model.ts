@@ -9,5 +9,4 @@ export class Feedback{
    CreateDate: Date
    FromUserFullName: string;
 
-   
 }
