@@ -26,6 +26,7 @@ export class MyInvitationsPage implements OnInit {
   tomyAccountPage(){
     this.router.navigate(['my-account']);
   }
+  
 
   ngOnInit() {
     this.permission.UserId=+localStorage.getItem('userIdLogin');
