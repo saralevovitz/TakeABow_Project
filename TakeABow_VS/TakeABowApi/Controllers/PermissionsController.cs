@@ -24,15 +24,15 @@ namespace TakeABowApi.Controllers
         }
 
         [HttpPost]
-        [Route("api/permissions/ViewConfirmation/{userID}")]
-        public bool ViewConfirmation([FromUri] int userID, [FromBody] int watchUserId)
+        [Route("api/permissions/ViewConfirmation")]
+        public bool ViewConfirmation(Common.Permissions permission)
         {
             bool confirmed‏= true;
             int weeks = 1;
 
             if (confirmed‏==true)
             {
-                Permissions p = new Permissions(  num_permission_id++, userID, watchUserId, true, DateTime.Now.AddDays(weeks * 7));
+                Permissions p = new Permissions(  num_permission_id++, permission.UserId, permission.WatchUserId, true, DateTime.Now.AddDays(weeks * 7));
                 if (logic.AddPermission(p))
                     return true;
                 return false;

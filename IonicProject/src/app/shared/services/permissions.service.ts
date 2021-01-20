@@ -12,9 +12,11 @@ export class PermissionsService {
 
   constructor(private http: HttpClient) { }
 
-  sendPermission(userID:Number, watchUserId: Number ):Observable<Boolean>{
-//debugg
-    return this.http.post<Boolean>(environment.url + `permissions/ViewConfirmation/${userID}`, watchUserId);
+  sendPermission(permission: Permissions ):Observable<Boolean>{
+  debugger;
+
+   
+    return this.http.post<Boolean>(environment.url + 'permissions/ViewConfirmation',permission);
 
   }
 }

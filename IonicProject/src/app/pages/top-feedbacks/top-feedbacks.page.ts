@@ -13,9 +13,9 @@ export class TopFeedbacksPage implements OnInit {
   constructor(private router: Router, private feedbackService: FeedbackService ,private route: ActivatedRoute) { }
   
   feedbacksList: Feedback[]=[];
-  feedback: Feedback= new Feedback();
+  
   nameUserF: String;
-
+  ToUserId:Number
   ngOnInit() {
 
   this.feedbackByUser()
@@ -30,15 +30,15 @@ export class TopFeedbacksPage implements OnInit {
 
   feedbackByUser(){
     this.route.params.subscribe(params=>{
-      this.feedback.ToUserId=params['userToTOP'];
+      this.ToUserId=params['userToTOP'];
     }) 
-    console.log("the id:"+this.feedback.ToUserId)
+    console.log("the id:"+this.ToUserId)
   }
 
 
   getFeedback(){
     //console.log("the feedback "+this.feedback.FromUserId)
-    this.feedbackService.getAllFeedbacksTop(this.feedback.ToUserId).subscribe(f=>{
+    this.feedbackService.getAllFeedbacksTop(this.ToUserId).subscribe(f=>{
       this.feedbacksList=f
      
     })
@@ -46,7 +46,7 @@ export class TopFeedbacksPage implements OnInit {
   }
 
   nameUser(){
-    this.feedbackService.getNameUserToFeedback(this.feedback.ToUserId).subscribe(res=>{
+    this.feedbackService.getNameUserToFeedback(this.ToUserId).subscribe(res=>{
       this.nameUserF=res;
         })
   }

@@ -16,8 +16,9 @@
        <ion-label>
          <ion-list *ngFor="let f of feedbacksList">
           <div>
-            <ion-label>  מ  {{f.FromUserFullName}}  </ion-label>
+            <ion-label>    מ{{f.FromUserFullName}}  </ion-label>
             <ion-label> {{f.Feedback}}</ion-label>
+            <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label> 
           </div>
          </ion-list>
        </ion-label>

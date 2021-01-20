@@ -106,7 +106,8 @@ namespace TakeABowApi.Logic
         /*Permission*/
 
         public bool AddPermission(Permissions p)
-        {
+        { 
+           
             return save.AddPermission(p);
         }
 

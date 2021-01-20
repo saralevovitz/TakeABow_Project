@@ -125,7 +125,7 @@ namespace TakeABowApi.Dal
         }
 
                /*Permission*/
-        public bool AddPermission(Permissions p)
+        public bool AddPermission(Common.Permissions p)
         {
             try
             {
