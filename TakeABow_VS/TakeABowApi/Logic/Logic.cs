@@ -110,6 +110,11 @@ namespace TakeABowApi.Logic
             return save.AddPermission(p);
         }
 
+
+        //public string getUserToPermissions(int watchUserId)
+        //{
+        //    return get.getUserToPermissions(watchUserId);
+        //}
         /*UsersBlocked*/
 
         public bool Block(Common.UsersBlocked ub)

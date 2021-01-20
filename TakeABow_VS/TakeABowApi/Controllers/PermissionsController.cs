@@ -41,6 +41,18 @@ namespace TakeABowApi.Controllers
 
         }
 
+        //[HttpGet]
+        //[Route("api/permissions/getUserToPermissions/{watchUserId}")]
+
+        //public String getUserToPermissions(int watchUserId)
+        //{
+
+        //    var u = logic.getUserToPermissions(watchUserId);
+        //    return u;
+
+
+
+        //}
        
     }
 }

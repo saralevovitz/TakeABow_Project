@@ -22,7 +22,7 @@
                        <div class="textFeedback">
                          <ion-label> מ {{nameUser}} </ion-label>
                          <ion-label> {{f.Feedback}}</ion-label>
-                   <!--  <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="f.CreateDate"></ion-datetime> -->
+                         <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label> 
                        </div>
                    <ion-button (click)="toDeleteFeedback(f.Id)">
                       <ion-icon name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>

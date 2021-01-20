@@ -16,6 +16,8 @@ namespace TakeABowApi.Common
         public bool IsDeleted { get; set; }
         public DateTime CreateDate { get; set; }
 
+        public string FromUserFullName { get; set; }
+
 
         public Feedbacks()
         {

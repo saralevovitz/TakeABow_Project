@@ -13,7 +13,7 @@ using System.Data.Entity.Core.Common.CommandTrees;
 using System.Security.Authentication.ExtendedProtection;
 using WebGrease.Css.Extensions;
 using System.Runtime.InteropServices;
-
+using System.Data.Entity;
 namespace TakeABowApi.Dal
 {
     public  class getFromDataBase
@@ -61,7 +61,7 @@ namespace TakeABowApi.Dal
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
                 List<Feedback> allFeedbacks = new List<Feedback>();
-                allFeedbacks= db.Feedbacks.Where(f => f.ToUserId == id).ToList();
+                allFeedbacks= db.Feedbacks.Include(f=>f.User).Include(f=>f.User1).Where(f => f.ToUserId == id).ToList();
                 return allFeedbacks;
             }
           
@@ -72,7 +72,7 @@ namespace TakeABowApi.Dal
             using(TakeABowDBEntities db= new TakeABowDBEntities())
             {
                 List<Feedback> allFeedbacks = new List<Feedback>();
-                allFeedbacks = db.Feedbacks.Where((f => f.ToUserId == userId && f.IsSeen== true && f.IsDeleted== false)).ToList();
+                allFeedbacks = db.Feedbacks.Include(f => f.User).Include(f => f.User1).Where((f => f.ToUserId == userId && f.IsSeen== true && f.IsDeleted== false)).ToList();
                 return allFeedbacks;
             }
         }
@@ -104,7 +104,15 @@ namespace TakeABowApi.Dal
             
         }
 
+        //public string getUserToPermissions(int watchUserId)
+        //{
+        //    using (TakeABowDBEntities db = new TakeABowDBEntities())
+        //    {
+        //       var name= db.Users.FirstOrDefault(u => u.Id == watchUserId);
+        //        return name;
+        //    }
+        //}
 
-   
+
     }
 }

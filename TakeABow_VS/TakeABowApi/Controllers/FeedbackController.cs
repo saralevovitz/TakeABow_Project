@@ -56,7 +56,7 @@ namespace TakeABowApi.Controllers
 
         [HttpPost]
         [Route("api/feedback/deleteFeedback")]
-        public bool deleteFeedback(int idFeedback)
+        public bool deleteFeedback([FromBody]int idFeedback)
         {
 
             var res = logic.deleteFeedback(idFeedback);

@@ -31,12 +31,13 @@ namespace TakeABowApi.Converters
             {
                 Id = f.Id,
                 FromUserId = f.FromUserId,
-                ToUserId=f.ToUserId,
-                Feedback= f.Feedback1,
-                IsAnonymous= f.IsAnonymous,
-                IsSeen= f.IsSeen,
-                IsDeleted= f.IsDeleted,
-                CreateDate= f.CreateDate
+                ToUserId = f.ToUserId,
+                Feedback = f.Feedback1,
+                IsAnonymous = f.IsAnonymous,
+                IsSeen = f.IsSeen,
+                IsDeleted = f.IsDeleted,
+                CreateDate = f.CreateDate,
+                FromUserFullName = f.User.FirstName + " " + f.User.LastName
             };
         }
 

@@ -18,3 +18,4 @@ export class ViewRequestsPage implements OnInit {
   }
 
 }
+

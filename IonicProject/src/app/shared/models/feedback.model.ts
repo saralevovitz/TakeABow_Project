@@ -7,4 +7,5 @@ export class Feedback{
    IsSeen: boolean
    IsDeleted: boolean
    CreateDate: Date
+   FromUserFullName: string;
 }
