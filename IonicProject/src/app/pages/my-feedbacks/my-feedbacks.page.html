@@ -3,19 +3,20 @@
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
 
-    
+
     <ion-toolbar>
         <ion-title>רשימת פידבקים</ion-title>
     </ion-toolbar>
 </ion-header>
 
 
+
 <ion-content>
-  <ion-list>
-     <ion-item> 
-         <ion-label >
-             <ion-list *ngFor ="let f of feedbacksList">
-                 <button (click)="readFeedback(f.Id, f.FromUserId)" style="height: 250px; width: 250px;">
+    <ion-list>
+        <ion-item>
+            <ion-label>
+                <ion-list *ngFor="let f of feedbacksList">
+                    <button (click)="readFeedback(f.Id, f.FromUserId)" style="height: 250px; width: 250px;">
               <div>
                  <ion-avatar slot="start">
                     <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon></ion-avatar>
@@ -27,13 +28,13 @@
                    <ion-button (click)="toDeleteFeedback(f.Id)">
                       <ion-icon name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>
                 </ion-button>
-            </div></button>  
+            </div></button>
                 </ion-list>
-          
+
             </ion-label>
-       
+
         </ion-item>
-   
+
     </ion-list>
 
 </ion-content>
