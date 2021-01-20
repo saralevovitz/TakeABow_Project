@@ -8,4 +8,6 @@ export class Feedback{
    IsDeleted: boolean
    CreateDate: Date
    FromUserFullName: string;
+
+   
 }
