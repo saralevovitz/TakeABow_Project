@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Permissions } from 'src/app/shared/models/permissions.model';
-import { PermissionsService } from 'src/app/shared/services/permissions.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -10,22 +8,16 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 })
 export class ViewRequestsPage implements OnInit {
 
-  constructor(private router: Router, private permissionsService: PermissionsService) { }
-
-  permissionsList: Permissions[]=[];
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.allRequests()
   }
 
   tomyAccountPage(){
     this.router.navigate(['my-account']);
   }
-
-
-  allRequests(){
-
+  toHometPage(){
+    this.router.navigate(['home']);
   }
-
 }
 

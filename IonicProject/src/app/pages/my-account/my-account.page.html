@@ -2,6 +2,9 @@
     <ion-button (click)="toHomePage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
+    <ion-button (click)="toHomePage()">
+        <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </ion-button>
     <ion-toolbar>
         <ion-title>החשבון שלי</ion-title>
     </ion-toolbar>
@@ -19,14 +22,14 @@
         </div>
         <ion-button expand="full" color="success" (click)="toMyFeedbacks()">רשימת פידבקים</ion-button>
         <ion-button expand="full" color="success" (click)="addFeedback()">הוסף פידבק</ion-button>
-        <ion-button expand="full" color="success" (click)="toMyInvitations()">הזמן חבר</ion-button>
+        <ion-button expand="full" color="success" (click)="toMyInvitations()">בקשה לצפיה בפידבקים של אחר</ion-button>
         <ion-button expand="full" color="success" (click)="toMyDetails()">הפרופיל שלי</ion-button>
         <ion-button expand="full" color="success" (click)="toView()">צפיה בבקשות </ion-button>
         <ion-button expand="full" color="success" (click)="toListFeedbacks()">פידבקים שכתבתי</ion-button>
         <br>
-        <ion-button  (click)="exit()">
-                <ion-icon name="exit-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;">יציאה</ion-icon>  
-    </ion-button>
+        <ion-button (click)="exit()">
+            <ion-icon name="exit-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;">יציאה</ion-icon>
+        </ion-button>
     </ion-card-header>
 
 

@@ -1,22 +1,22 @@
 <ion-header>
     <ion-button (click)="tomyAccountPage()">
-       <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-</ion-button>
+        <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </ion-button>
     <ion-toolbar>
-        <ion-title>שליחת בקשת  צפיה </ion-title>
+        <ion-title>שליחת בקשת צפיה + הזמנות- בקשות ששלחתי</ion-title>
     </ion-toolbar>
 </ion-header>
 <br>
 <ion-item>
     <br>
-   <!-- <ion-label fixed style="font-size: 20px;">{{ 'שלח ל' }}</ion-label>-->
-    <ion-input type="text" placeholder="שלח ל" [(ngModel)]="permission.WatchUserId"></ion-input>
-</ion-item> 
+    <!-- <ion-label fixed style="font-size: 20px;">{{ 'שלח ל' }}</ion-label>-->
+    <ion-input type="text" placeholder="שלח ל" [(ngModel)]="permission.UserId"></ion-input>
+</ion-item>
 <ion-content>
-<br>
-    <ion-button style="width: 85px;" (click)="send()" type="submit"> 
+    <br>
+    <ion-button style="width: 85px;" (click)="send()" type="submit">
         <ion-icon name="send-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
         </ion-icon>
-          </ion-button>
-  
+    </ion-button>
+
 </ion-content>
