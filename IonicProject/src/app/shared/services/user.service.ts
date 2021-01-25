@@ -37,7 +37,7 @@ export class UserService {
 
 
  checkLogin(user:User):Observable<Boolean>{
- //  debugger;
+   debugger;
    return this.http.post<boolean>(environment.url + 'user/login',user);
 
  }
