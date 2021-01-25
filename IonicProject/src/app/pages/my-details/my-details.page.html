@@ -1,6 +1,9 @@
 <ion-header>
-    <ion-button (click)="tomyAccountPage()">
+    <ion-button (click)="toHomePage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </ion-button>
+    <ion-button (click)="tomyAccountPage()">
+        <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
     <ion-toolbar>
         <ion-title>הפרופיל שלי</ion-title>
@@ -12,32 +15,31 @@
     <ion-item>
         <ion-input name="firstName" type="text" placeholder="{{user.FirstName}}" [(ngModel)]="user.FirstName" required>
         </ion-input>
-      </ion-item>
+    </ion-item>
 
-      <ion-item>
+    <ion-item>
         <ion-input name="lastName" type="text" placeholder="{{user.LastName}}" [(ngModel)]="user.LastName" required>
         </ion-input>
-      </ion-item>
+    </ion-item>
 
-      <ion-item>
+    <ion-item>
         <ion-input name="phone" type="text" placeholder="{{user.Phone}}" [(ngModel)]="user.Phone" required>
         </ion-input>
-      </ion-item>
+    </ion-item>
 
-      <ion-item>
+    <ion-item>
         <ion-input name="email" type="text" placeholder="{{user.Email}}" [(ngModel)]="user.Email" required>
         </ion-input>
-      </ion-item>
+    </ion-item>
 
-      <ion-item>
+    <ion-item>
         <ion-input name="password" type="password" placeholder="{{user.Password}}" [(ngModel)]="user.Password" required>
         </ion-input>
-      </ion-item>
-      <br>
-     <ion-button style="width: 85px;" (click)="onClickEdit()" type="submit"> 
-      <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
-      </ion-icon>
-        </ion-button>
-    
-    </ion-content>
-   
+    </ion-item>
+    <br>
+    <ion-button style="width: 85px;" (click)="onClickEdit()" type="submit">
+        <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
+        </ion-icon>
+    </ion-button>
+
+</ion-content>

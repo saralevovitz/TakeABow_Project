@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'list-feedback',
     loadChildren: () => import('./pages/list-feedback/list-feedback.module').then( m => m.ListFeedbackPageModule)
   },
+  {
+    path: 'all-users',
+    loadChildren: () => import('./pages/all-users/all-users.module').then( m => m.AllUsersPageModule)
+  },
 
 ];
 

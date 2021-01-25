@@ -16,7 +16,7 @@ export class ViewRequestsPage implements OnInit {
   tomyAccountPage(){
     this.router.navigate(['my-account']);
   }
-  toHometPage(){
+  toHomePage(){
     this.router.navigate(['home']);
   }
 }

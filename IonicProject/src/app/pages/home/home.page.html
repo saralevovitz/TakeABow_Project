@@ -36,5 +36,6 @@
     <ion-button *ngIf="!isLoggedInUser()" name="toLogin" (click)="toLoginPage()">sign in</ion-button>
     <ion-button *ngIf="isLoggedInUser()" name="toLogOut" (click)="logOut()">יציאה</ion-button>
     <ion-button *ngIf="isLoggedInUser()" name="tomyAccountPage" (click)="tomyAccountPage()">לחשבון שלי</ion-button>
+    <ion-button *ngIf="isLoggedInUser()" name="toAllUsersPage" (click)="toAllUsersPage()">לכל המשתמשים</ion-button>
 
 </ion-content>

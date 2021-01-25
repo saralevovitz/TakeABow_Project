@@ -27,6 +27,12 @@ namespace TakeABowApi.Logic
             return allUsers.Take(5).Select(u => Converters.ConvertToCommon.U(u)).ToList();
         }
 
+        public List<Common.User> GetAllUsers()
+        {
+            List<Dal.User> allUsers = new getFromDataBase().GetUsers();
+            return allUsers.Select(u => Converters.ConvertToCommon.U(u)).ToList();
+        }
+
         public Common.User GetUser(int userId)
         {
             var user = get.GetUserById(userId);

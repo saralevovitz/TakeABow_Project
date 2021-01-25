@@ -6,10 +6,20 @@
         <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
     <ion-toolbar>
-        <ion-title>viewRequests בקשות צפיה שנשלחו אלי</ion-title>
+        <ion-title>all-users</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-toolbar>
+        <ion-searchbar></ion-searchbar>
+    </ion-toolbar>
+    <ion-list *ngFor="let user of AllUsersList">
+        <ion-item>
+            <ion-label>{{user.FirstName + " " + user.LastName +" " +user.Job}}</ion-label>
+        </ion-item>
+
+    </ion-list>
+
 
 </ion-content>

@@ -26,6 +26,9 @@ export class TopFeedbacksPage implements OnInit {
   tomyAccountPage(){
     this.router.navigate(['my-account']);
   }
+  toHomePage(){
+    this.router.navigate(['home']);
+  }
 
 
   feedbackByUser(){
