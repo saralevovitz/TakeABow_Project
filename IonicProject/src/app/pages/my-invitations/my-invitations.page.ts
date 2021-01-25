@@ -4,8 +4,6 @@ import { Permissions } from 'src/app/shared/models/permissions.model';
 import { PermissionsService } from 'src/app/shared/services/permissions.service';
 
 
-
-
 @Component({
   selector: 'app-my-invitations',
   templateUrl: './my-invitations.page.html',
@@ -22,9 +20,12 @@ export class MyInvitationsPage implements OnInit {
     this.router.navigate(['my-account']);
   }
 
+  toHomePage(){
+    this.router.navigate(['home']);
+  }
+
   ngOnInit() {
   this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
-   
   }
 
   send(){

@@ -18,12 +18,13 @@ export class MyDetailsPage implements OnInit {
   
    idU: number=+localStorage.getItem('userIdLogin')
 
-  
 
    tomyAccountPage(){
     this.router.navigate(['my-account']);
   }
-
+  toHomePage(){
+    this.router.navigate(['home']);
+  }
   ngOnInit() {
   //   let u:User=new User();
   // localStorage.setItem("key",JSON.stringify(u)) 
@@ -37,7 +38,8 @@ export class MyDetailsPage implements OnInit {
 
   onClickEdit(){
     this.userService.UpDate(this.user).subscribe()
-    this.router.navigate(['my-account']);
+    alert('העדכון נשמר')
+    //this.router.navigate(['my-account']);
   }
 
 
