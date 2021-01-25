@@ -16,17 +16,18 @@ export class UserService {
       return this.http.post<boolean>(environment.url + 'user/updateUser',user);
  }
 
+ getAllUsers():Observable<User[]>{
+  return this.http.get<User[]>(environment.url + 'api/user/getAllUsers');
+ }
 
   func(user:User):Observable<boolean>{
    // debugger;
        return this.http.post<boolean>(environment.url + 'user/createUser',user);
   }
 
-
  GetUser(userId:Number):Observable<User>
  {
-     return this.http.get<User>(environment.url + `user/GetUserById/${userId}`);
-     
+     return this.http.get<User>(environment.url + `user/GetUserById/${userId}`);   
  }
 
  getTopUsers():Observable<User[]>

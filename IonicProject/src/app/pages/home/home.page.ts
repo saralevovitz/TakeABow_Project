@@ -30,15 +30,13 @@ export class HomePage {
       this.userService.getTopUsers().subscribe(u=>{
         console.log(u)
         this.userList=u
-        
       })
    }
    tomyAccountPage(){
     this.router.navigate(['my-account']);
    }
 
-
-  toSignUpPage(){  
+   toSignUpPage(){  
     this.router.navigate(['sign-up']);
     }
   
@@ -46,6 +44,10 @@ export class HomePage {
     this.router.navigate(['login']);
     }
 
+    toAllUsersPage(){
+      this.router.navigate(['all-users']);
+    }
+  
     isLoggedInUser()
     {
       return localStorage.getItem("userIdLogin")!=null;

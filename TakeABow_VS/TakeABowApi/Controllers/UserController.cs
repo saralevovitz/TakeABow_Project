@@ -25,6 +25,13 @@ namespace TakeABowApi.Controllers
         }
 
         [HttpGet]
+        [Route("api/user/getAllUsers")]
+        public List<Common.User> GetAllUsers()
+        {
+            return logic.GetAllUsers();
+        }
+
+        [HttpGet]
         [Route("api/user/getTopUsers/{2}")]
         public List<Common.User> GetTopUsers()
         {
