@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'all-users',
     loadChildren: () => import('./pages/all-users/all-users.module').then( m => m.AllUsersPageModule)
   },
+  {
+    path: 'user-page',
+    loadChildren: () => import('./pages/user-page/user-page.module').then( m => m.UserPagePageModule)
+  },
 
 ];
 

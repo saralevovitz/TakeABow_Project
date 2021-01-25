@@ -17,7 +17,7 @@ export class UserService {
  }
 
  getAllUsers():Observable<User[]>{
-  return this.http.get<User[]>(environment.url + 'api/user/getAllUsers');
+  return this.http.get<User[]>(environment.url + 'user/getAllUsers');
  }
 
   func(user:User):Observable<boolean>{

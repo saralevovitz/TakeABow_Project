@@ -15,10 +15,11 @@
         <ion-searchbar></ion-searchbar>
     </ion-toolbar>
     <ion-list *ngFor="let user of AllUsersList">
-        <ion-item>
-            <ion-label>{{user.FirstName + " " + user.LastName +" " +user.Job}}</ion-label>
-        </ion-item>
-
+        <ion-button expand="full" (click)="toUserPage(user.Id)">
+            <ion-item>
+                <ion-label>{{user.FirstName + " " + user.LastName + " " + user.Job}}</ion-label>
+            </ion-item>
+        </ion-button>
     </ion-list>
 
 
