@@ -30,7 +30,7 @@ export class MyInvitationsPage implements OnInit {
 
   send(){
     this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
-   this.permissionService.sendPermission(this.permission.UserId, this.permission.WatchUserId ).subscribe(res=>{
+   this.permissionService.sendPermission(this.permission).subscribe(res=>{
      if(res==true)
      alert('true')
      alert('false')})

@@ -14,22 +14,25 @@ export class MyFeedbacksPage implements OnInit {
 
   feedbacksList: Feedback[]=[]
   feedback: Feedback= new Feedback();
-  nameUser:String;
-  idF:Number;
+    idF:Number;
   tomyAccountPage(){
     this.router.navigate(['my-account']);
   }
 
    ngOnInit() {
-    this.feedback.FromUserId=+localStorage.getItem('userIdLogin')
-    this.feedbackService.getAllFeedbacksByUser(this.feedback.FromUserId).subscribe(f=>{
+   
+    this.feedback.ToUserId=+localStorage.getItem('userIdLogin')
+    console.log("to user:"+this.feedback.ToUserId)
+    this.feedbackService.getAllFeedbacksByUser(this.feedback.ToUserId).subscribe(f=>{
       this.feedbacksList=f
       console.log(f)
+     
     })
+    // console.log("from user:"+this.feedback.FromUserId)
 
-    this.feedbackService.getNameUserToFeedback(this.feedback.FromUserId).subscribe(res=>
-      this.nameUser=res)
-    console.log(this.nameUser)
+    // this.feedbackService.getNameUserToFeedback(this.feedback.FromUserId).subscribe(res=>
+    //   this.feedback.FromUserFullName=res)
+    // console.log(this.feedback.FromUserFullName)
   }
 
   toDeleteFeedback(idf:number){
@@ -37,16 +40,17 @@ export class MyFeedbacksPage implements OnInit {
 console.log(idf )
     this.feedbackService.deleteFeedback(idf).subscribe(res=>{
       if(res==true)
-      alert('true')
-     else alert('false')})
+      alert('הפידבק נמחק בהצלחה')
+     else alert('שגיאה, הפידבק לא נמחק')})
    
   }
+
   readFeedback(idFeedback:Number, FromUserId:Number){
     console.log(idFeedback)
     this.feedbackService.readFeeback(idFeedback, FromUserId).subscribe(res=>{
       if(res==true)
-      alert('true')
-     else alert('false')})
+      alert('הפידבק נקרא')
+     else alert('הפידבק לא נקרא')})
   }
 
     

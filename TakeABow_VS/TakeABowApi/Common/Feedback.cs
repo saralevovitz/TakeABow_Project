@@ -17,6 +17,7 @@ namespace TakeABowApi.Common
         public DateTime CreateDate { get; set; }
 
         public string FromUserFullName { get; set; }
+        public string ToUserFullName { get; set; }
 
 
         public Feedbacks()

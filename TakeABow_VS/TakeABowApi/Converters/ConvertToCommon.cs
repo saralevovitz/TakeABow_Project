@@ -37,7 +37,8 @@ namespace TakeABowApi.Converters
                 IsSeen = f.IsSeen,
                 IsDeleted = f.IsDeleted,
                 CreateDate = f.CreateDate,
-                FromUserFullName = f.User.FirstName + " " + f.User.LastName
+                FromUserFullName = f.User.FirstName + " " + f.User.LastName,
+                ToUserFullName= f.User.FirstName+" "+f.User.LastName
             };
         }
 

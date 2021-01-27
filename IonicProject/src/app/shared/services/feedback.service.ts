@@ -25,8 +25,14 @@ export class FeedbackService {
    return this.http.get<Feedback[]>(environment.url + `feedback/getAllFeedbackByUser/${userId}`);
   } 
 
-  getNameUserToFeedback(userId:Number):Observable<String>{
-      return this.http.get<String>(environment.url+`feedback/getNameUserToFeedback/${userId}`);
+  GetListfeedbackByUser(userId:Number):Observable<Feedback[]>{ 
+    //debugger;
+   return this.http.get<Feedback[]>(environment.url + `feedback/GetListfeedbackByUser/${userId}`);
+  } 
+  
+
+  getNameUserToFeedback(userId:Number):Observable<string>{
+      return this.http.get<string>(environment.url+`feedback/getNameUserToFeedback/${userId}`);
   }
 
 
