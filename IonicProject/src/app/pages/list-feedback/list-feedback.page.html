@@ -14,13 +14,14 @@
         <ion-item>
             <ion-label>
                 <ion-list *ngFor="let f of feedbacksList">
-                    <ion-icon name="checkmark-done-outline" style="height: 30px; width: 30px;" [ngStyle]="{'color': f.IsSeen== true? 'blue':'gray'}"></ion-icon>
-                       <div class="textFeedback"> 
+                  
+                       <ion-item class="textFeedback"> 
                        <!-- <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>-->
-                         <ion-label> ל {{f.ToUserFullName}} </ion-label>
+                         <ion-label>ל{{f.ToUserFullName}} </ion-label>
                          <ion-label> {{f.Feedback}}</ion-label>
                          <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label> 
-                       </div>
+                         <ion-icon name="checkmark-done-outline" style="height: 30px; width: 30px;" [ngStyle]="{'color': f.IsSeen== true? 'Blue':'gray'}"></ion-icon>
+                       </ion-item>
                 </ion-list> 
 
             </ion-label>
