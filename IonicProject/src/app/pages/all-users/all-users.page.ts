@@ -21,6 +21,12 @@ export class AllUsersPage implements OnInit {
     //console.log('saraaaa')
   }
 
+  toHomePage(){
+    this.router.navigate(['home'])
+  }
+  toUserPage(user_id:number){
+    this.router.navigate(['user-page'])
+  }
   getAllUsers(){
     this.userService.getAllUsers().subscribe(u=>{
       //console.log(u)
