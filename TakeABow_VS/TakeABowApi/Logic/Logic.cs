@@ -92,7 +92,15 @@ namespace TakeABowApi.Logic
             return allFeedback.Select(f=> Converters.ConvertToCommon.Feedback(f)).ToList();
 
         }
+        public List<Common.Feedbacks> GetListfeedbackByUser(int id)
+        {
+            List<Dal.Feedback> allFeedback = new getFromDataBase().GetListfeedbackByUser(id);
+            return allFeedback.Select(f => Converters.ConvertToCommon.Feedback(f)).ToList();
 
+        }
+
+
+        
         public bool deleteFeedback(int fId)
         {
             return save.deleteFeedback(fId);

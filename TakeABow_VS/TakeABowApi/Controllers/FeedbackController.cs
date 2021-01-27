@@ -45,6 +45,18 @@ namespace TakeABowApi.Controllers
         }
 
         [HttpGet]
+        [Route("api/feedback/GetListfeedbackByUser/{userId}")]
+        public List<Common.Feedbacks> GetListfeedbackByUser(int userId)
+        {
+            List<Feedbacks> f;
+            f = logic.GetListfeedbackByUser(userId);
+            if ( f== null)
+                return null;
+            return f;
+
+        }
+
+        [HttpGet]
         [Route("api/feedback/getNameUserToFeedback/{userId}")]//לבדוק אם משתמשים בה
         public string getNameUserToFeedback(int userId)
         {
