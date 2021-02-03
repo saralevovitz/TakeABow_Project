@@ -1,25 +1,33 @@
 <ion-header>
+    <ion-button (click)="toHomePage()">
+        <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </ion-button>
+    <ion-button (click)="tomyAccountPage()">
+        <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+    </ion-button>
     <ion-toolbar>
         <ion-title>user-page</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <button>
+        <ion-icon name="man" style="height: 300px; width: 350px; text-align: center;"></ion-icon>
+    </button>
+    <br>
+    <ion-label>{{user.FirstName+" "+user.LastName}}</ion-label>
+    <button>בקשת צפיה בפידבקים</button>
 </ion-content>
 
-
-<ion-icon class="fas fa-user" style="height: 350px; width: 350px; text-align: center;"></ion-icon>
-
-<ion-card>
+<!-- <ion-card>
     <ion-card-header>
         <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
         <ion-card-title>שם פרטי + משפחה</ion-card-title>
     </ion-card-header>
-    <!-- 
-    <ion-card-content>
+        <ion-card-content>
         Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
     </ion-card-content> -->
-</ion-card>
+<!--</ion-card>
 
 <ion-card>
     <ion-item>
@@ -31,4 +39,4 @@
     <ion-card-content>
         This is content, without any paragraph or header tags, within an ion-card-content element.
     </ion-card-content>
-</ion-card>
+</ion-card> -->

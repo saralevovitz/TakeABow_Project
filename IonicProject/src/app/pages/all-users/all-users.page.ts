@@ -13,10 +13,17 @@ export class AllUsersPage implements OnInit {
 
   AllUsersList: User []= []
   user:User=new User();
+  selectedUser:User=new User();
+  selectedUserId: Number;
+  //userLogedIn:User=new User();
+  userLogedInId: Number=+localStorage.getItem('userIdLogin')
 
   constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
 
   ngOnInit() {
+    this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{this.user=res;
+    },err=>console.error(err))
+
     this.getAllUsers()
     //console.log('saraaaa')
   }
@@ -24,14 +31,18 @@ export class AllUsersPage implements OnInit {
   toHomePage(){
     this.router.navigate(['home'])
   }
-  toUserPage(user_id:number){
-    this.router.navigate(['user-page'])
-  }
+
   getAllUsers(){
     this.userService.getAllUsers().subscribe(u=>{
       //console.log(u)
       this.AllUsersList=u
     })
  }
+ 
+ toUserPage(userId:Number){
+      this.selectedUserId=userId;
+      this.router.navigate(['user-page',{"selectedUserId": this.selectedUserId}]);
+      console.log("the id:" +this.selectedUserId)
+}
 
 }
