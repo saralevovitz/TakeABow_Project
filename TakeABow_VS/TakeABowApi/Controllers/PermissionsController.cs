@@ -27,12 +27,12 @@ namespace TakeABowApi.Controllers
         [Route("api/permissions/ViewConfirmation")]
         public bool ViewConfirmation(Common.Permissions permission)
         {
-            bool confirmed‏= true;
+            bool confirmed‏ = false;
             int weeks = 1;
 
-            if (confirmed‏==true)
+            if (confirmed‏ == true)
             {
-                Permissions p = new Permissions(  num_permission_id++, permission.UserId, permission.WatchUserId, true, DateTime.Now.AddDays(weeks * 7));
+                Permissions p = new Permissions(num_permission_id++, permission.UserId, permission.WatchUserId, true, DateTime.Now.AddDays(weeks * 7));
                 if (logic.AddPermission(p))
                     return true;
                 return false;
@@ -53,6 +53,38 @@ namespace TakeABowApi.Controllers
 
 
         //}
-       
+
+
+        [HttpGet]
+        [Route("api/permissions/getAllPermissions/{toPermission}")]
+        public List<Permissions> getAllPermissions(int toPermission)
+        {
+
+            if (logic.getAllPermissions(toPermission) == null)
+                return null;
+            return logic.getAllPermissions(toPermission);
+        }
+
+
+        [HttpPost]
+        [Route("api/permissions/IsAllowPermission")]
+        public bool IsAllowPermission(Common.Permissions p)
+        {
+            if (logic.IsAllowPermission(p))
+                return true;
+            else return false;
+        }
+
+        [HttpGet]
+        [Route("api/permissions/getlistInvitation/{WatchUserId}")]
+        public List<Permissions> getlistInvitation(int WatchUserId)
+        {
+
+            if (logic.getlistInvitation(WatchUserId) == null)
+                return null;
+            return logic.getlistInvitation(WatchUserId);
+        }
+
     }
+
 }

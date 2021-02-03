@@ -6,7 +6,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { TopFeedbacksPage } from '../top-feedbacks/top-feedbacks.page';
 
-//test
+
 
 @Component({
   selector: 'app-home',
@@ -62,4 +62,5 @@ export class HomePage {
           this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);
           console.log("the id:" +this.userToTOP)
     }
+    
 }

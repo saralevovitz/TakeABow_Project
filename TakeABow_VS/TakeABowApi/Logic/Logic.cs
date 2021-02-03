@@ -125,7 +125,25 @@ namespace TakeABowApi.Logic
             return save.AddPermission(p);
         }
 
+        public List<Common.Permissions> getAllPermissions(int toPermission)
+        {
+            List<Dal.Permission> allPermission = new getFromDataBase().getAllPermissions(toPermission);
+            return allPermission.Select(p1 => Converters.ConvertToCommon.Permissions(p1)).ToList();
 
+        }
+
+
+        public List<Common.Permissions> getlistInvitation(int WatchUserId)
+        {
+            List<Dal.Permission> allPermission = new getFromDataBase().getlistInvitation(WatchUserId);
+            return allPermission.Select(p1 => Converters.ConvertToCommon.Permissions(p1)).ToList();
+
+        }
+
+        public bool IsAllowPermission(Permissions p)
+        {
+            return save.IsAllowPermission(p);
+        }
         //public string getUserToPermissions(int watchUserId)
         //{
         //    return get.getUserToPermissions(watchUserId);

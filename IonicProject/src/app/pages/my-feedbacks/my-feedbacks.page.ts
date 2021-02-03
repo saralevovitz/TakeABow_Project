@@ -15,10 +15,9 @@ export class MyFeedbacksPage implements OnInit {
   feedbacksList: Feedback[]=[]
   feedback: Feedback= new Feedback();
     idF:Number;
-  tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
 
+
+  
    ngOnInit() {
    
     this.feedback.ToUserId=+localStorage.getItem('userIdLogin')
@@ -34,7 +33,12 @@ export class MyFeedbacksPage implements OnInit {
     //   this.feedback.FromUserFullName=res)
     // console.log(this.feedback.FromUserFullName)
   }
-
+  tomyAccountPage(){
+    this.router.navigate(['my-account']);
+  }
+  tomyHomePage(){
+    this.router.navigate(['home']);
+  }
   toDeleteFeedback(idf:number){
   
 console.log(idf )

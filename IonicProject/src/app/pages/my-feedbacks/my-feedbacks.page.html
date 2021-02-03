@@ -1,42 +1,33 @@
 <ion-header>
-    <ion-button (click)="tomyAccountPage()">
+    <ion-toolbar>
+     <ion-buttons>
+    <ion-button (click)="tomyHomePage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
     <ion-button (click)="tomyAccountPage()">
         <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
 
-    <ion-toolbar>
+    </ion-buttons>
         <ion-title>רשימת פידבקים</ion-title>
     </ion-toolbar>
 </ion-header>
 
 
-
 <ion-content>
-    <ion-list>
-        <ion-item>
-            <ion-label>
-                <ion-list *ngFor="let f of feedbacksList">
-                    <button (click)="readFeedback(f.Id, f.FromUserId)" style="height: 250px; width: 250px;">
-              <div>
-                 <ion-avatar slot="start">
-                    <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon></ion-avatar>
-                       <div class="textFeedback">
-                         <ion-label> מ {{f.FromUserFullName}} </ion-label>
-                         <ion-label> {{f.Feedback}}</ion-label>
-                         <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label> 
-                       </div>
-                   <ion-button (click)="toDeleteFeedback(f.Id)">
-                      <ion-icon name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>
-                </ion-button>
-            </div></button>
-                </ion-list>
-
-            </ion-label>
-
-        </ion-item>
-
+   <ion-list *ngFor="let f of feedbacksList">
+     <!-- <button (click)="readFeedback(f.Id, f.FromUserId)" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'pink'}"style="height: 95px; width: 100%;" > -->
+       
+          <ion-item class="textFeedback" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'pink'}" (click)="readFeedback(f.Id, f.FromUserId)">
+              <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
+            <ion-label> מ{{f.FromUserFullName}} </ion-label>
+            <ion-label> {{f.Feedback}}</ion-label>
+            <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
+            <ion-button (click)="toDeleteFeedback(f.Id)">
+                <ion-icon name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>
+                </ion-button>    
+          </ion-item>
+           
+     <!-- </button> -->
     </ion-list>
-
 </ion-content>

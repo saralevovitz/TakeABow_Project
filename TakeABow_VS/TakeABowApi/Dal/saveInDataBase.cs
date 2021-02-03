@@ -141,8 +141,28 @@ namespace TakeABowApi.Dal
         }
 
 
-       /* UsersBlocked*/
-        public bool Block(UsersBlocked ub)
+        public bool IsAllowPermission(Permissions p)
+        {
+            try
+            {
+                using (TakeABowDBEntities db = new TakeABowDBEntities())
+                {
+                    var p1 = db.Permissions.First(per => per.UserId == p.UserId);
+                    p1.IsAllow = p.IsAllow;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //return false;
+                throw;
+            }
+        }
+
+
+            /* UsersBlocked*/
+            public bool Block(UsersBlocked ub)
         {
             try
             {

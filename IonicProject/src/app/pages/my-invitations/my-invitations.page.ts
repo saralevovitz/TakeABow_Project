@@ -14,7 +14,7 @@ export class MyInvitationsPage implements OnInit {
   constructor(private router: Router, private permissionService: PermissionsService) { }
  
   permission: Permissions= new Permissions();
- 
+  permissionList: Permissions[]=[]
 
   tomyAccountPage(){
     this.router.navigate(['my-account']);
@@ -26,6 +26,7 @@ export class MyInvitationsPage implements OnInit {
 
   ngOnInit() {
   this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
+  this.listInvitation()
   }
 
   send(){
@@ -33,8 +34,15 @@ export class MyInvitationsPage implements OnInit {
    this.permissionService.sendPermission(this.permission).subscribe(res=>{
      if(res==true)
      alert('true')
+     else
      alert('false')})
     this.router.navigate(['my-account']);
+  }
+
+  listInvitation(){
+    this.permissionService.listInvitation(this.permission.WatchUserId).subscribe(res=>{
+     this.permissionList=res
+   })
   }
 }
 
