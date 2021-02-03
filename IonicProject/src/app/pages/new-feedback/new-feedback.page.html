@@ -1,17 +1,15 @@
-<ion-header>
-    <ion-button (click)="toHomePage()">
-        <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-    </ion-button>
-    <ion-button (click)="tomyAccountPage()">
-        <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-    </ion-button>
-    <ion-toolbar>
-        <ion-title>הוספת פידבק חדש</ion-title>
+<ion-header><ion-toolbar>
+     <ion-buttons>
+        <ion-button (click)="toHomePage()"> <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+        </ion-button>
+        <ion-button (click)="tomyAccountPage()"><ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
+        </ion-button>
+     </ion-buttons> 
+   <ion-title>הוספת פידבק חדש</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
     <br>
     <ion-button name="sendFeedback" (click)="AddFeedback()">invite a friend</ion-button>
     <br>

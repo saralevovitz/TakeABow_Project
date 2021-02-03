@@ -41,7 +41,9 @@ export class MyAccountPage implements OnInit {
   }
 
   exit(){
-    alert('Are you sure you want to exit?');
+    localStorage.clear();
+    this.router.navigate(['home']);
+   // alert('Are you sure you want to exit?');
   }
   toHomePage(){
     this.router.navigate(['home']);

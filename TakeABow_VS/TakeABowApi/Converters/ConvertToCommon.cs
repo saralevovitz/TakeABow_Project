@@ -52,8 +52,9 @@ namespace TakeABowApi.Converters
                 WatchUserId= p.WatchUserId,
                 CreateDate= p.CreateDate,
                 IsAllow= p.IsAllow,
-                ExpireDate= p.ExpireDate
-              
+                ExpireDate= p.ExpireDate,
+                FromUserFullName=p.User.FirstName+" "+p.User.LastName,
+                ToUserFullName = p.User.FirstName + " " + p.User.LastName
             };
         }
 

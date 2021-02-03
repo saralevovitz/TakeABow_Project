@@ -40,24 +40,10 @@ namespace TakeABowApi.Dal
         }
 
 
-        /*
-        
-        public static CourierCompanyEntities db = new CourierCompanyEntities();
-
-        public static List<MadeShipments> GetMyShipment(int customerId)
-        {
-            var MS = db.MadeShipments.Where(x => x.CustomerId == customerId).ToList();
-            return MS;‏
-        }
-                          
-             
-        */
-
         /*Feedback*/
 
         public List<Feedback> GetAllfeedbackByUser(int id)
         {
-
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
                 List<Feedback> allFeedbacks = new List<Feedback>();
@@ -79,7 +65,6 @@ namespace TakeABowApi.Dal
 
         }
 
-
         public List<Feedback> getFeedbackTop(int userId)
         {
             using(TakeABowDBEntities db= new TakeABowDBEntities())
@@ -89,33 +74,35 @@ namespace TakeABowApi.Dal
                 return allFeedbacks;
             }
         }
-
-        //מיותר???
-        //public IOrderedEnumerable<KeyValuePair<int, List<Dal.Feedback>>> GetTopFeedbacks()
-        //{
-        //    try
-        //    {
-        //        var c = WebConfigurationManager.AppSettings["TakeABowDB"];
-        //        DateTime twoWeeksAgo = DateTime.Today.Subtract(TimeSpan.FromDays(14));
-        //        return null ;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //        throw;
-        //    }
-        //}
-
+        
         public User GetUserById(int userId)
         {
             using(TakeABowDBEntities db = new TakeABowDBEntities()) 
             {
                 return db.Users.FirstOrDefault(u => u.Id == userId);
             }
-          
-            
         }
+
+        public List<Permission> getAllPermissions(int toPermission)
+        {
+            using(TakeABowDBEntities db= new TakeABowDBEntities())
+            {
+                List<Permission> allPermission = new List<Permission>();
+                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.UserId == toPermission && p1.IsAllow == false).OrderBy(p1=> p1.CreateDate).ToList();
+                return allPermission;
+            }
+        }
+
+        public List<Permission> getlistInvitation(int WatchUserId)
+        {
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
+            {
+                List<Permission> allPermission = new List<Permission>();
+                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.WatchUserId == WatchUserId && p1.IsAllow == false).ToList();
+                return allPermission;
+            }
+        }
+
 
         //public string getUserToPermissions(int watchUserId)
         //{
@@ -125,7 +112,5 @@ namespace TakeABowApi.Dal
         //        return name;
         //    }
         //}
-
-
     }
 }

@@ -1,19 +1,23 @@
 <ion-header>
+    <ion-toolbar>
+    <ion-buttons>
     <ion-button (click)="toHomePage()">
         <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
     <ion-button (click)="tomyAccountPage()">
         <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
-
-    <ion-toolbar>
+ </ion-buttons>
+    
         <ion-title>topFeedbacks</ion-title>
+ 
     </ion-toolbar>
 
-    <ion-title class="title" style="text-align: center; font-size: 20px;">הפידבקים של {{nameUserF}}</ion-title>
+   
 </ion-header>
 
-<ion-content>
+<ion-content> 
+      <ion-label class="title" style="text-align: center; font-size: 20px;">הפידבקים של {{nameUserF}}</ion-label>
     <ion-list>
         <ion-item>
             <ion-label>

@@ -14,8 +14,8 @@ namespace TakeABowApi.Common
         public bool IsAllow { get; set; }
         public DateTime ExpireDate { get; set; }
 
-
-
+        public string FromUserFullName { get; set; }
+        public string ToUserFullName { get; set; }
 
         public Permissions()
         {

@@ -5,4 +5,6 @@ export class Permissions {
      CreateDate: Date
      IsAllow: boolean
      ExpireDate:Date
+     FromUserFullName: String
+     ToUserFullName: String
 }
