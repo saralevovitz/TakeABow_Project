@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TakeABowDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TakeABowDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BlockIP">
@@ -36,18 +36,8 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="WatchUserId" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
-          <Property Name="IsAllow" Type="bit" Nullable="false" />
+          <Property Name="IsAllow" Type="bit" />
           <Property Name="ExpireDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -60,8 +50,6 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Property Name="Phone" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="Job" Type="nvarchar(max)" />
-          <Property Name="Is_Blocked" Type="bit" Nullable="false" />
-          <Property Name="Blocked_Date" Type="datetime" />
           <Property Name="Is_Deleted" Type="bit" Nullable="false" />
           <Property Name="Create_Date" Type="datetime" Nullable="false" />
         </EntityType>
@@ -69,13 +57,13 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="BlockedUserId" Type="int" Nullable="false" />
           <Property Name="IsBlocked" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Feedbacks__FromU__04E4BC85">
+        <Association Name="FK__Feedbacks__FromU__3D5E1FD2">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
           <ReferentialConstraint>
@@ -87,7 +75,7 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Feedbacks__ToUse__06CD04F7">
+        <Association Name="FK__Feedbacks__ToUse__3E52440B">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +114,6 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
         <EntityContainer Name="TakeABowDBModelStoreContainer">
           <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersBlocked" EntityType="Self.UsersBlocked" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlockIP" EntityType="Self.BlockIP" store:Type="Tables" store:Schema="dbo">
@@ -135,11 +122,11 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
     [BlockIP].[blockTime] AS [blockTime]
     FROM [dbo].[BlockIP] AS [BlockIP]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Feedbacks__FromU__04E4BC85" Association="Self.FK__Feedbacks__FromU__04E4BC85">
+          <AssociationSet Name="FK__Feedbacks__FromU__3D5E1FD2" Association="Self.FK__Feedbacks__FromU__3D5E1FD2">
             <End Role="Users" EntitySet="Users" />
             <End Role="Feedbacks" EntitySet="Feedbacks" />
           </AssociationSet>
-          <AssociationSet Name="FK__Feedbacks__ToUse__06CD04F7" Association="Self.FK__Feedbacks__ToUse__06CD04F7">
+          <AssociationSet Name="FK__Feedbacks__ToUse__3E52440B" Association="Self.FK__Feedbacks__ToUse__3E52440B">
             <End Role="Users" EntitySet="Users" />
             <End Role="Feedbacks" EntitySet="Feedbacks" />
           </AssociationSet>
@@ -152,8 +139,7 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
             <End Role="UsersBlocked" EntitySet="UsersBlocked" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TakeABowDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -169,31 +155,40 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Property Name="IsSeen" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Feedbacks__FromU__04E4BC85" FromRole="Feedbacks" ToRole="Users" />
-          <NavigationProperty Name="User1" Relationship="Self.FK__Feedbacks__ToUse__06CD04F7" FromRole="Feedbacks" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Permission">
+          <NavigationProperty Name="User" Relationship="TakeABowDBModel.FK__Feedbacks__FromU__3D5E1FD2" FromRole="Feedback" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="TakeABowDBModel.FK__Feedbacks__ToUse__3E52440B" FromRole="Feedback" ToRole="User" />
+          </EntityType>
+        <EntityType Name="BlockIP">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ipAddress" />
+            <PropertyRef Name="blockTime" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="WatchUserId" Type="Int32" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsAllow" Type="Boolean" Nullable="false" />
-          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Permissions_User" FromRole="Permissions" ToRole="Users" />
+          <Property Name="ipAddress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="blockTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
+        <EntityContainer Name="TakeABowDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="BlockIPs" EntityType="Self.BlockIP" />
+          <EntitySet Name="Users" EntityType="TakeABowDBModel.User" />
+          <AssociationSet Name="FK__Feedbacks__FromU__3D5E1FD2" Association="TakeABowDBModel.FK__Feedbacks__FromU__3D5E1FD2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedbacks__ToUse__3E52440B" Association="TakeABowDBModel.FK__Feedbacks__ToUse__3E52440B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <EntitySet Name="UsersBlockeds" EntityType="TakeABowDBModel.UsersBlocked" />
+          <AssociationSet Name="FK_UsersBlocked_User" Association="TakeABowDBModel.FK_UsersBlocked_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UsersBlocked" EntitySet="UsersBlockeds" />
+          </AssociationSet>
+          <EntitySet Name="Permissions" EntityType="TakeABowDBModel.Permission" />
+          <AssociationSet Name="FK_Permissions_User" Association="TakeABowDBModel.FK_Permissions_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Permission" EntitySet="Permissions" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -205,75 +200,53 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Is_Blocked" Type="Boolean" Nullable="false" />
-          <Property Name="Blocked_Date" Type="DateTime" Precision="3" />
           <Property Name="Is_Deleted" Type="Boolean" Nullable="false" />
           <Property Name="Create_Date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedbacks__FromU__04E4BC85" FromRole="Users" ToRole="Feedbacks" />
-          <NavigationProperty Name="Feedbacks1" Relationship="Self.FK__Feedbacks__ToUse__06CD04F7" FromRole="Users" ToRole="Feedbacks" />
-          <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_User" FromRole="Users" ToRole="Permissions" />
-          <NavigationProperty Name="UsersBlockeds" Relationship="Self.FK_UsersBlocked_User" FromRole="Users" ToRole="UsersBlocked" />
+          <NavigationProperty Name="Feedbacks" Relationship="TakeABowDBModel.FK__Feedbacks__FromU__3D5E1FD2" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="Feedbacks1" Relationship="TakeABowDBModel.FK__Feedbacks__ToUse__3E52440B" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="UsersBlockeds" Relationship="TakeABowDBModel.FK_UsersBlocked_User" FromRole="User" ToRole="UsersBlocked" />
+          <NavigationProperty Name="Permissions" Relationship="TakeABowDBModel.FK_Permissions_User" FromRole="User" ToRole="Permission" />
         </EntityType>
-        <EntityType Name="UsersBlocked">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BlockedUserId" Type="Int32" Nullable="false" />
-          <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UsersBlocked_User" FromRole="UsersBlocked" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="BlockIP">
-          <Key>
-            <PropertyRef Name="ipAddress" />
-            <PropertyRef Name="blockTime" />
-          </Key>
-          <Property Name="ipAddress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="blockTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <Association Name="FK__Feedbacks__FromU__04E4BC85">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="*" />
+        <Association Name="FK__Feedbacks__FromU__3D5E1FD2">
+          <End Type="TakeABowDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeABowDBModel.Feedback" Role="Feedback" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Feedbacks">
+            <Dependent Role="Feedback">
               <PropertyRef Name="FromUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Feedbacks__ToUse__06CD04F7">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="*" />
+        <Association Name="FK__Feedbacks__ToUse__3E52440B">
+          <End Type="TakeABowDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeABowDBModel.Feedback" Role="Feedback" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Feedbacks">
+            <Dependent Role="Feedback">
               <PropertyRef Name="ToUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Permissions_User">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Permissions" Type="Self.Permission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Permissions">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="UsersBlocked">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BlockedUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="TakeABowDBModel.FK_UsersBlocked_User" FromRole="UsersBlocked" ToRole="User" />
+        </EntityType>
         <Association Name="FK_UsersBlocked_User">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="UsersBlocked" Type="Self.UsersBlocked" Multiplicity="*" />
+          <End Type="TakeABowDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeABowDBModel.UsersBlocked" Role="UsersBlocked" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UsersBlocked">
@@ -281,30 +254,30 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TakeABowDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
-          <EntitySet Name="Permissions" EntityType="Self.Permission" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="UsersBlockeds" EntityType="Self.UsersBlocked" />
-          <EntitySet Name="BlockIPs" EntityType="Self.BlockIP" />
-          <AssociationSet Name="FK__Feedbacks__FromU__04E4BC85" Association="Self.FK__Feedbacks__FromU__04E4BC85">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Feedbacks" EntitySet="Feedbacks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Feedbacks__ToUse__06CD04F7" Association="Self.FK__Feedbacks__ToUse__06CD04F7">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Feedbacks" EntitySet="Feedbacks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Permissions_User" Association="Self.FK_Permissions_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Permissions" EntitySet="Permissions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsersBlocked_User" Association="Self.FK_UsersBlocked_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UsersBlocked" EntitySet="UsersBlockeds" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="WatchUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAllow" Type="Boolean" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="TakeABowDBModel.FK_Permissions_User" FromRole="Permission" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Permissions_User">
+          <End Type="TakeABowDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeABowDBModel.Permission" Role="Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -325,62 +298,49 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Permissions">
-            <EntityTypeMapping TypeName="TakeABowDBModel.Permission">
-              <MappingFragment StoreEntitySet="Permissions">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="WatchUserId" ColumnName="WatchUserId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="IsAllow" ColumnName="IsAllow" />
-                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="TakeABowDBModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="BlockIPs">
+            <EntityTypeMapping TypeName="TakeABowDBModel.BlockIP">
+              <MappingFragment StoreEntitySet="BlockIP">
+                <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+                <ScalarProperty Name="blockTime" ColumnName="blockTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="TakeABowDBModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="Is_Blocked" ColumnName="Is_Blocked" />
-                <ScalarProperty Name="Blocked_Date" ColumnName="Blocked_Date" />
-                <ScalarProperty Name="Is_Deleted" ColumnName="Is_Deleted" />
                 <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Is_Deleted" ColumnName="Is_Deleted" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsersBlockeds">
             <EntityTypeMapping TypeName="TakeABowDBModel.UsersBlocked">
               <MappingFragment StoreEntitySet="UsersBlocked">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="BlockedUserId" ColumnName="BlockedUserId" />
-                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="BlockedUserId" ColumnName="BlockedUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BlockIPs">
-            <EntityTypeMapping TypeName="TakeABowDBModel.BlockIP">
-              <MappingFragment StoreEntitySet="BlockIP">
-                <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
-                <ScalarProperty Name="blockTime" ColumnName="blockTime" />
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="TakeABowDBModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="IsAllow" ColumnName="IsAllow" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="WatchUserId" ColumnName="WatchUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

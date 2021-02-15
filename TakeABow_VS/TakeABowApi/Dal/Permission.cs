@@ -18,7 +18,7 @@ namespace TakeABowApi.Dal
         public int UserId { get; set; }
         public int WatchUserId { get; set; }
         public System.DateTime CreateDate { get; set; }
-        public bool IsAllow { get; set; }
+        public Nullable<bool> IsAllow { get; set; }
         public System.DateTime ExpireDate { get; set; }
     
         public virtual User User { get; set; }

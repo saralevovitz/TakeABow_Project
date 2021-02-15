@@ -18,11 +18,11 @@ namespace TakeABowApi.Converters
                 Phone = u.Phone,
                 Email = u.Email,
                 Job = u.Job,
-                Is_Blocked=u.Is_Blocked,
-                Blocked_Date= u.Blocked_Date,
                 Is_Deleted= u.Is_Deleted,
-                Create_Date = u.Create_Date
+                Create_Date = u.Create_Date,
+                
             };
+           
         }
 
         public static Common.Feedbacks Feedback(Dal.Feedback f)
@@ -55,6 +55,7 @@ namespace TakeABowApi.Converters
                 ExpireDate= p.ExpireDate,
                 FromUserFullName=p.User.FirstName+" "+p.User.LastName,
                 ToUserFullName = p.User.FirstName + " " + p.User.LastName
+             
             };
         }
 
@@ -67,6 +68,7 @@ namespace TakeABowApi.Converters
                BlockedUserId= ub.BlockedUserId,
                IsBlocked= ub.IsBlocked,
                CreatedDate=ub.CreatedDate
+               
             };
         }
 

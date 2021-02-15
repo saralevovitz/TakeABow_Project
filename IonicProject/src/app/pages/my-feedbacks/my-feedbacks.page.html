@@ -16,18 +16,22 @@
 
 <ion-content>
    <ion-list *ngFor="let f of feedbacksList">
-     <!-- <button (click)="readFeedback(f.Id, f.FromUserId)" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'pink'}"style="height: 95px; width: 100%;" > -->
-       
+      <button (click)="readFeedback(f.Id, f.FromUserId)" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'pink'}"style="height: 95px; width: 100%;" >
           <ion-item class="textFeedback" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'pink'}" (click)="readFeedback(f.Id, f.FromUserId)">
-              <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
             <ion-label> מ{{f.FromUserFullName}} </ion-label>
             <ion-label> {{f.Feedback}}</ion-label>
             <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
             <ion-button (click)="toDeleteFeedback(f.Id)">
-                <ion-icon name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>
-                </ion-button>    
+                <ion-icon name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>    
+             </ion-button>
+        
           </ion-item>
-           
-     <!-- </button> -->
+      <ion-icon name="profile"></ion-icon>     
+   </button>          
+          <ion-button (click)="blockUser(f.FromUserId)">
+              <ion-icon  name="warning-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>
+          </ion-button>
     </ion-list>
+
+    
 </ion-content>

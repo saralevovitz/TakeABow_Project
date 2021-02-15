@@ -16,6 +16,7 @@ export class ViewRequestsPage implements OnInit {
  toPermission:number
   permissionList: Permissions[]=[]
   pOk: boolean
+  
   //pNo: boolean
  
   ngOnInit() {
@@ -31,7 +32,6 @@ export class ViewRequestsPage implements OnInit {
   }
 
  view(){
- 
    this.permissionsService.viewPermission(this.toPermission).subscribe(res=>{
      this.permissionList=res
    })
@@ -45,7 +45,6 @@ export class ViewRequestsPage implements OnInit {
     {
     cssClass: 'my-custom-class',
     header: 'אישור הזמנה',
-    //inputs:alertInputs,
     buttons: 
     [
       {
@@ -57,35 +56,26 @@ export class ViewRequestsPage implements OnInit {
           this.permission.Id= idP;
           this.permission.UserId=+localStorage.getItem('userIdLogin');
           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
+          
             console.log("res:"+ res))
         }
-        
       }, 
       {
         text: 'דחה',
-        handler: (alertData) => 
+        handler: () => 
         {
-          //console.log("alertData"+alertData)
           this.permission.IsAllow=false
           this.permission.UserId=+localStorage.getItem('userIdLogin');
           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
-            console.log("res:"+ res))
-
-
-          //this.categoryProduct = alertData;
-          //let p=new Products();
-         // p.ProductName=this.nameProduct;
-         // console.log(this.o[0][this.categoryProduct])
-         // p.CategoryId=this.o[0][this.categoryProduct][0].CategoryId
-        //  this.newProducts.push(p)
+          console.log("res:"+ res))
         }
       }
     ]
   });
-  
-  //console.log(alert.inputs.length)
-  await alert.present();
+   await alert.present();
  }
 
+
+ 
 }
 

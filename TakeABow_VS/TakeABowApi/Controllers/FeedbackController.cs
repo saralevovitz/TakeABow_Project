@@ -23,7 +23,7 @@ namespace TakeABowApi.Controllers
 
         [HttpPost]
         [Route("api/feedback/createFeedback")]
-        public bool Post(Feedbacks feedback)
+        public bool createFeedback(Feedbacks feedback)
         {
             Feedbacks f = new Feedbacks(feedback);
             bool res = logic.saveNewFeedback(f);
@@ -56,6 +56,15 @@ namespace TakeABowApi.Controllers
 
         }
 
+
+        [HttpGet]
+        [Route("api/feedback/ViewAllFeedbacks/{userId}")]
+        public List<Feedbacks> ViewAllFeedbacks(int userId)
+        {
+            if (logic.ViewAllFeedbacks(userId) == null)
+                return null;
+            return logic.ViewAllFeedbacks(userId);
+        }
         [HttpGet]
         [Route("api/feedback/getNameUserToFeedback/{userId}")]//לבדוק אם משתמשים בה
         public string getNameUserToFeedback(int userId)
@@ -94,6 +103,15 @@ namespace TakeABowApi.Controllers
 
             return f;
         }
+
+
+        [HttpGet]
+        [Route("api/feedback/amountFeedbacks/{userId}")]
+         public int amountFeedbacks(int userId)
+         {
+            int mone = logic.amountFeedbacks(userId);
+            return mone;
+         }
     }
     
 

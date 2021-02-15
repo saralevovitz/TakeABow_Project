@@ -24,7 +24,7 @@ export class HomePage {
 
    }
    ngOnInit() {
-     this.getTopUsers()
+   this.getTopUsers()
    }
     getTopUsers(){
       this.userService.getTopUsers().subscribe(u=>{

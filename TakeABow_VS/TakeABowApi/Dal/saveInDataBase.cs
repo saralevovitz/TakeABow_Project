@@ -79,9 +79,15 @@ namespace TakeABowApi.Dal
         {
             try
             {
-                data.Feedbacks.Add(f);
-                data.SaveChanges();
-                return true;
+                using(TakeABowDBEntities db= new TakeABowDBEntities())
+                {
+                    // var feedback = db.Feedbacks.Where(f1 => f1.UserBlocked.IsBlocked==false );//לעשות 2 תנאים ליצירת פידבק
+                     var feedback = db.Feedbacks.Add(f);
+                    db.SaveChanges();
+                  return true;
+                }
+             
+                
             }
             catch (Exception ex)
             {
@@ -105,6 +111,8 @@ namespace TakeABowApi.Dal
                 }    
         }
 
+
+
         public bool readFeedback(int  idFeedback,  int FromUserId)
         {
             try
@@ -123,6 +131,9 @@ namespace TakeABowApi.Dal
                 throw;
             }
         }
+
+
+       
 
                /*Permission*/
         public bool AddPermission(Common.Permissions p)
@@ -147,10 +158,12 @@ namespace TakeABowApi.Dal
             {
                 using (TakeABowDBEntities db = new TakeABowDBEntities())
                 {
-                    var p1 = db.Permissions.First(per => per.UserId == p.UserId);
+                    var p1 = db.Permissions.First(per => per.ID == p.Id);
                     p1.IsAllow = p.IsAllow;
                     db.SaveChanges();
                     return true;
+
+
                 }
             }
             catch (Exception ex)
@@ -163,18 +176,26 @@ namespace TakeABowApi.Dal
 
             /* UsersBlocked*/
             public bool Block(UsersBlocked ub)
-        {
-            try
             {
-                data.UsersBlockeds.Add(ub);
-                data.SaveChanges();
-                return true;
+              try
+              {
+                using(TakeABowDBEntities db= new TakeABowDBEntities())
+                {
+                   
+                    
+                     var ub2 = db.UsersBlockeds.Add(ub);
+                    db.UsersBlockeds.Add(ub);
+                  //  db.Users.FirstOrDefault(u=>u.)
+                    db.SaveChanges();
+                    return true;
+                   
+                }
+              }
+               catch(Exception ex)
+              {
+                throw;
+              }
             }
-            catch(Exception ex)
-            {
-                return false;
-            }
-        }
 
     }
 }

@@ -27,14 +27,18 @@ namespace TakeABowApi.Dal
         {
             try
             {
-                var c = WebConfigurationManager.AppSettings["TakeABowDB"];
-                List<User> users = new List<User>();
-                users = data.Users.Where(u => u.Is_Deleted == false).ToList();
-                return users;
+                using(TakeABowDBEntities db= new TakeABowDBEntities())
+                {
+                    List<User> users = new List<User>();
+                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false).ToList();
+                    return users;
+
+                }
+             
             }
             catch (Exception ex)
             {
-                return new List<User>();
+              //  return new List<User>();
                 throw;
             }
         }
@@ -47,12 +51,24 @@ namespace TakeABowApi.Dal
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
                 List<Feedback> allFeedbacks = new List<Feedback>();
-                allFeedbacks= db.Feedbacks.Include(f=>f.User).Include(f=>f.User1).Where(f => f.ToUserId == id && f.IsDeleted== false).ToList();
+                allFeedbacks= db.Feedbacks.Include(f=>f.User).Include(f=>f.User1).Where(f => f.ToUserId == id && f.IsDeleted== false).OrderByDescending(f=>f.CreateDate).ToList();
                 return allFeedbacks;
             }
           
         }
+        public List<Feedback> ViewAllFeedbacks(int id)
+        {
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
+            {
+                List<Feedback> allFeedbacks = new List<Feedback>();
+                allFeedbacks = db.Feedbacks.Include(f => f.User).Include(f => f.User1).Where(f => f.ToUserId == id && f.IsDeleted == false).ToList();
+                return allFeedbacks;
+            }
 
+        }
+
+
+        
         public List<Feedback> GetListfeedbackByUser(int id)
         {
 
@@ -98,11 +114,20 @@ namespace TakeABowApi.Dal
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
                 List<Permission> allPermission = new List<Permission>();
-                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.WatchUserId == WatchUserId && p1.IsAllow == false).ToList();
+                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.WatchUserId == WatchUserId).ToList();
                 return allPermission;
             }
         }
 
+
+        public int getAmountFeedbacks(int userId)
+        {
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
+            {
+                var count = db.Feedbacks.Where(f => f.ToUserId == userId).Count(f => f.IsSeen == false);
+                return count;
+            }
+        }
 
         //public string getUserToPermissions(int watchUserId)
         //{
@@ -112,5 +137,18 @@ namespace TakeABowApi.Dal
         //        return name;
         //    }
         //}
+
+
+        
+
+
+        public int getAmountViewRequests(int userId)
+        {
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
+            {
+                var count = db.Permissions.Where(p => p.UserId == userId).Count(p => p.IsAllow == false);
+                return count;
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@
   <ion-list *ngFor="let p of permissionList">
     <ion-item (click)="AlertView(p.Id)">
       <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
+      <ion-label> {{p.Id}} </ion-label>
          <ion-label> מ{{p.FromUserFullName}} </ion-label>
          <ion-label >{{p.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
   </ion-item>

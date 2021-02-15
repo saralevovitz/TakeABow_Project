@@ -26,6 +26,7 @@ export class MyInvitationsPage implements OnInit {
 
   ngOnInit() {
   this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
+  this.permission.IsAllow= null
   this.listInvitation()
   }
 
@@ -43,6 +44,11 @@ export class MyInvitationsPage implements OnInit {
     this.permissionService.listInvitation(this.permission.WatchUserId).subscribe(res=>{
      this.permissionList=res
    })
+  }
+
+  viewFeedback(){
+    
+    this.router.navigate(['view-feedbacks']);
   }
 }
 

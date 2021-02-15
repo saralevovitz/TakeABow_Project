@@ -24,7 +24,13 @@ export class PermissionsService {
     return this.http.post<Boolean>(environment.url + 'permissions/IsAllowPermission',permission);
 
   }
-  listInvitation(WatchUserId: Number){
+  listInvitation(WatchUserId: Number):Observable<Permissions[]>{
     return this.http.get<Permissions[]>(environment.url + `permissions/getlistInvitation/${WatchUserId}`);
+  }
+
+
+  amountViewRequests(toUserId:Number):Observable<Number>{
+    debugger;
+    return this.http.get<Number>(environment.url + `permissions/amountViewRequests/${toUserId}`);
   }
 }

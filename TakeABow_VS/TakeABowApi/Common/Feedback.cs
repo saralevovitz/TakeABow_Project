@@ -18,7 +18,8 @@ namespace TakeABowApi.Common
 
         public string FromUserFullName { get; set; }
         public string ToUserFullName { get; set; }
-
+         
+        
 
         public Feedbacks()
         {

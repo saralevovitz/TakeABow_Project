@@ -26,10 +26,9 @@ namespace TakeABowApi.Dal
         }
     
         public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<Permission> Permissions { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<BlockIP> BlockIPs { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersBlocked> UsersBlockeds { get; set; }
-        public virtual DbSet<BlockIP> BlockIPs { get; set; }
+        public virtual DbSet<Permission> Permissions { get; set; }
     }
 }

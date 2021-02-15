@@ -13,17 +13,19 @@
 
 
 
-
 <ion-content>
-    
     <br>
     <ion-title>הזמנות שנשלחו</ion-title>
   <ion-list *ngFor="let p of permissionList">
     <ion-item >
         <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
+      
            <ion-label> ל{{p.FromUserFullName}} </ion-label>
            <ion-label >{{p.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
-        
+           <ion-label *ngIf="p.IsAllow==false">נדחה</ion-label>
+           <ion-label  *ngIf="p.IsAllow==true">התקבל</ion-label>
+           <ion-icon  *ngIf="p.IsAllow==true" (click)="viewFeedback()" name="eye-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;"></ion-icon>
+          
     </ion-item>
   </ion-list>
    
@@ -33,19 +35,16 @@
 <ion-content>
     <ion-item>
         <br>
-        <!-- <ion-label fixed style="font-size: 20px;">{{ 'שלח ל' }}</ion-label>-->
+      
         <ion-input type="text" placeholder="שלח ל" [(ngModel)]="permission.UserId"></ion-input>
+        
     </ion-item>
     <br>
     <ion-button style="width: 85px;" (click)="send()" type="submit">
         <ion-icon name="send-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
         </ion-icon>
     </ion-button>
-    
-    
-    <ion-button>
-    <ion-icon  name="profile" style="height: 20px; width: 20px; text-align: left; direction: rtl;"></ion-icon>
-   </ion-button>
+
 </ion-content>
 
 

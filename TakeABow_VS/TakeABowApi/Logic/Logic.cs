@@ -72,7 +72,6 @@ namespace TakeABowApi.Logic
             return res;
         }
 
-
         public bool deleteUser(int id, string pass)
         {
             bool d=save.deleteUser(id, pass);
@@ -85,11 +84,17 @@ namespace TakeABowApi.Logic
             return save.saveNewFeedback(Converters.ConvertToDal.Feedback(f));
         }
 
-
         public List<Common.Feedbacks> getAllFeedbackByUser(int id)
         {
             List<Dal.Feedback> allFeedback = new getFromDataBase().GetAllfeedbackByUser(id);
             return allFeedback.Select(f=> Converters.ConvertToCommon.Feedback(f)).ToList();
+
+        }
+
+        public List<Common.Feedbacks> ViewAllFeedbacks(int id)
+        {
+            List<Dal.Feedback> allFeedback = new getFromDataBase().ViewAllFeedbacks(id);
+            return allFeedback.Select(f => Converters.ConvertToCommon.Feedback(f)).ToList();
 
         }
         public List<Common.Feedbacks> GetListfeedbackByUser(int id)
@@ -99,8 +104,17 @@ namespace TakeABowApi.Logic
 
         }
 
+        public int amountFeedbacks(int userId)
+        {
+            return get.getAmountFeedbacks(userId);
+        }
 
-        
+
+        public int amountViewRequests(int userId)
+        {
+            return get.getAmountViewRequests(userId);
+        }
+
         public bool deleteFeedback(int fId)
         {
             return save.deleteFeedback(fId);
@@ -152,6 +166,7 @@ namespace TakeABowApi.Logic
 
         public bool Block(Common.UsersBlocked ub)
         {
+            
             return save.Block(Converters.ConvertToDal.UsersBlocked(ub));
         }
 
