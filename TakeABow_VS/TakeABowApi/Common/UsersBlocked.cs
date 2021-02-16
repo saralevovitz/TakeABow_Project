@@ -24,7 +24,7 @@ namespace TakeABowApi.Common
             this.BlockedUserId = blockedUserId;
             this.IsBlocked = isBlocked;
             this.CreatedDate = createdDate;
-
+           
         }
 
     }

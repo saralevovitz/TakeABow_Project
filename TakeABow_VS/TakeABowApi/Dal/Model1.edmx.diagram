@@ -6,15 +6,14 @@
     <edmx:Diagrams>
       <Diagram DiagramId="567ab0f046024567ae1fc65ad1e2bfbd" Name="Diagram1">
         <EntityTypeShape EntityType="TakeABowDBModel.Feedback" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeABowDBModel.Permission" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeABowDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeABowDBModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeABowDBModel.UsersBlocked" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TakeABowDBModel.BlockIP" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="TakeABowDBModel.FK__Feedbacks__FromU__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="TakeABowDBModel.FK__Feedbacks__ToUse__06CD04F7" ManuallyRouted="false" />
-        <AssociationConnector Association="TakeABowDBModel.FK_Permissions_User" ManuallyRouted="false" />
-        <AssociationConnector Association="TakeABowDBModel.FK_UsersBlocked_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TakeABowDBModel.User" Width="1.5" PointX="0.75" PointY="3.25" />
+        <AssociationConnector Association="TakeABowDBModel.FK__Feedbacks__FromU__3D5E1FD2" />
+        <AssociationConnector Association="TakeABowDBModel.FK__Feedbacks__ToUse__3E52440B" />
+        <EntityTypeShape EntityType="TakeABowDBModel.UsersBlocked" Width="1.5" PointX="3" PointY="8.875" />
+        <AssociationConnector Association="TakeABowDBModel.FK_UsersBlocked_User" />
+        <EntityTypeShape EntityType="TakeABowDBModel.Permission" Width="1.5" PointX="3" PointY="11.875" />
+        <AssociationConnector Association="TakeABowDBModel.FK_Permissions_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

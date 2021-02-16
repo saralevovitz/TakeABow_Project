@@ -17,18 +17,29 @@
     <ion-card-header>
         <ion-router-outlet id="main"></ion-router-outlet>
        
-        
-        <ion-button expand="full" color="success" (click)="toMyFeedbacks()"><ion-icon name="list-outline"></ion-icon>רשימת פידבקים</ion-button>
-        <ion-button expand="full" color="success" (click)="addFeedback()"><ion-icon name="create-outline"></ion-icon>הוסף פידבק</ion-button>
+        <!-- <ion-button expand="full" color="success" (click)="toMyFeedbacks()"><ion-icon name="list-outline"></ion-icon>רשימת פידבקים</ion-button> -->
+        <!-- <ion-button expand="full" color="success" (click)="addFeedback()"><ion-icon name="create-outline"></ion-icon>הוסף פידבק</ion-button>
         <ion-button expand="full" color="success" (click)="toMyInvitations()">בקשה לצפיה בפידבקים של אחר</ion-button>
         <ion-button expand="full" color="success" (click)="toMyDetails()"><ion-icon name="person-outline"></ion-icon>הפרופיל שלי</ion-button>
         <ion-button expand="full" color="success" (click)="toView()">צפיה בבקשות </ion-button>
-        <ion-button expand="full" color="success" (click)="toListFeedbacks()">פידבקים שכתבתי</ion-button>
+        <ion-button expand="full" color="success" (click)="toListFeedbacks()">פידבקים שכתבתי</ion-button> -->
+
+
+        <ion-item (click)="toMyFeedbacks()"><ion-icon name="list-outline"></ion-icon>רשימת פידבקים</ion-item>
+        <ion-item (click)="addFeedback()"><ion-icon name="create-outline"></ion-icon>הוסף פידבק</ion-item>
+        <ion-item (click)="toMyInvitations()">בקשה לצפיה בפידבקים של אחר</ion-item>
+        <ion-item (click)="toMyDetails()"><ion-icon name="person-outline"></ion-icon>הפרופיל שלי</ion-item>
+        <ion-item (click)="toView()">צפיה בבקשות </ion-item>
+        <ion-item (click)="toListFeedbacks()">פידבקים שכתבתי</ion-item>
         <br>
         <ion-button (click)="exit()">
             <ion-icon name="exit-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;">יציאה</ion-icon>
         </ion-button>
         
+        <ion-label>כמות הפידבקים שלא נקראו{{amountFeedback}}</ion-label>
+        <br>
+        <ion-label>כמות ההזמנות שנשלחו אלי{{amountViewRequest}}</ion-label>
+
     </ion-card-header>
 
 

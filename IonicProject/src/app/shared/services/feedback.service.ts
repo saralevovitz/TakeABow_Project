@@ -43,5 +43,14 @@ export class FeedbackService {
   getAllFeedbacksTop(userId:Number):Observable<Feedback[]>{
     return this.http.get<Feedback[]>(environment.url+ `feedback/getAllFeedbacksTop/${userId}`);
   }
- 
+
+  ViewAllFeedbacks(userId:Number):Observable<Feedback[]>{ 
+  return this.http.get<Feedback[]>(environment.url + `feedback/ViewAllFeedbacks/${userId}`);
+
+}
+
+amountFeedbacks(toUserId:Number):Observable<Number>{
+  return this.http.get<Number>(environment.url + `feedback/amountFeedbacks/${toUserId}`);
+
+}
 }

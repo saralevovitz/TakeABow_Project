@@ -11,7 +11,7 @@ namespace TakeABowApi.Common
         public int UserId { get; set; }
         public int WatchUser‏Id { get; set; }
         public DateTime CreateDate { get; set; }
-        public bool IsAllow { get; set; }
+        public bool? IsAllow { get; set; }
         public DateTime ExpireDate { get; set; }
 
         public string FromUserFullName { get; set; }

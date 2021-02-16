@@ -42,6 +42,10 @@ export class UserPagePage implements OnInit {
 
   }
 
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> 04fd961b0560a2ab40746c8ce4578fc675767c70
 }

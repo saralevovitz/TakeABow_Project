@@ -13,6 +13,7 @@ namespace TakeABowApi.Controllers
     public class PermissionsController : ApiController
     {
 
+            
         int num_permission_id = 100;
         TakeABowApi.Logic.Logic logic = new TakeABowApi.Logic.Logic();
 
@@ -27,17 +28,15 @@ namespace TakeABowApi.Controllers
         [Route("api/permissions/ViewConfirmation")]
         public bool ViewConfirmation(Common.Permissions permission)
         {
-            bool confirmed‏ = false;
+           
             int weeks = 1;
 
-            if (confirmed‏ == true)
-            {
+            
                 Permissions p = new Permissions(num_permission_id++, permission.UserId, permission.WatchUserId, true, DateTime.Now.AddDays(weeks * 7));
                 if (logic.AddPermission(p))
                     return true;
                 return false;
-            }
-            return false;
+           
 
         }
 
@@ -67,7 +66,7 @@ namespace TakeABowApi.Controllers
 
 
         [HttpPost]
-        [Route("api/permissions/IsAllowPermission")]
+        [Route("api/permissions/IsAllowPermission")]// קבלת אן דחיית בקשת צפיה
         public bool IsAllowPermission(Common.Permissions p)
         {
             if (logic.IsAllowPermission(p))
@@ -77,12 +76,21 @@ namespace TakeABowApi.Controllers
 
         [HttpGet]
         [Route("api/permissions/getlistInvitation/{WatchUserId}")]
-        public List<Permissions> getlistInvitation(int WatchUserId)
+        public List<Permissions> getlistInvitation(int WatchUserId)//רשימת הבקשות ששלחתי לאחרים
         {
 
             if (logic.getlistInvitation(WatchUserId) == null)
                 return null;
             return logic.getlistInvitation(WatchUserId);
+        }
+
+
+        [HttpGet]
+        [Route("api/permissions/amountViewRequests/{toUserId}")]
+        public int amountViewRequests(int toUserId)
+        {
+            int mone = logic.amountViewRequests(toUserId);
+            return mone;
         }
 
     }

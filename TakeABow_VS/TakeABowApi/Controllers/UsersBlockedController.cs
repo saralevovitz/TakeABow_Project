@@ -25,17 +25,28 @@ namespace TakeABowApi.Controllers
         TakeABowApi.Logic.Logic logic = new TakeABowApi.Logic.Logic();
 
 
-        [HttpGet]
+        //[HttpGet]
+        //[Route("api/UsersBlocked/BlockUser")]
+        //public bool Get(int userId, int blockedUserId)
+        //{
+        //    UsersBlocked u = new UsersBlocked(num_blocks++, userId, blockedUserId , true, DateTime.Now);
+        //    if(logic.Block(u))
+        //       return true;
+        //    return false;
+
+        //}
+
+
+        [HttpPost]
         [Route("api/UsersBlocked/BlockUser")]
-        public bool Get(int userId, int blockedUserId)
-        {
-            UsersBlocked u = new UsersBlocked(num_blocks++, userId, blockedUserId , true, DateTime.Now);
-            if(logic.Block(u))
-               return true;
+        public bool BlockUser(UsersBlocked userBlocked)
+         {
+            UsersBlocked u = new UsersBlocked(num_blocks++,userBlocked.UserId, userBlocked.BlockedUserId, userBlocked.IsBlocked, DateTime.Now);
+            if (logic.Block(u))
+                return true;
             return false;
 
         }
-
 
 
     }

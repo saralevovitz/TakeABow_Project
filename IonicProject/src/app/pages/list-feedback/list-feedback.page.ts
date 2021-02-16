@@ -20,14 +20,9 @@ export class ListFeedbackPage implements OnInit {
     this.feedbackService.GetListfeedbackByUser(this.feedback.FromUserId).subscribe(f=>{
       this.feedbacksList=f
       
-      console.log(f)
+      console.log(this.feedbacksList)
      
     })
-    // console.log("to"+this.feedback.ToUserId)
-
-    // this.feedbackService.getNameUserToFeedback(this.feedback.ToUserId).subscribe(res=>
-    //   this.feedback.ToUserFullName=res)
-    // console.log("ToUserFullName"+this.feedback.ToUserFullName)
   }
 
   tomyAccountPage(){

@@ -321,9 +321,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Dal\saveInDataBase.cs" />
-    <Compile Include="Dal\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Dal\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'user-page',
     loadChildren: () => import('./pages/user-page/user-page.module').then( m => m.UserPagePageModule)
   },
+  {
+    path: 'view-feedbacks',
+    loadChildren: () => import('./pages/view-feedbacks/view-feedbacks.module').then( m => m.ViewFeedbacksPageModule)
+  },
 
 ];
 

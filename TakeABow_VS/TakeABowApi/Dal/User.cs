@@ -19,8 +19,8 @@ namespace TakeABowApi.Dal
         {
             this.Feedbacks = new HashSet<Feedback>();
             this.Feedbacks1 = new HashSet<Feedback>();
-            this.Permissions = new HashSet<Permission>();
             this.UsersBlockeds = new HashSet<UsersBlocked>();
+            this.Permissions = new HashSet<Permission>();
         }
     
         public int Id { get; set; }
@@ -30,8 +30,6 @@ namespace TakeABowApi.Dal
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Job { get; set; }
-        public bool Is_Blocked { get; set; }
-        public Nullable<System.DateTime> Blocked_Date { get; set; }
         public bool Is_Deleted { get; set; }
         public System.DateTime Create_Date { get; set; }
     
@@ -40,8 +38,8 @@ namespace TakeABowApi.Dal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Permission> Permissions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersBlocked> UsersBlockeds { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Permission> Permissions { get; set; }
     }
 }
