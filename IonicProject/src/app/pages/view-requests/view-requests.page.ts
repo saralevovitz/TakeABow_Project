@@ -16,17 +16,14 @@ export class ViewRequestsPage implements OnInit {
  toPermission:number
   permissionList: Permissions[]=[]
   pOk: boolean
-  
-  //pNo: boolean
+
  
   ngOnInit() {
     this.toPermission=+localStorage.getItem('userIdLogin');
     this.view()
   }
 
-  tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
+
   toHomePage(){
     this.router.navigate(['home']);
   }
@@ -38,9 +35,9 @@ export class ViewRequestsPage implements OnInit {
 
  }
 
- async AlertView(idP: number)
+ async AlertView(fromUser: Number, idPermission:Number)
  {
-   console.log("the idP: "+ idP)
+   console.log("the idP: "+ fromUser)
   var alert = await this.alertController.create(
     {
     cssClass: 'my-custom-class',
@@ -53,8 +50,9 @@ export class ViewRequestsPage implements OnInit {
         cssClass: 'secondary',
         handler: () => {
           this.permission.IsAllow=true;
-          this.permission.Id= idP;
+          this.permission.Id= idPermission;
           this.permission.UserId=+localStorage.getItem('userIdLogin');
+          this.permission.WatchUserId=fromUser;
           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
           
             console.log("res:"+ res))
@@ -65,7 +63,9 @@ export class ViewRequestsPage implements OnInit {
         handler: () => 
         {
           this.permission.IsAllow=false
+          this.permission.Id= idPermission;
           this.permission.UserId=+localStorage.getItem('userIdLogin');
+          this.permission.WatchUserId=fromUser;
           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
           console.log("res:"+ res))
         }

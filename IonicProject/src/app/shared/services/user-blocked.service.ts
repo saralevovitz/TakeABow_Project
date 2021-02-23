@@ -15,6 +15,10 @@ export class UserBlockedService {
   blockUser(userBlocked: UsersBlocked):Observable<Boolean>{
     return this.http.post<boolean>(environment.url + 'UsersBlocked/BlockUser', userBlocked);
   }
+
+  checkUserBlock(id:Number){
+    return this.http.get<boolean>(environment.url+'UsersBlocked/checkUserBlock');
+  }
 }
 
 

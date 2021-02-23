@@ -22,7 +22,7 @@ export class NewFeedbackPage implements OnInit {
 
   idU: number=+localStorage.getItem('userIdLogin')
   feedback: Feedback = new Feedback();
-  //res: Observable<any>;
+  sendTo: String
   
   ngOnInit() {}
 
@@ -34,7 +34,9 @@ export class NewFeedbackPage implements OnInit {
 }
 
   AddFeedback(){
-    
+    //לעשות בדיקה מה הכניס, שם משתמש או מייל
+
+
     this.feedback.FromUserId=this.idU
      this.feedbackService.addFeedback(this.feedback).subscribe(res=>{
        if(res==true)
@@ -44,9 +46,6 @@ export class NewFeedbackPage implements OnInit {
      
    }
 
-  tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
   toHomePage(){
     this.router.navigate(['home']);
   }

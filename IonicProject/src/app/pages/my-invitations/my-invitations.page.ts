@@ -16,9 +16,6 @@ export class MyInvitationsPage implements OnInit {
   permission: Permissions= new Permissions();
   permissionList: Permissions[]=[]
 
-  tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
 
   toHomePage(){
     this.router.navigate(['home']);
@@ -30,19 +27,10 @@ export class MyInvitationsPage implements OnInit {
   this.listInvitation()
   }
 
-  send(){
-    this.permission.WatchUserId=+localStorage.getItem('userIdLogin');
-   this.permissionService.sendPermission(this.permission).subscribe(res=>{
-     if(res==true)
-     alert('true')
-     else
-     alert('false')})
-    this.router.navigate(['my-account']);
-  }
-
   listInvitation(){
-    this.permissionService.listInvitation(this.permission.WatchUserId).subscribe(res=>{
+     this.permissionService.listInvitation(this.permission.WatchUserId).subscribe(res=>{
      this.permissionList=res
+     console.log("the per: "+ this.permissionList)
    })
   }
 

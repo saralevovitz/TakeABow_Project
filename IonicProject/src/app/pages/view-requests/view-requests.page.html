@@ -1,18 +1,12 @@
 <ion-header>
     <ion-toolbar>
-       <ion-buttons>
-         <ion-button (click)="toHomePage()"><ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-         </ion-button>
-         <ion-button (click)="tomyAccountPage()"><ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-         </ion-button>
-       </ion-buttons> 
-       <ion-title>viewRequests בקשות צפיה שנשלחו אלי</ion-title>
+        <ion-title>viewRequests בקשות צפיה שנשלחו אלי</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list *ngFor="let p of permissionList">
-    <ion-item (click)="AlertView(p.Id)">
+    <ion-item (click)="AlertView(p.WatchUserId, p.Id)">
       <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
       <ion-label> {{p.Id}} </ion-label>
          <ion-label> מ{{p.FromUserFullName}} </ion-label>

@@ -19,9 +19,7 @@ export class MyDetailsPage implements OnInit {
    idU: number=+localStorage.getItem('userIdLogin')
 
 
-   tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
+  
   toHomePage(){
     this.router.navigate(['home']);
   }

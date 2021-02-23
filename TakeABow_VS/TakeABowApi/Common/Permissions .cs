@@ -23,9 +23,9 @@ namespace TakeABowApi.Common
         }
 
 
-        public Permissions(int id, int userId, int watchUser‏Id,  bool isAllow , DateTime expireDate)
+        public Permissions(int id, int userId, int watchUser‏Id,  bool? isAllow , DateTime expireDate)
         {
-            this.Id = id;
+           // this.Id = id;
             this.UserId = userId;
             this.WatchUserId = watchUserId;
             this.CreateDate = DateTime.Now;

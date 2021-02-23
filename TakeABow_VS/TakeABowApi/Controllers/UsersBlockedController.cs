@@ -21,7 +21,7 @@ namespace TakeABowApi.Controllers
             return true;
         }
 
-        int num_blocks =100;
+        int num_blocks = 100;
         TakeABowApi.Logic.Logic logic = new TakeABowApi.Logic.Logic();
 
 
@@ -40,13 +40,23 @@ namespace TakeABowApi.Controllers
         [HttpPost]
         [Route("api/UsersBlocked/BlockUser")]
         public bool BlockUser(UsersBlocked userBlocked)
-         {
-            UsersBlocked u = new UsersBlocked(num_blocks++,userBlocked.UserId, userBlocked.BlockedUserId, userBlocked.IsBlocked, DateTime.Now);
+        {
+            UsersBlocked u = new UsersBlocked(num_blocks++, userBlocked.UserId, userBlocked.BlockedUserId, userBlocked.IsBlocked, DateTime.Now);
             if (logic.Block(u))
                 return true;
             return false;
 
         }
+
+        //[HttpGet]
+        //[Route("api/UsersBlocked/checkUserBlock")]//אם היוזר חסום מחזיר אמת
+        //public bool checkUserBlock(int  idP)
+        //{
+        //  if(logic.checkUserBlock(idP))
+        //    return true;
+        //      else 
+        //        return false;
+        //}
 
 
     }

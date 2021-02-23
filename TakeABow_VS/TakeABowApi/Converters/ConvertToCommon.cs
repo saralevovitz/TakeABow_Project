@@ -19,8 +19,7 @@ namespace TakeABowApi.Converters
                 Email = u.Email,
                 Job = u.Job,
                 Is_Deleted= u.Is_Deleted,
-                Create_Date = u.Create_Date,
-                
+                Create_Date = u.Create_Date
             };
            
         }

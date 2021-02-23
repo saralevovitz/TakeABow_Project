@@ -28,10 +28,6 @@ export class LoginPage implements OnInit {
     this.router.navigate(['home']);
   }
 
-  toMyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
-  
   ngOnInit() {
    
   }
