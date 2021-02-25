@@ -85,7 +85,7 @@ namespace TakeABowApi.Dal
             using(TakeABowDBEntities db= new TakeABowDBEntities())
             {
                 List<Feedback> allFeedbacks = new List<Feedback>();
-                allFeedbacks = db.Feedbacks.Include(f => f.User).Include(f => f.User1).Where(f => f.ToUserId == userId && f.IsSeen== true && f.IsDeleted== false).ToList();
+                allFeedbacks = db.Feedbacks.Include(f => f.User).Include(f => f.User1).Where((f => f.ToUserId == userId && f.IsSeen== true && f.IsDeleted== false)).ToList();
                 return allFeedbacks;
             }
         }

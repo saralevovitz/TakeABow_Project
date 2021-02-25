@@ -19,7 +19,7 @@ export class TopFeedbacksPage implements OnInit {
   ngOnInit() {
 
   this.feedbackByUser()
-
+  this.getFeedback()
   this.nameUser()
   }
 
@@ -34,7 +34,6 @@ export class TopFeedbacksPage implements OnInit {
       this.ToUserId=params['userToTOP'];
     }) 
     console.log("the id:"+this.ToUserId)
-    this.getFeedback()
   }
 
 

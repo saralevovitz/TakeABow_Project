@@ -23,8 +23,16 @@ export class AllUsersPage implements OnInit {
   permission: Permissions= new Permissions();
   ans:boolean 
   constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController) { }
+  selectedUser:User=new User();
+  selectedUserId: Number;
+  //userLogedIn:User=new User();
+  userLogedInId: Number=+localStorage.getItem('userIdLogin')
+
 
   ngOnInit() {
+    this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{this.user=res;
+    },err=>console.error(err))
+
     this.getAllUsers()
    
 
@@ -34,6 +42,7 @@ export class AllUsersPage implements OnInit {
     this.router.navigate(['home'])
   }
   
+
   getAllUsers(){
     this.userService.getAllUsers().subscribe(u=>{
       console.log(u)
