@@ -56,8 +56,6 @@ signUp(){
   // }
 }
 
-toMyAccountPage(){
-  this.router.navigate(['my-account']);
-}
+
 
 } 

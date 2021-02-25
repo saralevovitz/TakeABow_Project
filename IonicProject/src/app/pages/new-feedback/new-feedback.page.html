@@ -1,41 +1,24 @@
-<ion-header><ion-toolbar>
-     <ion-buttons>
-        <ion-button (click)="toHomePage()"> <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-        </ion-button>
-        <ion-button (click)="tomyAccountPage()"><ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-        </ion-button>
-     </ion-buttons> 
-   <ion-title>הוספת פידבק חדש</ion-title>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>הוספת פידבק חדש</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <br>
-    <ion-button name="sendFeedback" (click)="AddFeedback()">invite a friend</ion-button>
-    <br>
-    <br>
-
-    <body>
         <ion-item>
             <br>
-            <ion-label fixed style="font-size: 20px;">{{ 'שלח ל' }}</ion-label>
-            <ion-input type="text" placeholder="שם משתמש / אימייל" [(ngModel)]="feedback.ToUserId"></ion-input>
+            <ion-label fixed style="font-size: 20px;">שלח ל</ion-label>
+            <ion-input type="text" placeholder="שם משתמש / אימייל" [(ngModel)]="sendTo"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label style="font-size: 20px;">{{ 'פידבק' }}</ion-label>
+            <ion-label style="font-size: 20px;">פידבק</ion-label>
             <br>
             <ion-textarea placeholder="כתוב את הפידבק..." style="height: 200px;" [(ngModel)]="feedback.Feedback"></ion-textarea>
         </ion-item>
 
-
-        <br>
-        <ion-button style="width: 85px;" (click)="AddFeedback()" type="submit">
+ 
+    <ion-button style="width: 85px;" (click)="AddFeedback()" type="submit">
             <ion-icon name="send-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
             </ion-icon>
         </ion-button>
-
-    </body>
-
-
-
 </ion-content>

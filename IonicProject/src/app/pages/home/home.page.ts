@@ -32,31 +32,25 @@ export class HomePage {
         this.userList=u
       })
    }
-   tomyAccountPage(){
-    this.router.navigate(['my-account']);
-   }
 
-   toSignUpPage(){  
-    this.router.navigate(['sign-up']);
-    }
-  
-    toLoginPage(){
-    this.router.navigate(['login']);
-    }
+ 
 
     toAllUsersPage(){
       this.router.navigate(['all-users']);
     }
   
-    isLoggedInUser()
-    {
+    isLoggedInUser(){
       return localStorage.getItem("userIdLogin")!=null;
     }
-
-    logOut()
-    {
-      localStorage.clear();
-    }
+    toSignUpPage(){  
+      this.router.navigate(['sign-up']);
+      }
+    
+      toLoginPage(){
+      this.router.navigate(['login']);
+      }
+  
+  
     topFeedbacks(userId:Number){
       this.userToTOP=userId;
           this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);

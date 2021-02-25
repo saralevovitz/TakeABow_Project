@@ -1,13 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons>
-        <ion-button (click)="toHomePage()"><ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-        </ion-button>
-        <ion-button (click)="tomyAccountPage()"><ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-        </ion-button>
-       
-    </ion-buttons>
-     <ion-title>שליחת בקשת צפיה + הזמנות- בקשות ששלחתי</ion-title>
+       <ion-title>שליחת בקשת צפיה + הזמנות- בקשות ששלחתי</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,6 +15,7 @@
       
            <ion-label> ל{{p.FromUserFullName}} </ion-label>
            <ion-label >{{p.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
+           <ion-label *ngIf="p.IsAllow==null">ממתין לאישור</ion-label>
            <ion-label *ngIf="p.IsAllow==false">נדחה</ion-label>
            <ion-label  *ngIf="p.IsAllow==true">התקבל</ion-label>
            <ion-icon  *ngIf="p.IsAllow==true" (click)="viewFeedback()" name="eye-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;"></ion-icon>
@@ -32,19 +26,6 @@
   </ion-content>
 
 
-<ion-content>
-    <ion-item>
-        <br>
-      
-        <ion-input type="text" placeholder="שלח ל" [(ngModel)]="permission.UserId"></ion-input>
-        
-    </ion-item>
-    <br>
-    <ion-button style="width: 85px;" (click)="send()" type="submit">
-        <ion-icon name="send-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
-        </ion-icon>
-    </ion-button>
 
-</ion-content>
 
 

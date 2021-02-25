@@ -30,7 +30,7 @@ export class PermissionsService {
 
 
   amountViewRequests(toUserId:Number):Observable<Number>{
-    debugger;
+ 
     return this.http.get<Number>(environment.url + `permissions/amountViewRequests/${toUserId}`);
   }
 }

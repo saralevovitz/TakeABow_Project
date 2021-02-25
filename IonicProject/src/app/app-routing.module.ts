@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'my-account',
-    loadChildren: () => import('./pages/my-account/my-account.module').then( m => m.MyAccountPageModule)
-  },
-  {
     path: 'new-feedback',
     loadChildren: () => import('./pages/new-feedback/new-feedback.module').then( m => m.NewFeedbackPageModule)
   },
@@ -38,7 +34,8 @@ const routes: Routes = [
   {
     path: 'my-invitations',
     loadChildren: () => import('./pages/my-invitations/my-invitations.module').then( m => m.MyInvitationsPageModule)
-  },  {
+  },
+  {
     path: 'top-feedbacks',
     loadChildren: () => import('./pages/top-feedbacks/top-feedbacks.module').then( m => m.TopFeedbacksPageModule)
   },
@@ -54,10 +51,7 @@ const routes: Routes = [
     path: 'all-users',
     loadChildren: () => import('./pages/all-users/all-users.module').then( m => m.AllUsersPageModule)
   },
-  {
-    path: 'user-page',
-    loadChildren: () => import('./pages/user-page/user-page.module').then( m => m.UserPagePageModule)
-  },
+ 
   {
     path: 'view-feedbacks',
     loadChildren: () => import('./pages/view-feedbacks/view-feedbacks.module').then( m => m.ViewFeedbacksPageModule)

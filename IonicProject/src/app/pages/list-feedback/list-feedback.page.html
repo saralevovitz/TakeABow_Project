@@ -1,36 +1,19 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons>
-            <ion-button (click)="toHomePage()">
-              <ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon></ion-button>
-            <ion-button (click)="tomyAccountPage()">
-              <ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon></ion-button>
-        </ion-buttons>
-        <ion-title>listFeedback - פידבקים ששלחתי</ion-title>
+       <ion-title>listFeedback - פידבקים ששלחתי</ion-title>
     </ion-toolbar>
 </ion-header>
 
  
 <ion-content>
-<<<<<<< HEAD
-        <ion-item>
-                <ion-list *ngFor="let f of feedbacksList">
-                  
-                       <ion-item class="textFeedback"> 
-                       <!-- <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>-->
-                         <ion-label>ל{{f.ToUserFullName}} </ion-label>
-                         <ion-label> {{f.Feedback}}</ion-label>
-                         <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label> 
-                       </div>
-=======
+               
    <ion-list *ngFor="let f of feedbacksList">
         <ion-item class="textFeedback"> 
          <ion-label>ל{{f.ToUserFullName}} </ion-label>
          <ion-label> {{f.Feedback}}</ion-label>
          <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label> 
          <ion-icon name="checkmark-done-outline" style="height: 30px; width: 30px;" [ngStyle]="{'color': f.IsSeen== true? 'Blue':'gray'}"></ion-icon>
-                       </ion-item>
->>>>>>> 04fd961b0560a2ab40746c8ce4578fc675767c70
-                </ion-list> 
+         </ion-item>
+    </ion-list> 
     
 </ion-content>

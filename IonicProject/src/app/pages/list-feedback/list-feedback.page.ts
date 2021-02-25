@@ -25,9 +25,7 @@ export class ListFeedbackPage implements OnInit {
     })
   }
 
-  tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
+
   toHomePage(){
     this.router.navigate(['home']);
   }

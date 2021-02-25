@@ -1,11 +1,5 @@
 <ion-header>
    <ion-toolbar>
-      <ion-buttons>
-        <ion-button (click)="toHomePage()"><ion-icon name="home-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-        </ion-button>
-        <ion-button (click)="tomyAccountPage()"><ion-icon name="chevron-forward-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
-        </ion-button>
-      </ion-buttons>
       <ion-title>הפרופיל שלי</ion-title>
    </ion-toolbar>
 </ion-header>
@@ -14,7 +8,7 @@
 <ion-content>
     <ion-item>
         <ion-input name="firstName" type="text" placeholder="{{user.FirstName}}" [(ngModel)]="user.FirstName" required>
-        </ion-input>
+     </ion-input>
     </ion-item>
 
     <ion-item>

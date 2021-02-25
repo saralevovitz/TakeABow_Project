@@ -30,9 +30,8 @@ namespace TakeABowApi.Dal
                 using(TakeABowDBEntities db= new TakeABowDBEntities())
                 {
                     List<User> users = new List<User>();
-                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false).ToList();
+                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false).OrderBy(u=>u.LastName).ToList();
                     return users;
-
                 }
              
             }
@@ -75,7 +74,7 @@ namespace TakeABowApi.Dal
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
                 List<Feedback> allFeedbacks = new List<Feedback>();
-                allFeedbacks = db.Feedbacks.Include(f => f.User).Include(f => f.User1).Where(f => f.FromUserId == id).ToList();
+                allFeedbacks = db.Feedbacks.Include(f => f.User).Include(f => f.User1).Where(f => f.FromUserId == id).OrderByDescending(f => f.CreateDate).ToList();
                 return allFeedbacks;
             }
 
@@ -104,7 +103,7 @@ namespace TakeABowApi.Dal
             using(TakeABowDBEntities db= new TakeABowDBEntities())
             {
                 List<Permission> allPermission = new List<Permission>();
-                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.UserId == toPermission && p1.IsAllow == false).OrderBy(p1=> p1.CreateDate).ToList();
+                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.UserId == toPermission && p1.IsAllow!=true).OrderByDescending(p1=> p1.CreateDate).ToList();
                 return allPermission;
             }
         }
@@ -129,25 +128,25 @@ namespace TakeABowApi.Dal
             }
         }
 
-        //public string getUserToPermissions(int watchUserId)
-        //{
-        //    using (TakeABowDBEntities db = new TakeABowDBEntities())
-        //    {
-        //       var name= db.Users.FirstOrDefault(u => u.Id == watchUserId);
-        //        return name;
-        //    }
-        //}
-
-
-        
-
 
         public int getAmountViewRequests(int userId)
         {
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
-                var count = db.Permissions.Where(p => p.UserId == userId).Count(p => p.IsAllow == false);
+                var count = db.Permissions.Where(p => p.UserId == userId).Count(p => p.IsAllow == null);
                 return count;
+            }
+        }
+
+
+        public bool checkUserBlock(int idP)
+        {
+            using(TakeABowDBEntities db= new TakeABowDBEntities())
+            {
+                var ub = db.UsersBlockeds.FirstOrDefault(u => u.ID == idP && u.IsBlocked==false);//בודק לפי היד של הבקשה אם הוא חסום, אם חסום מחזיר אמת 
+                if (ub == null)
+                    return false;
+                return true ;
             }
         }
     }

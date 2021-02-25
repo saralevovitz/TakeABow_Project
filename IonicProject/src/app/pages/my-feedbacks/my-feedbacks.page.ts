@@ -12,12 +12,11 @@ import { UserBlockedService } from 'src/app/shared/services/user-blocked.service
 })
 export class MyFeedbacksPage implements OnInit {
 
-  constructor(private router: Router, private feedbackService: FeedbackService, private userBlockedService: UserBlockedService) { }
+  constructor(private router: Router, private feedbackService: FeedbackService) { }
 
   feedbacksList: Feedback[]=[]
   feedback: Feedback= new Feedback();
     idF:Number;
-   userBlocked: UsersBlocked= new UsersBlocked(); 
   
    ngOnInit() {
     this.feedback.ToUserId=+localStorage.getItem('userIdLogin')
@@ -30,9 +29,7 @@ export class MyFeedbacksPage implements OnInit {
     })
 
   }
-  tomyAccountPage(){
-    this.router.navigate(['my-account']);
-  }
+
   tomyHomePage(){
     this.router.navigate(['home']);
   }
@@ -46,15 +43,6 @@ export class MyFeedbacksPage implements OnInit {
    
   }
 
- blockUser(fromUserId: number){ //להעביר את זה לדף שך כל היוזרים
-   this.userBlocked.BlockedUserId=fromUserId;
-   this.userBlocked.UserId=+localStorage.getItem('userIdLogin');
-   this.userBlocked.IsBlocked=true;
-
-     this.userBlockedService.blockUser(this.userBlocked).subscribe(res=>{
-       console.log("the res: "+ res);
-     })
-   }
 
   readFeedback(idFeedback:Number, FromUserId:Number){
     console.log(idFeedback)

@@ -170,7 +170,11 @@ namespace TakeABowApi.Logic
             return save.Block(Converters.ConvertToDal.UsersBlocked(ub));
         }
 
-        
+        public bool checkUserBlock(int idP)
+        {
+            return get.checkUserBlock(idP);
+        }
+
 
         /*BlockIP*/
 
