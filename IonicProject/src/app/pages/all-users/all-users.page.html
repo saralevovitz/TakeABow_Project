@@ -6,16 +6,17 @@
 
 <ion-content>
     <ion-toolbar>
-        <ion-searchbar></ion-searchbar>
-    </ion-toolbar>
-    <ion-list *ngFor="let user of AllUsersList">
+        <ion-searchbar type="text" debounce="500" (ionChange)="sortUserList($event.target.value)"></ion-searchbar>
+        <ion-list *ngFor="let user of sortedUserList">
     
             <ion-item >
-                <ion-label>{{user.LastName + " " + user.FirstName + "   " + user.Job}}</ion-label>
+                <ion-label>{{user.Id.toString() +"  "+ user.LastName + " " + user.FirstName + "   " + user.Job+"  "+user.Email}}</ion-label>
                     <!-- <ion-icon name="profile"></ion-icon>   זה האיקון שרחל הוסיפה   -->
-                   <ion-button (click)="AlertView(user.Id)"> <ion-icon name="add" ></ion-icon></ion-button>
-                   <ion-button (click)="blockUser(user.Id)"><ion-icon name="warning-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon></ion-button>
+                  <ion-icon name="add" (click)="AlertView(user.Id)" style=" color:green;"></ion-icon>
+                  <ion-icon name="warning-outline" (click)="blockUser(user.Id)" style="height: 20px; width: 20px; text-align: left; color:green; "></ion-icon>
                    <!-- <ion-button *ngIf="checkUserBlock()"><ion-icon name="checkmark-done-outline"></ion-icon></ion-button> -->
             </ion-item>
     </ion-list>
+    </ion-toolbar>
+   
 </ion-content>

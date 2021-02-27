@@ -17,6 +17,7 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 export class AllUsersPage implements OnInit {
 
   AllUsersList: User []= []
+  sortedUserList:User[]=[]
   user:User=new User();
   userBlocked: UsersBlocked= new UsersBlocked(); 
   sendToId: any[]
@@ -47,9 +48,23 @@ export class AllUsersPage implements OnInit {
     this.userService.getAllUsers().subscribe(u=>{
       console.log(u)
       this.AllUsersList=u
+      this.sortedUserList=u
     })
  }
  
+ sortUserList(s:string)
+ {
+   s=s.toLowerCase();
+   this.sortedUserList=[];
+   for(let u of this.AllUsersList)
+   {
+
+     if(u.Email.toLowerCase().indexOf(s)!=-1||
+     u.Id.toString().indexOf(s)!=-1||
+     u.Email.indexOf(s)!=-1)
+       this.sortedUserList.push(u);
+   }
+ }
 
  async AlertView(toUser: number)
  {

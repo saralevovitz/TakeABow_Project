@@ -13,7 +13,6 @@ namespace TakeABowApi.Dal
     public  class saveInDataBase
     {
         private TakeABowDBEntities data = new TakeABowDBEntities();
-        static string connectionString = WebConfigurationManager.AppSettings["TakeABowDB"];
         /*Users*/
 
         public static List<User> GetUsers()

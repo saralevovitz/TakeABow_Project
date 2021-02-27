@@ -21,6 +21,8 @@ namespace TakeABowApi.Controllers
         [Route("api/user/test")]
         public bool Get()
         {
+
+            new Logic.MailManager().SendEmail("saralev2000@gmail.com", "try", "hey");
             return true;
         }
 

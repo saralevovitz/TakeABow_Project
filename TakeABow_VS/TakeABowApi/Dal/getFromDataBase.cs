@@ -18,9 +18,6 @@ namespace TakeABowApi.Dal
 {
     public  class getFromDataBase
     {
-        private Dal.TakeABowDBEntities data = new TakeABowDBEntities();
-        //static string connectionString = WebConfigurationManager.AppSettings["TakeABowDB"];
-        private IOrderedEnumerable<KeyValuePair<int, List<Feedbacks>>> feedbacks;
 
         /*User*/
         public  List<User> GetUsers()

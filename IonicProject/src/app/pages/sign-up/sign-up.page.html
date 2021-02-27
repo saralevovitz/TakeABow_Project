@@ -7,12 +7,20 @@
 
 <form #f="ngForm" name="signUpForm">
 <ion-item>
-    <ion-input  name="firstName" type="text" placeholder="שם פרטי" [(ngModel)]="user.FirstName" required></ion-input>
+    <ion-input #firstName="ngModel"  name="firstName" type="text" placeholder="שם פרטי" [(ngModel)]="user.FirstName" required minlength="2" maxlength="15"
+     pattern="^[a-zA-Zא-ת_]*$"></ion-input>
 </ion-item>
+<ion-label>
+    {{firstName.errors|json}}
+</ion-label>
 
 <ion-item>
-    <ion-input  name="lastName" type="text" #LastName="ngModel" placeholder="שם משפחה" [(ngModel)]="user.LastName" required></ion-input>
+    <ion-input  name="lastName" type="text" #LastName="ngModel" placeholder="שם משפחה" [(ngModel)]="user.LastName" required required minlength="2" maxlength="15"
+    pattern="^[a-zA-Zא-ת_]*$"></ion-input>
 </ion-item>
+<ion-label>
+    {{LastName.errors|json}}
+</ion-label>
 
 <ion-item>
     <ion-input  name="phone" type="text" placeholder="טלפון" [(ngModel)]="user.Phone" required></ion-input>

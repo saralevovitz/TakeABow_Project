@@ -36,11 +36,12 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-
+   if(this.idU!=null&&this.idU>0)
     this.userService.GetUser(this.idU).subscribe((res:User)=>{this.user=res;
     },err=>console.error(err))
     this.amountFeedbacks()
     this.amountViewRequests()
+    
   }
 
   toAllUsersPage(){
@@ -51,7 +52,7 @@ export class AppComponent {
     return localStorage.getItem("userIdLogin")!=null;
   }
 
-  tomyAccountPage(){
+  toHomePage(){
     this.router.navigate(['home']);
    }
 

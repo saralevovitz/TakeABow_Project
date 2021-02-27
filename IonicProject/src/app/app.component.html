@@ -13,24 +13,26 @@
   <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
     <ion-header>
       <ion-toolbar>
+        
           <ion-title class="title" style="text-align: center; font-size: 20px;">שלום ל{{user.FirstName+' '+ user.LastName}} </ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <ion-list>
+      <ion-list class="icon">
         <ion-buttons>
-          <ion-button (click)="tomyAccountPage()" *ngIf="isLoggedInUser()"><ion-icon name="home-sharp"></ion-icon></ion-button>
+          <ion-button (click)="toHomePage()" *ngIf="isLoggedInUser()"><ion-icon name="home-sharp"></ion-icon></ion-button>
           <ion-button *ngIf="isLoggedInUser()" name="toLogOut" (click)="logOut()"><ion-icon name="exit-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon></ion-button>
           <ion-button *ngIf="isLoggedInUser()" name="toAllUsersPage" (click)="toAllUsersPage()"><ion-icon name="people-outline"></ion-icon></ion-button> 
         </ion-buttons>
-        <ion-item (click)="toMyFeedbacks()"><ion-icon name="list-outline"></ion-icon>רשימת פידבקים {{amountFeedback}}</ion-item>
+        <ion-item (click)="toMyFeedbacks()"><ion-icon name="list-outline" ></ion-icon>  רשימת פידבקים
+          <ion-badge style="right: 20px;">{{amountFeedback}}</ion-badge></ion-item>
         <ion-item (click)="addFeedback()"><ion-icon name="create-outline"></ion-icon>הוסף פידבק</ion-item>
         <ion-item (click)="toMyInvitations()">בקשה לצפיה בפידבקים של אחר</ion-item>
         <ion-item (click)="toMyDetails()"><ion-icon name="person-outline"></ion-icon>הפרופיל שלי</ion-item>
         <ion-item (click)="toView()"><ion-icon name="mail-unread-outline"></ion-icon>צפיה בבקשות {{amountViewRequest}}</ion-item>
         <ion-item (click)="toListFeedbacks()">פידבקים שכתבתי</ion-item>
-        
+    
       </ion-list>
        
 
