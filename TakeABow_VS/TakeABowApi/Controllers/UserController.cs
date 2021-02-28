@@ -23,7 +23,7 @@ namespace TakeABowApi.Controllers
         public bool Get()
         {
 
-            new Logic.MailManager().SendEmail("saralev2000@gmail.com", "try", "hey");
+           // new Logic.MailManager().SendEmail("saralev2000@gmail.com", "try", "hey");
             return true;
         }
 
@@ -52,6 +52,7 @@ namespace TakeABowApi.Controllers
             {
                 return 0;
             }
+
             int userId = logic.saveNewUser(u);
             return userId;
         }
@@ -67,7 +68,7 @@ namespace TakeABowApi.Controllers
         [HttpPost]
         [Route("api/user/findUser")]
         //  findUser?
-        public bool POST(Common.User u)
+        public bool findUser(Common.User u)
         {      
             User user = logic.FindUser(u.Id);
             if (user==null)

@@ -12,12 +12,12 @@ export class UserBlockedService {
   constructor(private http: HttpClient) { }
 
 
-  blockUser(userBlocked: UsersBlocked):Observable<Boolean>{
+  blockUser(userBlocked: UsersBlocked):Observable<boolean>{
     return this.http.post<boolean>(environment.url + 'UsersBlocked/BlockUser', userBlocked);
   }
 
-  checkUserBlock(id:Number){
-    return this.http.get<boolean>(environment.url+'UsersBlocked/checkUserBlock');
+  checkUserBlock(myId: Number ,userId:Number):Observable<boolean>{
+    return this.http.post<boolean>(environment.url+`UsersBlocked/checkUserBlock/${myId}`, userId);
   }
 }
 

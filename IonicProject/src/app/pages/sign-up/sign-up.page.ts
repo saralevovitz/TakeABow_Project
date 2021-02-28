@@ -5,13 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable} from 'rxjs/internal/Observable';
-
-//import { Observable} from 'rxjs/Observable';
-
-//import { Observable } from '"../../../../node_modules/rxjs/Observable"';
-
 
 @Component({
   selector: 'app-sign-up',
@@ -41,19 +35,12 @@ httpOptions = {
 
 
 signUp(){
-  //console.log(f)
-  //this.userService.func(this.user);
   this.res = this.httpClient.post('http://localhost:63522/api/user/createUser', JSON.stringify(this.user),this.httpOptions);
   this.res.subscribe(userId => {
     localStorage.setItem('userId', userId)//שומר את הידיץ
-    console.log('my-Id: ', userId);
   })
-  // if(this.res){
-  //   alert('User registered successfully');
-  // }
-  // else{
-  //   alert('Registration failed');
-  // }
+  alert("השם משתמש נשלח למייל")
+
 }
 
 
