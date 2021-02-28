@@ -1,14 +1,19 @@
-<ion-header>
-   <ion-toolbar>
-      <ion-title>הפרופיל שלי</ion-title>
-   </ion-toolbar>
+<ion-header translucent="true">
+    <ion-toolbar>
+        <ion-buttons collapse="true" slot="end">
+            <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
+        </ion-buttons>
+        <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">הפרופיל שלי</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
     <ion-item>
         <ion-input name="firstName" type="text" placeholder="{{user.FirstName}}" [(ngModel)]="user.FirstName" required>
-     </ion-input>
+        </ion-input>
     </ion-item>
 
     <ion-item>
@@ -31,8 +36,8 @@
         </ion-input>
     </ion-item>
     <br>
-    <ion-button style="width: 85px;" (click)="onClickEdit()" type="submit">
-        <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: left; direction: rtl;">
+    <ion-button style="width: 85px; text-align:left;" (click)="onClickEdit()" type="submit">
+        <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: left;">
         </ion-icon>
     </ion-button>
 

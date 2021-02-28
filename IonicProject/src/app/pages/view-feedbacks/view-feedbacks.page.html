@@ -1,18 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-title>viewFeedbacks</ion-title>
-  </ion-toolbar>
+<ion-header translucent="true">
+    <ion-toolbar>
+        <ion-buttons collapse="true" slot="end">
+            <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
+        </ion-buttons>
+        <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">צפיה בפידבקים</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 
 
 <ion-content>
-  <ion-list *ngFor="let f of feedbacksList">
-     <ion-item class="textFeedback" >
-          <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
-          <ion-label> מ{{f.FromUserFullName}} </ion-label>
-          <ion-label> {{f.Feedback}}</ion-label>
-          <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
-         </ion-item>
-   </ion-list>
+    <ion-list *ngFor="let f of feedbacksList">
+        <ion-item class="textFeedback">
+            <!-- <ion-icon name="chatbubble-ellipses-outline" style="height: 30px; width: 30px; color: rgb(28, 129, 163);"></ion-icon> -->
+            <!-- <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon> -->
+            <ion-icon name="thumbs-up-sharp" style="height: 30px; width: 30px; color: rgb(28, 129, 163); margin-left: 10px;"></ion-icon>
+            <ion-label> מ{{f.FromUserFullName}} </ion-label>
+            <ion-label> {{f.Feedback}}</ion-label>
+            <ion-label>{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

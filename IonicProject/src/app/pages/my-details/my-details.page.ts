@@ -15,6 +15,7 @@ export class MyDetailsPage implements OnInit {
    user:User=new User();
    user1:User=new User();
    id:number=1934
+   page_title:string="הפרופיל שלי";
   
    idU: number=+localStorage.getItem('userIdLogin')
 
@@ -27,7 +28,7 @@ export class MyDetailsPage implements OnInit {
   //   let u:User=new User();
   // localStorage.setItem("key",JSON.stringify(u)) 
   //  u=JSON.parse(localStorage.getItem("key"))
-
+console.log(this.page_title)
 
   this.userService.GetUser(this.idU).subscribe((res:User)=>{this.user=res;
   },err=>console.error(err))

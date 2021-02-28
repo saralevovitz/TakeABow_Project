@@ -1,13 +1,17 @@
-<ion-header>
+<ion-header translucent="true">
     <ion-toolbar>
-        <ion-title>topFeedbacks</ion-title>
+        <ion-buttons collapse="true" slot="end">
+            <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
+        </ion-buttons>
+        <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">פידבקים</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
     </ion-toolbar>
-
-   
 </ion-header>
 
-<ion-content> 
-      <ion-label class="title" style="text-align: center; font-size: 20px;">הפידבקים של {{nameUserF}}</ion-label>
+<ion-content>
+    <ion-label class="title" style="text-align: center; font-size: 20px;">הפידבקים של {{nameUserF}}</ion-label>
     <ion-list>
         <ion-item>
             <ion-label>

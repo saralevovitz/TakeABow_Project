@@ -1,17 +1,22 @@
-<ion-header>
+<ion-header translucent="true">
     <ion-toolbar>
-        <ion-title>viewRequests בקשות צפיה שנשלחו אלי</ion-title>
+        <ion-buttons collapse="true" slot="end">
+            <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
+        </ion-buttons>
+        <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">בקשות לצפות בי</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let p of permissionList">
-    <ion-item (click)="AlertView(p.WatchUserId, p.Id)">
-      <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
-      <ion-label> {{p.Id}} </ion-label>
-         <ion-label> מ{{p.FromUserFullName}} </ion-label>
-         <ion-label >{{p.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
-  </ion-item>
-  </ion-list>
+    <ion-list *ngFor="let p of permissionList">
+        <ion-item (click)="AlertView(p.WatchUserId, p.Id)">
+            <ion-icon name="shapes" style="height: 30px; width: 30px;"></ion-icon>
+            <ion-label> {{p.Id}} </ion-label>
+            <ion-label> מ{{p.FromUserFullName}} </ion-label>
+            <ion-label>{{p.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>
-
