@@ -28,13 +28,14 @@ export class AppComponent {
   }
   user:User=new User();
   idU: Number=+localStorage.getItem('userIdLogin')
-  
+ 
   amountFeedback: Number;
   amountViewRequest:Number;
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    
     });
    if(this.idU!=null&&this.idU>0)
     this.userService.GetUser(this.idU).subscribe((res:User)=>{this.user=res;

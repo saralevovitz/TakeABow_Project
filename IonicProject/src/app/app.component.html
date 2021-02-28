@@ -1,47 +1,51 @@
-
-
 <ion-app>
 
-  
-  <ion-buttons slot="start">
-    <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
+    <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+        <ion-toolbar color="primary">
 
-    
-    
+            <ion-buttons slot="primary">
+            </ion-buttons>
+            <ion-title style="text-align: center; font-size: 20px; font-weight: bold;">שלום ל{{user.FirstName+' '+ user.LastName}} </ion-title>
+        </ion-toolbar>
 
-  <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
-    <ion-header>
-      <ion-toolbar>
-        
-          <ion-title class="title" style="text-align: center; font-size: 20px;">שלום ל{{user.FirstName+' '+ user.LastName}} </ion-title>
-      </ion-toolbar>
-    </ion-header>
+        <br>
 
-    <ion-content>
-      <ion-list class="icon">
-        <ion-buttons>
-          <ion-button (click)="toHomePage()" *ngIf="isLoggedInUser()"><ion-icon name="home-sharp"></ion-icon></ion-button>
-          <ion-button *ngIf="isLoggedInUser()" name="toLogOut" (click)="logOut()"><ion-icon name="exit-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon></ion-button>
-          <ion-button *ngIf="isLoggedInUser()" name="toAllUsersPage" (click)="toAllUsersPage()"><ion-icon name="people-outline"></ion-icon></ion-button> 
-        </ion-buttons>
-        <ion-item (click)="toMyFeedbacks()"><ion-icon name="list-outline" ></ion-icon>  רשימת פידבקים
-          <ion-badge style="right: 20px;">{{amountFeedback}}</ion-badge></ion-item>
-        <ion-item (click)="addFeedback()"><ion-icon name="create-outline"></ion-icon>הוסף פידבק</ion-item>
-        <ion-item (click)="toMyInvitations()">בקשה לצפיה בפידבקים של אחר</ion-item>
-        <ion-item (click)="toMyDetails()"><ion-icon name="person-outline"></ion-icon>הפרופיל שלי</ion-item>
-        <ion-item (click)="toView()"><ion-icon name="mail-unread-outline"></ion-icon>צפיה בבקשות {{amountViewRequest}}</ion-item>
-        <ion-item (click)="toListFeedbacks()">פידבקים שכתבתי</ion-item>
-    
-      </ion-list>
-       
+        <ion-content>
+            <ion-list>
+                <ion-buttons>
+                    <ion-button (click)="toHomePage()" *ngIf="isLoggedInUser()">
+                        <ion-icon name="home-sharp" class="icon"></ion-icon>
+                    </ion-button>
+                    <ion-button *ngIf="isLoggedInUser()" name="toLogOut" (click)="logOut()">
+                        <ion-icon name="exit-outline" class="icon"></ion-icon>
+                    </ion-button>
+                    <ion-button *ngIf="isLoggedInUser()" name="toAllUsersPage" (click)="toAllUsersPage()">
+                        <ion-icon name="people-outline" class="icon"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
 
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="main">
-    
-  </ion-router-outlet>
+                <br>
+                <br>
+
+                <ion-item (click)="toMyFeedbacks()">
+
+                    <ion-icon name="list-outline" class="iconList"></ion-icon>
+                    רשימת פידבקים
+                    <ion-badge style="right: 20px; background-color: rgb; margin-right: 5px;">{{amountFeedback}}</ion-badge>
+                </ion-item>
+                <ion-item (click)="addFeedback()" class="itemList">
+                    <ion-icon name="create-outline" class="iconList"></ion-icon>הוסף פידבק</ion-item>
+                <ion-item (click)="toMyInvitations()">
+                    <ion-icon name="hand-left-outline" class="iconList"></ion-icon>בקשות צפיה בפידבקים של אחר</ion-item>
+                <ion-item (click)="toMyDetails()">
+                    <ion-icon name="person-outline" class="iconList"></ion-icon>הפרופיל שלי</ion-item>
+                <ion-item (click)="toView()">
+                    <ion-icon name="mail-unread-outline" class="iconList"></ion-icon>צפיה בבקשות {{amountViewRequest}}</ion-item>
+                <ion-item (click)="toListFeedbacks()">
+                    <ion-icon name="chatbubbles-outline" class="iconList"></ion-icon>פידבקים שכתבתי</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main">
+    </ion-router-outlet>
 </ion-app>
-
-
-

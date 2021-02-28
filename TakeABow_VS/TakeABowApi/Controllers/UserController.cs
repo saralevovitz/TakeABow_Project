@@ -12,6 +12,7 @@ namespace TakeABowApi.Controllers
 {
     public class UserController : ApiController
     {
+       // לבדוק אם מיותר ןלמחוק
         int num_user_id = 1000;
 
         TakeABowApi.Logic.Logic logic = new TakeABowApi.Logic.Logic();
@@ -67,8 +68,7 @@ namespace TakeABowApi.Controllers
         [Route("api/user/findUser")]
         //  findUser?
         public bool POST(Common.User u)
-        {
-            
+        {      
             User user = logic.FindUser(u.Id);
             if (user==null)
                 return false;

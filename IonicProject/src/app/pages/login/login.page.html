@@ -1,31 +1,37 @@
-<ion-header>
+<ion-header translucent="true">
     <ion-toolbar>
-       <ion-title>login</ion-title>
+        <ion-buttons collapse="true" slot="end">
+            <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
+        </ion-buttons>
+        <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">כניסה</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content style="font-family: sans-serif; font-size: 25px;">
- 
+
     <form>
-        <p> Insert your details: </p>
+        <p> הכנס את פרטי הזיהוי שלך</p>
         <ion-item>
-            <ion-input  name="name" type="text" placeholder="שם משתמש" [(ngModel)]="userLogin.Id" required></ion-input>
+            <ion-input name="name" type="text" placeholder="שם משתמש" [(ngModel)]="userLogin.Id" required></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-input  name="password" type="password" placeholder="סיסמא" [(ngModel)]="userLogin.Password" required></ion-input>
+            <ion-input name="password" type="password" placeholder="סיסמא" [(ngModel)]="userLogin.Password" required></ion-input>
         </ion-item>
     </form>
     <br>
 
-    
+
     <!-- <ion-button name="toMyAccount" (click)="toMyAccountPage()">to my account</ion-button> -->
     <button name="toHome" (click)="toHomePage()">
     </button>
 
- 
-        
-        <ion-icon name="log-in-outline"  (click)="login()" style="height: 40px; width: 40px; color:green"></ion-icon>  
-  
+
+
+    <ion-icon name="log-in-outline" (click)="login()" style="height: 40px; width: 40px; color:green"></ion-icon>
+
 
 </ion-content>
