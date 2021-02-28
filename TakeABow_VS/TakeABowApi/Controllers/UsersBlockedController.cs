@@ -48,15 +48,15 @@ namespace TakeABowApi.Controllers
 
         }
 
-        //[HttpGet]
-        //[Route("api/UsersBlocked/checkUserBlock")]//אם היוזר חסום מחזיר אמת
-        //public bool checkUserBlock(int  idP)
-        //{
-        //  if(logic.checkUserBlock(idP))
-        //    return true;
-        //      else 
-        //        return false;
-        //}
+        [HttpPost]
+        [Route("api/UsersBlocked/checkUserBlock/{myId}")]//אם היוזר חסום מחזיר אמת
+        public IHttpActionResult checkUserBlock([FromUri] int myId, [FromBody] int userId)
+        {
+            if (logic.checkUserBlock(myId, userId))
+                return Ok(true);
+            else
+                return Ok(false);
+        }
 
 
     }

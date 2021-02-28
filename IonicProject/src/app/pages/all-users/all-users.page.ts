@@ -9,6 +9,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { Permissions } from 'src/app/shared/models/permissions.model';
 import { PermissionsService } from 'src/app/shared/services/permissions.service';
 
+
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.page.html',
@@ -22,28 +23,25 @@ export class AllUsersPage implements OnInit {
   userBlocked: UsersBlocked= new UsersBlocked(); 
   sendToId: any[]
   permission: Permissions= new Permissions();
-  ans:boolean 
+  ans:Boolean = false
   constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController) { }
   selectedUser:User=new User();
   selectedUserId: Number;
   //userLogedIn:User=new User();
   userLogedInId: Number=+localStorage.getItem('userIdLogin')
 
-
+   answ:Boolean
   ngOnInit() {
     this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{this.user=res;
     },err=>console.error(err))
 
     this.getAllUsers()
-   
-
   }
 
   toHomePage(){
     this.router.navigate(['home'])
   }
   
-
   getAllUsers(){
     this.userService.getAllUsers().subscribe(u=>{
       console.log(u)
@@ -97,12 +95,8 @@ export class AllUsersPage implements OnInit {
     }
     ]
   });
-  
-    
    await alert.present();
-  
  }
-
 
  blockUser(fromUserId: number){ 
   this.userBlocked.BlockedUserId=fromUserId;
@@ -110,19 +104,32 @@ export class AllUsersPage implements OnInit {
   this.userBlocked.IsBlocked=true;
 
     this.userBlockedService.blockUser(this.userBlocked).subscribe(res=>{
-      console.log("the res: "+ res);
+        this.answ=res
+        this.userB()
     })
   }
 
   checkUserBlock(idUB:Number){
-    console.log("theeeeee   "+idUB)
-    this.userBlockedService.checkUserBlock(idUB).subscribe(res=>{
+    console.log("jkjkjk")
+    
+       this.userBlockedService.checkUserBlock(this.userLogedInId, idUB).subscribe(res=>{
       this.ans=res
+      return res
       console.log("the ans "+ this.ans)
     })
+
+ //  return this.ans
     // if(this.ans== true)
     // return true;
     // else false;
   }
 
+
+  userB(){
+
+
+    if(this.answ== true)
+    return true;
+    else false;
+  }
 }

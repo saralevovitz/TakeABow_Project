@@ -69,7 +69,12 @@ namespace TakeABowApi.Logic
         public int saveNewUser(Common.User u)
         {
             var dalUser = Converters.ConvertToDal.US(u);
+
             var res = save.saveNewUser(dalUser);
+            string subject =" תודה רבה שנרשמתם ל TakeABow ";
+            string message =  "השם משתמש שלך באפלקציה שלנו הוא: "+dalUser.Id.ToString();
+
+            new MailManager().SendEmail(u.Email, subject, message);
             return res;
         }
         //פונקציה המוחקת משתמש מהמערכת
@@ -171,9 +176,9 @@ namespace TakeABowApi.Logic
             return save.Block(Converters.ConvertToDal.UsersBlocked(ub));
         }
 
-        public bool checkUserBlock(int idP)
+        public bool checkUserBlock(int myId, int userId)
         {
-            return get.checkUserBlock(idP);
+            return get.checkUserBlock(myId, userId);
         }
 
 

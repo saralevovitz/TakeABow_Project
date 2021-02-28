@@ -40,7 +40,8 @@
                 <ion-item (click)="toMyDetails()">
                     <ion-icon name="person-outline" class="iconList"></ion-icon>הפרופיל שלי</ion-item>
                 <ion-item (click)="toView()">
-                    <ion-icon name="mail-unread-outline" class="iconList"></ion-icon>צפיה בבקשות {{amountViewRequest}}</ion-item>
+                    <ion-icon name="mail-unread-outline" class="iconList"></ion-icon>צפיה בבקשות 
+                    <ion-badge style="right: 20px; background-color: rgb; margin-right: 5px;">{{amountViewRequest}}</ion-badge></ion-item>
                 <ion-item (click)="toListFeedbacks()">
                     <ion-icon name="chatbubbles-outline" class="iconList"></ion-icon>פידבקים שכתבתי</ion-item>
             </ion-list>

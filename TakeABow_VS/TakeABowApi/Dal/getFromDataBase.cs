@@ -27,7 +27,7 @@ namespace TakeABowApi.Dal
                 using(TakeABowDBEntities db= new TakeABowDBEntities())
                 {
                     List<User> users = new List<User>();
-                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false).OrderBy(u=>u.LastName).ToList();
+                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false).OrderBy(u=>u.Id).ToList();
                     return users;
                 }
              
@@ -136,14 +136,14 @@ namespace TakeABowApi.Dal
         }
 
 
-        public bool checkUserBlock(int idP)
+        public bool checkUserBlock(int myId, int userId)
         {
-            using(TakeABowDBEntities db= new TakeABowDBEntities())
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
-                var ub = db.UsersBlockeds.FirstOrDefault(u => u.ID == idP && u.IsBlocked==false);//בודק לפי היד של הבקשה אם הוא חסום, אם חסום מחזיר אמת 
-                if (ub == null)
-                    return false;
-                return true ;
+                var ub = db.UsersBlockeds.FirstOrDefault(u =>u.UserId == myId && u.BlockedUserId == userId);//בודק לפי היד של הבקשה אם הוא חסום, אם חסום מחזיר אמת 
+               if(ub != null && ub.IsBlocked == true)
+                    return true;
+                return false;
             }
         }
     }
