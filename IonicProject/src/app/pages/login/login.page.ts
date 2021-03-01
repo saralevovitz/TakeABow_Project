@@ -16,12 +16,35 @@ export class LoginPage implements OnInit {
    
   userLogin:User= new User()
   IdLogin: number
+  isCorrect:Boolean
+  countWrong:number=0
  
   login(){
-    this.userService.checkLogin(this.userLogin).subscribe(Boolean)
+    if(this.countWrong>3)
+        //blockIp()
+    this.userService.checkLogin(this.userLogin).subscribe(res=>
+     this.isCorrect=res)
+     if(this.isCorrect==false)
+        this.countWrong++
+        else{
     localStorage.setItem('userIdLogin', this.userLogin.Id.toString())
-    this.IdLogin=+ localStorage.getItem('userIdLogin')
+    this.IdLogin=+ localStorage.getItem('userIdLogin')}
     this.router.navigate(['home']);
+        
+  }
+
+  login2(){
+    if(this.countWrong>3)
+        //blockIp()
+    this.userService.checkLogin(this.userLogin).subscribe(res=>
+     this.isCorrect=res)
+     if(this.isCorrect==false)
+        this.countWrong++
+        else{
+    localStorage.setItem('userIdLogin', this.userLogin.Id.toString())
+    this.IdLogin=+ localStorage.getItem('userIdLogin')}
+    this.router.navigate(['home']);
+        
   }
 
   toHomePage(){

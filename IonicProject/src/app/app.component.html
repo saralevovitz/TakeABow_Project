@@ -26,24 +26,27 @@
 
                 <br>
                 <br>
-
+                <ion-item (click)="toMyDetails()">
+                    <ion-icon name="person-outline" class="iconList"></ion-icon>הפרופיל שלי</ion-item>
                 <ion-item (click)="toMyFeedbacks()">
-
                     <ion-icon name="list-outline" class="iconList"></ion-icon>
                     רשימת פידבקים
                     <ion-badge style="right: 20px; background-color: rgb; margin-right: 5px;">{{amountFeedback}}</ion-badge>
                 </ion-item>
                 <ion-item (click)="addFeedback()" class="itemList">
                     <ion-icon name="create-outline" class="iconList"></ion-icon>הוסף פידבק</ion-item>
-                <ion-item (click)="toMyInvitations()">
-                    <ion-icon name="hand-left-outline" class="iconList"></ion-icon>בקשות צפיה בפידבקים של אחר</ion-item>
-                <ion-item (click)="toMyDetails()">
-                    <ion-icon name="person-outline" class="iconList"></ion-icon>הפרופיל שלי</ion-item>
+                    <ion-item (click)="toListFeedbacks()">
+                        <ion-icon name="chatbubbles-outline" class="iconList"></ion-icon>פידבקים שכתבתי</ion-item>
                 <ion-item (click)="toView()">
                     <ion-icon name="mail-unread-outline" class="iconList"></ion-icon>צפיה בבקשות 
                     <ion-badge style="right: 20px; background-color: rgb; margin-right: 5px;">{{amountViewRequest}}</ion-badge></ion-item>
-                <ion-item (click)="toListFeedbacks()">
-                    <ion-icon name="chatbubbles-outline" class="iconList"></ion-icon>פידבקים שכתבתי</ion-item>
+                <ion-item (click)="toMyInvitations()">
+                        <ion-icon name="hand-left-outline" class="iconList"></ion-icon>בקשות צפיה בפידבקים של אחר</ion-item>
+
+                        <ion-item (click)=AlertExit()>
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                            יציאה מהאפליקציה
+                        </ion-item>
             </ion-list>
         </ion-content>
     </ion-menu>

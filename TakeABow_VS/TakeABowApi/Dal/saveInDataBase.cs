@@ -151,7 +151,7 @@ namespace TakeABowApi.Dal
         }
 
 
-        public bool IsAllowPermission(Permissions p)
+        public bool IsAllowPermission(int time, Permissions p)
         {
             try
             {
@@ -159,6 +159,7 @@ namespace TakeABowApi.Dal
                 {
                     var p1 = db.Permissions.First(per => per.ID == p.Id);
                     p1.IsAllow = p.IsAllow;
+                    p1.ExpireDate = DateTime.Today.AddDays(time);
                     db.SaveChanges();
                     return true;
 

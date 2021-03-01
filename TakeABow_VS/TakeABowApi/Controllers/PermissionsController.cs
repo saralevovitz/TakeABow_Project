@@ -28,30 +28,14 @@ namespace TakeABowApi.Controllers
         [Route("api/permissions/ViewConfirmation")]//שליחת בקשת צפיה 
         public bool ViewConfirmation(Common.Permissions permission)
         {
-           
-            int weeks = 1;
-
-            
-                Permissions p = new Permissions(num_permission_id++, permission.UserId, permission.WatchUserId, null, DateTime.Now.AddDays(weeks * 7));
+                       
+                Permissions p = new Permissions( permission.UserId, permission.WatchUserId, null,null);
                 if (logic.AddPermission(p))
                     return true;
                 return false;
            
 
         }
-
-        //[HttpGet]
-        //[Route("api/permissions/getUserToPermissions/{watchUserId}")]
-
-        //public String getUserToPermissions(int watchUserId)
-        //{
-
-        //    var u = logic.getUserToPermissions(watchUserId);
-        //    return u;
-
-
-
-        //}
 
 
         [HttpGet]
@@ -66,10 +50,10 @@ namespace TakeABowApi.Controllers
 
 
         [HttpPost]
-        [Route("api/permissions/IsAllowPermission")]// קבלת או דחיית בקשת צפיה
-        public bool IsAllowPermission(Common.Permissions p)
+        [Route("api/permissions/IsAllowPermission/{time}")]// קבלת או דחיית בקשת צפיה
+        public bool IsAllowPermission([FromUri] int time, [FromBody] Permissions p)
         {
-            if (logic.IsAllowPermission(p))
+            if (logic.IsAllowPermission(time, p))
                 return true;
             else return false;
         }

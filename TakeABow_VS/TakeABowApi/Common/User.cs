@@ -18,7 +18,8 @@ namespace TakeABowApi.Common
         public bool Is_Deleted { get; set; }
         public DateTime Create_Date { get; set; }
 
- 
+        public bool IsBlocked { get; set; }
+        
 
         public User()
         {

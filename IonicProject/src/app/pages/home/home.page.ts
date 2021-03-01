@@ -43,7 +43,6 @@ export class HomePage {
       return localStorage.getItem("userIdLogin")!=null;
     }
     toSignUpPage(){  
-      debugger
       this.router.navigate(['sign-up']);
       }
     
@@ -53,8 +52,8 @@ export class HomePage {
   
   
     topFeedbacks(userId:Number){
-      this.userToTOP=userId;
-          this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);
+       this.userToTOP=userId;
+       this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);
     
     }
     

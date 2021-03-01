@@ -27,7 +27,7 @@ namespace TakeABowApi.Dal
                 using(TakeABowDBEntities db= new TakeABowDBEntities())
                 {
                     List<User> users = new List<User>();
-                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false).OrderBy(u=>u.Id).ToList();
+                    users = db.Users.Include(f=>f.Feedbacks).Where(u => u.Is_Deleted == false ).OrderBy(u=>u.Id).ToList();
                     return users;
                 }
              
@@ -38,6 +38,27 @@ namespace TakeABowApi.Dal
                 throw;
             }
         }
+
+
+        public List<User> GetListUsers(int userId)
+        {
+            try
+            {
+                using (TakeABowDBEntities db = new TakeABowDBEntities())
+                {
+                    List<User> users = new List<User>();
+                    users = db.Users.Include(f => f.Feedbacks).Where(u => u.Is_Deleted == false && u.Id!=userId).OrderBy(u => u.Id).ToList();
+                    return users;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //  return new List<User>();
+                throw;
+            }
+        }
+
 
 
         /*Feedback*/
@@ -110,7 +131,7 @@ namespace TakeABowApi.Dal
             using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
                 List<Permission> allPermission = new List<Permission>();
-                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.WatchUserId == WatchUserId).ToList();
+                allPermission = db.Permissions.Include(f => f.User).Where(p1 => p1.WatchUserId == WatchUserId &&p1.ExpireDate>(DateTime.Now)).ToList();
                 return allPermission;
             }
         }
