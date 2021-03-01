@@ -9,6 +9,7 @@ namespace TakeABowApi.Logic
 {
     public class MailManager
     {
+        //פונקציה זו שולחת לכל משתמש שנרשם לאפליקציה אימייל ובו הקוד האישי שלו לשימוש באפליקציה
         public bool SendEmail(string address,string subject,string message)
         {
             string email = "takeabow100@gmail.com";
