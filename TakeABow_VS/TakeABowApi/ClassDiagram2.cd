@@ -1,24 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="TakeABowApi.Controllers.BlockIPController">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="6.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Controllers\BlockIPController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TakeABowApi.Controllers.FeedbackController">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAABCAAAAACCAAAACAAgADgAAAAAgQAA=</HashCode>
       <FileName>Controllers\FeedbackController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TakeABowApi.Controllers.PermissionsController">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="5.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAIAgAAAAABgAAAAAAAAAAAAAABAAAAAACAgAAA=</HashCode>
       <FileName>Controllers\PermissionsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Controllers.UserController">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAIgQAAAABAEAAAAAAQAAAAAAAAAAAAAAEgEAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Controllers.UsersBlockedController">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQACABAAAAAAAAAAAAAAAAgAAAAAAAgAAA=</HashCode>
+      <FileName>Controllers\UsersBlockedController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Common.BlockIP">
+    <Position X="8.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Common\BlockIP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Common.Feedbacks">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACwUAAAgAAAAAAAAACAAAAAABAAAAAAAABAQAAAAA=</HashCode>
+      <FileName>Common\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Common.Permissions">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAkAAAAAAAAAAAAAAAAgACABAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Common\Permissions .cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Common.User">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAAACAAAAAAAAAAAACAgACAAAAIAAQQAg=</HashCode>
+      <FileName>Common\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Common.UsersBlocked">
+    <Position X="6.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAQAAgAAAgAAAAAAAAA=</HashCode>
+      <FileName>Common\UsersBlocked.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Logic.Logic">
+    <Position X="0.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAEABIAAACACIAABAAAQCAAAQACAAhAHAAQASEBAAU=</HashCode>
+      <FileName>Logic\Logic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Logic.MailManager">
+    <Position X="2.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\MailManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Dal.getFromDataBase">
+    <Position X="3.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAIIAAAACAAAAAAEACAAAIgAAAgAAAAAASQAAAA=</HashCode>
+      <FileName>Dal\getFromDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Dal.saveInDataBase">
+    <Position X="5.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEABAAAQAAAIAABAAAAAAAAAAAAAAACAAQAAABAAQ=</HashCode>
+      <FileName>Dal\saveInDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Converters.ConvertToCommon">
+    <Position X="6.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAEAAAAAAACAAAAAAAAAAAAEAAAAAACAAA=</HashCode>
+      <FileName>Converters\ConvertToCommon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Converters.ConvertToDal">
+    <Position X="8.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAEAAAAAAACAAAAAAAAAAAAEAAAAAAAAEA=</HashCode>
+      <FileName>Converters\ConvertToDal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
