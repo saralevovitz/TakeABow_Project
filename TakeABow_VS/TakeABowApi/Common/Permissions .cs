@@ -12,7 +12,7 @@ namespace TakeABowApi.Common
         public int WatchUser‏Id { get; set; }
         public DateTime CreateDate { get; set; }
         public bool? IsAllow { get; set; }
-        public DateTime ExpireDate { get; set; }
+        public DateTime? ExpireDate { get; set; }
 
         public string FromUserFullName { get; set; }
         public string ToUserFullName { get; set; }
@@ -23,9 +23,9 @@ namespace TakeABowApi.Common
         }
 
 
-        public Permissions(int id, int userId, int watchUser‏Id,  bool? isAllow , DateTime expireDate)
+        public Permissions( int userId, int watchUser‏Id,  bool? isAllow , DateTime? expireDate)
         {
-           // this.Id = id;
+          //  this.Id = ;
             this.UserId = userId;
             this.WatchUserId = watchUserId;
             this.CreateDate = DateTime.Now;

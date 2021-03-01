@@ -24,26 +24,26 @@ export class AllUsersPage implements OnInit {
   sendToId: any[]
   permission: Permissions= new Permissions();
   ans:Boolean = false
-  constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController) { }
   selectedUser:User=new User();
   selectedUserId: Number;
-  //userLogedIn:User=new User();
   userLogedInId: Number=+localStorage.getItem('userIdLogin')
-
    answ:Boolean
+
+  constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController) { }
+
   ngOnInit() {
     this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{this.user=res;
     },err=>console.error(err))
 
-    this.getAllUsers()
+    this.getAllUsers(this.userLogedInId)
   }
 
   toHomePage(){
     this.router.navigate(['home'])
   }
   
-  getAllUsers(){
-    this.userService.getAllUsers().subscribe(u=>{
+  getAllUsers(userLogedInId: Number){
+    this.userService.getAllUsers(this.userLogedInId).subscribe(u=>{
       console.log(u)
       this.AllUsersList=u
       this.sortedUserList=u

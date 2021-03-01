@@ -12,12 +12,11 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
  UpDate(user:User):Observable<boolean>{
-    // debugger; 
       return this.http.post<boolean>(environment.url + 'user/updateUser',user);
  }
 
- getAllUsers():Observable<User[]>{
-  return this.http.get<User[]>(environment.url + 'user/getAllUsers');
+ getAllUsers(userLogedInId:Number):Observable<User[]>{
+  return this.http.get<User[]>(environment.url + `user/getAllUsers/${userLogedInId}`);
  }
 
   func(user:User):Observable<boolean>{

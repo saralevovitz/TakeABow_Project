@@ -28,10 +28,10 @@ namespace TakeABowApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/user/getAllUsers")]
-        public List<Common.User> GetAllUsers()
+        [Route("api/user/getAllUsers/{userId}")]//שליפת כל המשתמשים חוץ מהמשתמש המחובר
+        public List<Common.User> GetAllUsers(int userId)
         {
-            return logic.GetAllUsers();
+            return logic.GetAllUsers(userId);
         }
 
         [HttpGet]
@@ -43,7 +43,7 @@ namespace TakeABowApi.Controllers
 
 
         [HttpPost]
-        [Route("api/user/createUser")]
+        [Route("api/user/createUser")]//יצירת משתמש חדש
         public int CreateUsert(Common.User user)
         {
             User u = new User(user);
@@ -87,7 +87,7 @@ namespace TakeABowApi.Controllers
             {
                 return 0;
             }
-
+         
             return u.Id;
         }
 

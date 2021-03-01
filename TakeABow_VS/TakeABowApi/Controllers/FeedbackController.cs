@@ -16,7 +16,7 @@ namespace TakeABowApi.Controllers
         [HttpGet]
         [Route("api/feedback/test")]
         public bool Get()
-        {
+        {  
             return true;
         }
 

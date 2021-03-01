@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -22,12 +22,14 @@ export class AppComponent {
     private router:Router,
     private userService: UserService,
     private feedbackService:FeedbackService,
-    private permissionsService:PermissionsService
+    private permissionsService:PermissionsService,
+    private alertController: AlertController
   ) {
     this.initializeApp();
   }
   user:User=new User();
   idU: Number=+localStorage.getItem('userIdLogin')
+  ans: boolean
  
   amountFeedback: Number;
   amountViewRequest:Number;
@@ -57,7 +59,6 @@ export class AppComponent {
     this.router.navigate(['home']);
    }
 
-
     logOut(){
       localStorage.clear();
     }
@@ -77,7 +78,36 @@ export class AppComponent {
     toListFeedbacks(){
       this.router.navigate(['list-feedback']);
     }
-  
+   
+   async AlertExit()
+    {
+       var alert = await this.alertController.create(
+    {
+    cssClass: 'my-custom-class',
+    header: 'אתה בטוח??',
+    buttons: 
+    [
+      {
+        text: 'אישור',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+      
+        this.user.Is_Deleted=true
+        this.userService.UpDate(this.user).subscribe(res=>
+         this.ans=res
+         )}
+      }, 
+      {
+        text: 'ביטול',
+        handler: () => 
+        { }
+      }
+    ]
+  });
+   await alert.present();
+ 
+ }
     addFeedback(){
       this.router.navigate(['new-feedback']);
     }

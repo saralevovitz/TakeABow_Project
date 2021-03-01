@@ -40,14 +40,14 @@
 
     <ion-list>
         <ion-label>מין</ion-label>
-        <ion-radio-group [(ngModel)]="user.Gender">
+        <ion-radio-group [(ngModel)]="user.Gender" name="gender" >
             <ion-item>
                 <ion-label>זכר</ion-label>
-                <ion-radio slot="start"></ion-radio>
+                <ion-radio value="m" slot="start" ></ion-radio>
             </ion-item>
             <ion-item>
                 <ion-label>נקבה</ion-label>
-                <ion-radio slot="start"></ion-radio>
+                <ion-radio value="f" slot="start"></ion-radio>
             </ion-item>
         </ion-radio-group>
     </ion-list>

@@ -11,24 +11,44 @@
 </ion-header>
 
 
+
 <ion-content>
     <div>
         <ion-button *ngIf="!isLoggedInUser()" name="toSignUp" (click)="toSignUpPage()">sign up</ion-button>
-        <ion-button *ngIf="!isLoggedInUser()" name="toLogin" (click)="toLoginPage()">sign in</ion-button>
 
-        <div id="container">
-            <h3 style="font-size: 35px; color: rgb(24, 135, 209); border-width: thick; font-weight: bolder;">החמישיה המנצחת</h3>
+        <ion-content>
+            <ion-button *ngIf="!isLoggedInUser()" name="toSignUp" (click)="toSignUpPage()">sign up</ion-button>
+            <ion-button *ngIf="!isLoggedInUser()" name="toLogin" (click)="toLoginPage()">sign in</ion-button>
+            <h3 style="font-size: 35px; color: rgb(24, 135, 209); border-width: thick; border-color: yellow; font-weight: bolder;">החמישיה המנצחת</h3>
 
-            <ion-list *ngFor="let user of userList">
-                <ion-card style="box-shadow: none; direction: rtl;">
-                    <ion-card-title>{{user.FirstName + " " + user.LastName}}</ion-card-title>
-                    <ion-card-subtitle>{{user.Job}}</ion-card-subtitle>
-                    <ion-button>
-                        <ion-icon (click)="topFeedbacks(user.Id)" name="eye-outline" style="height: 22px; width: 22px; text-align: left; direction: rtl;"></ion-icon>
-                    </ion-button>
-                </ion-card>
 
-            </ion-list>
-        </div>
+            <div id="container">
+                <h3 style="font-size: 35px; color: rgb(24, 135, 209); border-width: thick; font-weight: bolder;">החמישיה המנצחת</h3>
+
+                <ion-list *ngFor="let user of userList">
+                    <ion-card style="box-shadow: none; direction: rtl;">
+                        <ion-card-title>{{user.FirstName + " " + user.LastName}}</ion-card-title>
+                        <ion-card-subtitle>{{user.Job}}</ion-card-subtitle>
+                        <ion-button>
+                            <ion-icon (click)="topFeedbacks(user.Id)" name="eye-outline" style="height: 22px; width: 22px; text-align: left; direction: rtl;"></ion-icon>
+                        </ion-button>
+                    </ion-card>
+
+                </ion-list>
+            </div>
     </div>
-</ion-content>
+
+    <ion-list *ngFor="let user of userList">
+
+        <ion-card style="box-shadow: none; direction: rtl;">
+
+            <ion-card-title>{{user.FirstName + " " + user.LastName}}</ion-card-title>
+            <ion-card-subtitle>{{user.Job}}</ion-card-subtitle>
+            <ion-button (click)="topFeedbacks(user.Id)">
+                <ion-icon name="eye-outline" style="height: 22px; width: 22px; text-align: left; direction: rtl;"></ion-icon>
+            </ion-button>
+        </ion-card>
+
+    </ion-list>
+
+    </ion-content>

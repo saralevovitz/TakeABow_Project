@@ -19,7 +19,9 @@ export class SignUpPage implements OnInit {
 
 constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
 
-ngOnInit() {}
+ngOnInit() {
+ this.user.Gender="m";
+}
 
 toHomePage(){
     this.router.navigate(['home']);

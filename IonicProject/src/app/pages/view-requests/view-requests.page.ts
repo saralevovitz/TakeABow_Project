@@ -16,7 +16,7 @@ export class ViewRequestsPage implements OnInit {
  toPermission:number
   permissionList: Permissions[]=[]
   pOk: boolean
-
+ time:Number
  
   ngOnInit() {
     this.toPermission=+localStorage.getItem('userIdLogin');
@@ -38,43 +38,98 @@ export class ViewRequestsPage implements OnInit {
  async AlertView(fromUser: Number, idPermission:Number)
  {
    console.log("the idP: "+ fromUser)
-  var alert = await this.alertController.create(
-    {
-    cssClass: 'my-custom-class',
-    header: 'אישור הזמנה',
-    buttons: 
-    [
-      {
-        text: 'אשר',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          this.permission.IsAllow=true;
-          this.permission.Id= idPermission;
-          this.permission.UserId=+localStorage.getItem('userIdLogin');
-          this.permission.WatchUserId=fromUser;
-          this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
-          
-            console.log("res:"+ res))
-        }
-      }, 
-      {
-        text: 'דחה',
-        handler: () => 
-        {
-          this.permission.IsAllow=false
-          this.permission.Id= idPermission;
-          this.permission.UserId=+localStorage.getItem('userIdLogin');
-          this.permission.WatchUserId=fromUser;
-          this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
-          console.log("res:"+ res))
-        }
-      }
-    ]
-  });
-   await alert.present();
- }
 
+  
+
+  //alertInputs.push({name:element, type:'radio', value:element, label: element})
+  
+//   var alert = await this.alertController.create(
+//     {
+//     cssClass: 'my-custom-class',
+//     header: 'אישור הזמנה',
+//     buttons: 
+//     [
+//       {
+//         text: 'אשר',
+//         role: 'cancel',
+//         cssClass: 'secondary',
+//         handler: () => {
+//           this.permission.IsAllow=true;
+//           this.permission.Id= idPermission;
+//           this.permission.UserId=+localStorage.getItem('userIdLogin');
+//           this.permission.WatchUserId=fromUser;
+//           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
+          
+//             console.log("res:"+ res))
+//         }
+//       }, 
+//       {
+//         text: 'דחה',
+//         handler: () => 
+//         {
+//           this.permission.IsAllow=false
+//           this.permission.Id= idPermission;
+//           this.permission.UserId=+localStorage.getItem('userIdLogin');
+//           this.permission.WatchUserId=fromUser;
+//           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
+//           console.log("res:"+ res))
+//         }
+//       }
+//     ]
+//   });
+//    await alert.present();
+//  }
+//let alertInputs=[]
+var expireTimeAlert = await this.alertController.create(
+  {
+  cssClass: 'my-custom-class',
+  header: 'אישור הזמנה',
+  inputs: [
+    {
+      label: 'יום',
+      name: 'day',
+      type: 'radio',
+      value:'7',
+      placeholder: 'Placeholder 1'
+    },
+    {
+      label: 'חודש',
+      name: 'month',
+      type: 'radio',
+      value: '30',
+      placeholder: 'Placeholder 2'
+    },
+    {
+      label: 'שנה',
+      name: 'year',
+      type: 'radio',
+      value: '356',
+      placeholder: 'Placeholder 3'
+    }
+  ],
+  buttons:[
+    {
+      text: 'אשר',             
+              cssClass: 'secondary',
+              handler: (alertData) => {
+                this.permission.IsAllow=true;
+                this.permission.Id= idPermission;
+                this.permission.UserId=+localStorage.getItem('userIdLogin');
+                this.permission.WatchUserId=fromUser;
+                 this.time=alertData;
+           
+             //  this.permission.ExpireDate=Date.now()+alertData;
+             debugger
+                this.permissionsService.IsAllowPermission(this.time,this.permission).subscribe(res=>
+                
+                  console.log("res:"+ res))
+              }
+    }
+  ]
+
+});
+ await expireTimeAlert.present();
+}
 
  
 }

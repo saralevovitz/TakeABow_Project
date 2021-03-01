@@ -37,7 +37,7 @@ export class NewFeedbackPage implements OnInit {
     //לעשות בדיקה מה הכניס, שם משתמש או מייל
 
 
-    this.feedback.FromUserId=this.idU
+    
      this.feedbackService.addFeedback(this.feedback).subscribe(res=>{
        if(res==true)
         alert('הפידבק נשלח בהצלחה')

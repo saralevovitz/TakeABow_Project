@@ -37,7 +37,7 @@ console.log(this.page_title)
 
   onClickEdit(){
     this.userService.UpDate(this.user).subscribe()
-    alert('העדכון נשמר')
+    alert('העדכון נשמר')//להוסיף  מה הפונקציה מחזירה
     //this.router.navigate(['my-account']);
   }
 

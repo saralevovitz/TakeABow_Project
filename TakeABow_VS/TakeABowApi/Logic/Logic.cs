@@ -28,10 +28,16 @@ namespace TakeABowApi.Logic
             return allUsers.Take(5).Select(u => Converters.ConvertToCommon.U(u)).ToList();
         }
         //פונקציה המחזירה רשימה של כל המשתמשים באפליקציה
-        public List<Common.User> GetAllUsers()
+        public List<Common.User> GetAllUsers(int userId)
         {
-            List<Dal.User> allUsers = new getFromDataBase().GetUsers();
-            return allUsers.Select(u => Converters.ConvertToCommon.U(u)).ToList();
+            List<Dal.User> allUsers = new getFromDataBase().GetListUsers(userId);
+            var users = allUsers.Select(u => Converters.ConvertToCommon.U(u)).ToList();
+            foreach (var u in users)
+            {
+                u.IsBlocked = checkUserBlock(userId, u.Id);
+            }
+            return users;
+
         }
         //פונקציה המחזירה משתמש מסוים
         public Common.User GetUser(int userId)
@@ -160,9 +166,9 @@ namespace TakeABowApi.Logic
 
         }
 
-        public bool IsAllowPermission(Permissions p)
+        public bool IsAllowPermission(int time, Permissions p)
         {
-            return save.IsAllowPermission(p);
+            return save.IsAllowPermission(time, p);
         }
         //public string getUserToPermissions(int watchUserId)
         //{
