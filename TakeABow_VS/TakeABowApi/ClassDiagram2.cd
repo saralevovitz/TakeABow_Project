@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TakeABowApi.Controllers.BlockIPController">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Controllers\BlockIPController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Controllers.FeedbackController">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAABCAAAAACCAAAACAAgADgAAAAAgQAA=</HashCode>
+      <FileName>Controllers\FeedbackController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TakeABowApi.Controllers.PermissionsController">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAIAgAAAAABgAAAAAAAAAAAAAABAAAAAACAgAAA=</HashCode>
+      <FileName>Controllers\PermissionsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
