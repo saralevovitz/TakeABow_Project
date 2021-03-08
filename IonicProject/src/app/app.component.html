@@ -1,11 +1,24 @@
 <ion-app>
-
-    <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  
+    <ion-header translucent="true">
+        <ion-toolbar>
+            <ion-buttons collapse="true" slot="end">
+                <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
+            </ion-buttons>
+            <ion-buttons *ngIf="isLoggedInUser()" slot="start">
+                <ion-menu-button  autoHide="false"></ion-menu-button>   
+                <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
+            </ion-buttons>
+       
+        </ion-toolbar>
+    </ion-header>
+    <ion-menu *ngIf="isLoggedInUser()" side="start" menuId="custom" contentId="main" class="my-custom-menu">
+        
         <ion-toolbar color="primary">
 
             <ion-buttons slot="primary">
             </ion-buttons>
-            <ion-title style="text-align: center; font-size: 20px; font-weight: bold;">שלום ל{{user.FirstName+' '+ user.LastName}} </ion-title>
+            <ion-title style="text-align: center; font-size: 20px; font-weight: bold;">שלום ל{{userService.user.FirstName+' '+ userService.user.LastName}} </ion-title>
         </ion-toolbar>
 
         <br>
@@ -44,8 +57,8 @@
                         <ion-icon name="hand-left-outline" class="iconList"></ion-icon>בקשות צפיה בפידבקים של אחר</ion-item>
 
                         <ion-item (click)=AlertExit()>
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                            יציאה מהאפליקציה
+                            <ion-icon name="close-circle-outline" class="iconList"></ion-icon>
+                            להסרה מהאפליקציה
                         </ion-item>
             </ion-list>
         </ion-content>

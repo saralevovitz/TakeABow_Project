@@ -35,10 +35,10 @@ namespace TakeABowApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/user/getTopUsers/{2}")]
-        public List<Common.User> GetTopUsers()
+        [Route("api/user/getTopUsers/{num}")]
+        public List<Common.User> GetTopUsers(int num)
         {
-            return logic.TopUsers(2);
+            return logic.TopUsers(num);
         }
 
 
@@ -48,13 +48,14 @@ namespace TakeABowApi.Controllers
         {
             User u = new User(user);
             bool isExist = logic.IsUserExist(u);
+            
             if (isExist)
             {
                 return 0;
             }
 
-            int userId = logic.saveNewUser(u);
-            return userId;
+            u.Id=logic.saveNewUser(u);
+            return u.Id;
         }
 
         [HttpPost]
@@ -78,7 +79,7 @@ namespace TakeABowApi.Controllers
             return false;  
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/user/login")]
         public int login(User userLogin)
          {

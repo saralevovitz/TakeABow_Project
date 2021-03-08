@@ -1,10 +1,11 @@
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouteConfigLoadEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {  Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { TopFeedbacksPage } from '../top-feedbacks/top-feedbacks.page';
+
 
 
 
@@ -20,7 +21,7 @@ export class HomePage {
    res: Observable<any>;
    userToTOP: Number=1004;
 
-  constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) {
+  constructor(public httpClient: HttpClient, private router: Router,private userService:UserService, private location: Location) {
 
    }
    ngOnInit() {
@@ -33,7 +34,9 @@ export class HomePage {
       })
    }
 
- 
+   backToPage(){
+    this.location.back();
+  }
 
     toAllUsersPage(){
       this.router.navigate(['all-users']);
@@ -56,5 +59,5 @@ export class HomePage {
        this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);
     
     }
-    
+   
 }

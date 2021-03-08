@@ -6,6 +6,7 @@
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">הפידבקים שלי</ion-title>
         <ion-buttons slot="start">
             <ion-menu-button autoHide="false"></ion-menu-button>
+            <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -14,8 +15,8 @@
 <ion-content>
     <ion-list *ngFor="let f of feedbacksList">
         <button (click)="readFeedback(f.Id, f.FromUserId)" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'green'}" style="height: 95px; width: 100%;">
-          <ion-item class="textFeedback" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'green'}" (click)="readFeedback(f.Id, f.FromUserId)">
-            <ion-label> מ{{f.FromUserFullName}} </ion-label>
+          <ion-item  style="--background: linear-gradient( #58e286, #72baf5);" class="textFeedback" [ngStyle]="{'background-color': f.IsSeen== true? 'gray':'green'}" (click)="readFeedback(f.Id, f.FromUserId)">
+            <ion-label > מ{{f.FromUserFullName}} </ion-label>
             <ion-label> {{f.Feedback}}</ion-label>
             <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
           

@@ -6,34 +6,50 @@
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">הפרופיל שלי</ion-title>
         <ion-buttons slot="start">
             <ion-menu-button autoHide="false"></ion-menu-button>
+            <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<form #f="ngForm" name="myDetails">
     <ion-item>
-        <ion-input name="firstName" type="text" placeholder="{{user.FirstName}}" [(ngModel)]="user.FirstName" required>
-        </ion-input>
+        <ion-input #firstName="ngModel" name="firstName" type="text" placeholder="שם פרטי" [(ngModel)]="user.FirstName" required minlength="2" maxlength="15" pattern="^[a-zA-Zא-ת_]*$"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="firstName.errors?.pattern">
+        שם המשתמש יכול להכיל אותיות בלבד
+    </ion-label>
+    <ion-label *ngIf="firstName.errors?.minlength">
+        שם המשתמש צריך להיות באורך מינימאלי של 2
+    </ion-label>
+
+    <ion-item>
+        <ion-input name="lastName" type="text" #LastName="ngModel" placeholder="שם משפחה" [(ngModel)]="user.LastName" required required minlength="2" maxlength="15" pattern="^[a-zA-Zא-ת_]*$"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="LastName.errors?.pattern">
+        שם המשתמש יכול להכיל אותיות בלבד
+    </ion-label>
+    <ion-label *ngIf="LastName.errors?.minlength">
+        שם המשתמש צריך להיות באורך מינימאלי של 2
+    </ion-label>
+
+    <ion-item>
+
+    <ion-input name="phone"  #Phone="ngModel" type="tel" placeholder="טלפון" [(ngModel)]="user.Phone" required pattern="^[0-9]*$" minlength="9" maxlength="10"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="Phone.errors?.pattern">
+    יכול להכין מספרים בלבד
+    </ion-label>
+    <ion-label *ngIf="Phone.errors?.minlength">
+     אורך מינמלי 9
+    </ion-label>
+
+    
+    <ion-item>
+        <ion-input name="email"  #Email="ngModel" type="email" placeholder="מייל" [(ngModel)]="user.Email" required email></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-input name="lastName" type="text" placeholder="{{user.LastName}}" [(ngModel)]="user.LastName" required>
-        </ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-input name="phone" type="text" placeholder="{{user.Phone}}" [(ngModel)]="user.Phone" required>
-        </ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-input name="email" type="text" placeholder="{{user.Email}}" [(ngModel)]="user.Email" required>
-        </ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-input name="password" type="password" placeholder="{{user.Password}}" [(ngModel)]="user.Password" required>
-        </ion-input>
+        <ion-input name="password" #PassWord="ngModel" type="password" placeholder="סיסמא" [(ngModel)]="user.Password" required></ion-input>
     </ion-item>
     <br>
     <ion-button style="width: 85px; text-align:left;" (click)="onClickEdit()" type="submit">
@@ -41,4 +57,4 @@
         </ion-icon>
     </ion-button>
 
-</ion-content>
+</form>

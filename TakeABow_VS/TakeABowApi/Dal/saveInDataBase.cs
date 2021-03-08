@@ -46,6 +46,7 @@ namespace TakeABowApi.Dal
                 userDb.LastName = u.LastName;
                 userDb.Phone = u.Phone;
                 userDb.Job = u.Job;
+                userDb.Is_Deleted = u.Is_Deleted;
                 userDb.Password = u.Password;
                 db.SaveChanges();
                 return true;
@@ -74,22 +75,45 @@ namespace TakeABowApi.Dal
             }
         }
         /*Feedbacks*/
-        public  bool saveNewFeedback(Feedback f)
+        public  bool saveNewFeedback(string sendTo, Feedback f)
         {
             try
             {
                 using(TakeABowDBEntities db= new TakeABowDBEntities())
                 {
                     // var feedback = db.Feedbacks.Where(f1 => f1.UserBlocked.IsBlocked==false );//לעשות 2 תנאים ליצירת פידבק
-                     var feedback = db.Feedbacks.Add(f);
-                    db.SaveChanges();
-                  return true;
+                    if(db.Users.FirstOrDefault(f1 => f1.Email == sendTo || f1.Id.ToString() ==sendTo)==null)//בדיקה אם המייל קיים משהו עם כזה מייל או ידי
+                    {
+                        return false;
+                    }
+                    else//אם קיים
+                    {
+                        if(db.Users.FirstOrDefault(f1 => f1.Email == sendTo) != null)//בודק אם למי ששלח זה כמו המייל שכבר קיים במערכת
+                        {
+                            var user = db.Users.FirstOrDefault(u => u.Email == sendTo);//אם קיים שולף את היוזר עם המייל הנוכחי
+                            f.ToUserId = user.Id;//מוסיף באוביקט פידבק למי שלח
+                            db.Feedbacks.Add(f); 
+                            db.SaveChanges();
+                           return true;
+                        }
+                        else
+                        {
+                            var user = db.Users.FirstOrDefault(u => u.Id.ToString() == sendTo);//בודק למי שלח ע"י הידי
+                            f.ToUserId = user.Id;//מוסיף באוביקט של פידבק למי ששלח
+                            db.Feedbacks.Add(f);
+                            db.SaveChanges();
+                            return true;
+                        }
+                       
+                    }
+                   
                 }
              
                 
             }
             catch (Exception ex)
             {
+                throw;
                 return false;
             }
         }
@@ -110,8 +134,6 @@ namespace TakeABowApi.Dal
                 }    
         }
 
-
-
         public bool readFeedback(int  idFeedback,  int FromUserId)
         {
             try
@@ -131,25 +153,30 @@ namespace TakeABowApi.Dal
             }
         }
 
-
-       
-
                /*Permission*/
         public bool AddPermission(Common.Permissions p)
-        {
-            try
+        { using (TakeABowDBEntities db = new TakeABowDBEntities())
             {
-                data.Permissions.Add(Converters.ConvertToDal.Permissions(p));
-                data.SaveChanges();
-                return true;
-
-            }
-            catch(Exception ex)
-            {
-                return false;
+                try
+                {
+                     if(db.Permissions.FirstOrDefault(per=>per.UserId==p.UserId && per.WatchUserId==p.WatchUserId)==null)//בדיקה אם שלח בקשת צפיה למשתמש הזה
+                     {
+                       data.Permissions.Add(Converters.ConvertToDal.Permissions(p));
+                       data.SaveChanges();
+                       return true;
+                     }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                     throw;
+                    //return false;
+                }
             }
         }
-
 
         public bool IsAllowPermission(int time, Permissions p)
         {
@@ -174,28 +201,88 @@ namespace TakeABowApi.Dal
         }
 
 
-            /* UsersBlocked*/
-            public bool Block(UsersBlocked ub)
+        /* UsersBlocked*/
+
+
+        //public bool Block(UsersBlocked ub)//חסימת משתמש
+        //{
+        //  try
+        //  {
+        //    using (TakeABowDBEntities db = new TakeABowDBEntities())
+        //    {
+
+        //        if (db.UsersBlockeds.First(u => u.UserId == ub.UserId && u.BlockedUserId == ub.BlockedUserId)==null)//בדיקה אם המשתמש נחסם בעבר ע"י החוסם 
+        //        {
+        //            db.UsersBlockeds.Add(ub);//אם לא קיים אז תוסיף
+        //            db.SaveChanges();
+        //            return true;
+        //        }
+        //        else
+        //        {//אם קיים אז תשנה אותו לחסום
+        //            UsersBlocked ub2 = db.UsersBlockeds.FirstOrDefault(u => u.UserId == ub.UserId && u.BlockedUserId == u.BlockedUserId);
+        //            ub2.IsBlocked = true;
+        //             db.SaveChanges();
+        //             return true;
+        //        }
+        //        return false;
+        //    }   
+
+        //  }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+
+        public bool Block(UsersBlocked ub)//חסימת משתמש
+        {
+            try
             {
-              try
-              {
-                using(TakeABowDBEntities db= new TakeABowDBEntities())
+                using (TakeABowDBEntities db = new TakeABowDBEntities())
                 {
-                   
-                    
-                     var ub2 = db.UsersBlockeds.Add(ub);
-                    db.UsersBlockeds.Add(ub);
-                  //  db.Users.FirstOrDefault(u=>u.)
+                    var user = db.UsersBlockeds.FirstOrDefault(u => u.UserId == ub.UserId && u.BlockedUserId == ub.BlockedUserId);
+                   if (user!=null)
+                   {
+                        user.IsBlocked = !user.IsBlocked;
+                        db.SaveChanges();
+                        return true;
+                   }
+                    else
+                    {
+                        db.UsersBlockeds.Add(ub);
+                        db.SaveChanges();
+                        return true;
+                    }
+                  
+                  
+                }
+
+            }
+            catch (Exception ex)
+            { 
+                // return false;
+                throw;
+            }
+        }
+
+
+        public bool OpenUser(UsersBlocked ub)
+        {
+            try
+            {
+                using (TakeABowDBEntities db = new TakeABowDBEntities())
+                {
+                    UsersBlocked ub2 = db.UsersBlockeds.FirstOrDefault(u => u.UserId == ub.UserId && u.BlockedUserId==u.BlockedUserId);
+                    ub2.IsBlocked = false;
                     db.SaveChanges();
                     return true;
-                   
                 }
-              }
-               catch(Exception ex)
-              {
-                throw;
-              }
             }
-
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

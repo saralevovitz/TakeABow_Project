@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/shared/models/feedback.model';
@@ -14,7 +15,7 @@ export class ViewFeedbacksPage implements OnInit {
   feedbacksList: Feedback[]=[]
   feedback: Feedback= new Feedback();
 
-  constructor(private router: Router, private feedbackService: FeedbackService) { }
+  constructor(private router: Router, private feedbackService: FeedbackService, private location: Location) { }
 
   ngOnInit() {
 
@@ -30,4 +31,11 @@ export class ViewFeedbacksPage implements OnInit {
 toHomePage(){
   this.router.navigate(['home']);
 }
+
+
+backToPage(){
+  this.location.back();
+}
+
+
 }

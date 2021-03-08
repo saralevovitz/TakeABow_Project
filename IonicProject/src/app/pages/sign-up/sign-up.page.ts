@@ -1,11 +1,11 @@
-import { getLocaleFirstDayOfWeek } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { getLocaleFirstDayOfWeek, Location } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
 import {  FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable} from 'rxjs/internal/Observable';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -14,10 +14,9 @@ import { Observable} from 'rxjs/internal/Observable';
 })
 export class SignUpPage implements OnInit {
   user: User = new User();
-  
-  res: Observable<any>;
 
-constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
+
+constructor(public httpClient: HttpClient, private router: Router,private userService:UserService, private location: Location) { }
 
 ngOnInit() {
  this.user.Gender="m";
@@ -26,7 +25,6 @@ ngOnInit() {
 toHomePage(){
     this.router.navigate(['home']);
 }
-
 
 // Http Options
 httpOptions = {
@@ -37,14 +35,43 @@ httpOptions = {
 
 
 signUp(){
-  this.res = this.httpClient.post('http://localhost:63522/api/user/createUser', JSON.stringify(this.user),this.httpOptions);
-  this.res.subscribe(userId => {
-    localStorage.setItem('userId', userId)//שומר את הידיץ
-  })
-  alert("השם משתמש נשלח למייל")
+  debugger
+  if(this.user.Password!=this.user.Password2)
+  {
+     alert("הסיסמא לא זהה")
+     //לנקות את השדות של הסיסמא
+     return false;
+  }
+  else{
+    this.userService.createUser(this.user).subscribe(res=>{
+        this.user.Id=res
+    })
+     console.log("the ans"+this.user.Id)
+     // debugger;
+      if(!this.user.Id)
+      {
+         alert("נוספת בהצלחה למערכת, שם המשתמש נשלח לכתובת המייל שלך")
+         
+ 
+      }
+      else{
+        alert("שגיאה, נסה להרשם שוב")
+      }
+  }
+  
+  
+  
+  }
+  login(){
+  this.router.navigate(['login']);
+}
+backToPage(){
+  this.location.back();
+}
 
 }
 
 
 
-} 
+
+

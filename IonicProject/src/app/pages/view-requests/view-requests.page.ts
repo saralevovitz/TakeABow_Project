@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -11,7 +12,7 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 })
 export class ViewRequestsPage implements OnInit {
 
-  constructor(private router: Router, private permissionsService: PermissionsService, private alertController: AlertController) { }
+  constructor(private router: Router, private permissionsService: PermissionsService, private alertController: AlertController, private location: Location) { }
   permission:Permissions= new Permissions()
  toPermission:number
   permissionList: Permissions[]=[]
@@ -119,7 +120,7 @@ var expireTimeAlert = await this.alertController.create(
                  this.time=alertData;
            
              //  this.permission.ExpireDate=Date.now()+alertData;
-             debugger
+             
                 this.permissionsService.IsAllowPermission(this.time,this.permission).subscribe(res=>
                 
                   console.log("res:"+ res))
@@ -131,6 +132,10 @@ var expireTimeAlert = await this.alertController.create(
  await expireTimeAlert.present();
 }
 
+
+backToPage(){
+  this.location.back();
+}
  
 }
 

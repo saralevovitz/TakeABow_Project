@@ -8,6 +8,7 @@ import { UserBlockedService } from 'src/app/shared/services/user-blocked.service
 import { UserService } from 'src/app/shared/services/user.service';
 import { Permissions } from 'src/app/shared/models/permissions.model';
 import { PermissionsService } from 'src/app/shared/services/permissions.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -29,20 +30,24 @@ export class AllUsersPage implements OnInit {
   userLogedInId: Number=+localStorage.getItem('userIdLogin')
    answ:Boolean
 
-  constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController) { }
+  constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController, private location: Location) { }
 
   ngOnInit() {
     this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{this.user=res;
     },err=>console.error(err))
 
-    this.getAllUsers(this.userLogedInId)
+    this.getAllUsers()
+  }
+
+  backToPage(){
+    this.location.back();
   }
 
   toHomePage(){
     this.router.navigate(['home'])
   }
   
-  getAllUsers(userLogedInId: Number){
+  getAllUsers(){
     this.userService.getAllUsers(this.userLogedInId).subscribe(u=>{
       console.log(u)
       this.AllUsersList=u
@@ -56,7 +61,6 @@ export class AllUsersPage implements OnInit {
    this.sortedUserList=[];
    for(let u of this.AllUsersList)
    {
-
      if(u.Email.toLowerCase().indexOf(s)!=-1||
      u.Id.toString().indexOf(s)!=-1||
      u.Email.indexOf(s)!=-1)
@@ -66,7 +70,6 @@ export class AllUsersPage implements OnInit {
 
  async AlertView(toUser: number)
  {
-  let alertInputs=[];
    console.log("the idPermission: "+ toUser)
   var alert = await this.alertController.create(
     {
@@ -98,38 +101,64 @@ export class AllUsersPage implements OnInit {
    await alert.present();
  }
 
- blockUser(fromUserId: number){ 
-  this.userBlocked.BlockedUserId=fromUserId;
-  this.userBlocked.UserId=+localStorage.getItem('userIdLogin');
-  this.userBlocked.IsBlocked=true;
 
-    this.userBlockedService.blockUser(this.userBlocked).subscribe(res=>{
-        this.answ=res
-        this.userB()
-    })
-  }
+ async AlertBlockUser(userId: number)
+ {
+  var alertBlockUser = await this.alertController.create(
+    {
+    cssClass: 'my-custom-class',
+    header: 'אתה בטוח שברצונך לחסום את המשתמש?',  
+    buttons: 
+    [
+      {
+        text: 'כן',
+        cssClass: 'secondary',
+        handler: () => {
+        this.userBlocked.BlockedUserId=userId;
+        this.userBlocked.UserId=+localStorage.getItem('userIdLogin');
+        this.userBlocked.IsBlocked=true;
+        this.userBlockedService.blockUser(this.userBlocked).subscribe(res=>{
+        this.answ=res})
+        console.log("jiji"+ this.userBlocked.IsBlocked)
+      },
+    },
+     {
+      text: 'לא',
+      handler: () => {}, 
+    }
+    ]
+  });
+   await alertBlockUser.present();
+ }
+   
 
-  checkUserBlock(idUB:Number){
-    console.log("jkjkjk")
-    
-       this.userBlockedService.checkUserBlock(this.userLogedInId, idUB).subscribe(res=>{
-      this.ans=res
-      return res
-      console.log("the ans "+ this.ans)
-    })
+ async AlertOpenUser(userId: number)
+ {
+  var alertOpenUser = await this.alertController.create(
+    {
+    cssClass: 'my-custom-class',
+    header: 'אתה בטוח שברצונך לפתוח את חסימת המשתמש',  
+    buttons: 
+    [
+      {
+        text: 'כן',
+        cssClass: 'secondary',
+        handler: () => {
+        this.userBlocked.BlockedUserId=userId;
+        this.userBlocked.UserId=+localStorage.getItem('userIdLogin');
+        this.userBlockedService.openkUser(this.userBlocked).subscribe(res=>{
+        this.answ=res})
 
- //  return this.ans
-    // if(this.ans== true)
-    // return true;
-    // else false;
-  }
+      },
+    },
+     {
+      text: 'לא',
+      handler: () => {}, 
+    }
+    ]
+  });
+   await alertOpenUser.present();
+ }
 
 
-  userB(){
-
-
-    if(this.answ== true)
-    return true;
-    else false;
-  }
 }

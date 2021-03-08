@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,39 +13,37 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, private location: Location) { }
    
   userLogin:User= new User()
   IdLogin: number
   isCorrect:Boolean
   countWrong:number=0
  
-  login(){
-    if(this.countWrong>3)
-        //blockIp()
+
+    login(){
+
     this.userService.checkLogin(this.userLogin).subscribe(res=>
      this.isCorrect=res)
      if(this.isCorrect==false)
         this.countWrong++
         else{
     localStorage.setItem('userIdLogin', this.userLogin.Id.toString())
-    this.IdLogin=+ localStorage.getItem('userIdLogin')}
+    this.IdLogin=+ localStorage.getItem('userIdLogin')
+    this.userService.GetUser(this.IdLogin).subscribe((res:User)=>{
+      this.userService.user=res
+      },err=>console.error(err))
+  }
     this.router.navigate(['home']);
         
   }
 
-  login2(){
-    if(this.countWrong>3)
-        //blockIp()
-    this.userService.checkLogin(this.userLogin).subscribe(res=>
-     this.isCorrect=res)
-     if(this.isCorrect==false)
-        this.countWrong++
-        else{
-    localStorage.setItem('userIdLogin', this.userLogin.Id.toString())
-    this.IdLogin=+ localStorage.getItem('userIdLogin')}
-    this.router.navigate(['home']);
-        
+  backToPage(){
+    this.location.back();
+  }
+
+  toSignUpPage(){
+    this.router.navigate(['sign-up']);
   }
 
   toHomePage(){
@@ -55,4 +54,5 @@ export class LoginPage implements OnInit {
    
   }
 
+  
 }

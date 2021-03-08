@@ -1,6 +1,7 @@
 export class User {
     Id: Number
     Password: string
+    Password2: string
     FirstName: string
     LastName: string
     Phone: string

@@ -10,10 +10,10 @@ import { Feedback } from '../models/feedback.model';
 export class FeedbackService {
 
   constructor(private http:HttpClient) { }
+feedback: Number
 
-
-  addFeedback(feedback: Feedback, ):Observable<Boolean>{
-    return this.http.post<boolean>(environment.url + 'feedback/createFeedback',feedback);
+  addFeedback(sendTo:string ,feedback: Feedback):Observable<Boolean>{
+    return this.http.post<boolean>(environment.url + `feedback/createFeedback?sendTo=${sendTo}`,feedback);
     
   }
   

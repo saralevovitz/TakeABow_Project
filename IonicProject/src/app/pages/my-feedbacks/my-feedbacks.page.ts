@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/shared/models/feedback.model';
@@ -12,7 +13,7 @@ import { UserBlockedService } from 'src/app/shared/services/user-blocked.service
 })
 export class MyFeedbacksPage implements OnInit {
 
-  constructor(private router: Router, private feedbackService: FeedbackService) { }
+  constructor(private router: Router, private feedbackService: FeedbackService, private location: Location) { }
 
   feedbacksList: Feedback[]=[]
   feedback: Feedback= new Feedback();
@@ -24,16 +25,18 @@ export class MyFeedbacksPage implements OnInit {
     this.feedbackService.getAllFeedbacksByUser(this.feedback.ToUserId).subscribe(f=>{
       this.feedbacksList=f
       console.log(f)
-
-     
     })
-
   }
 
   tomyHomePage(){
     this.router.navigate(['home']);
   }
 
+
+  backToPage(){
+    this.location.back();
+  }
+  
   toDeleteFeedback(idf:number){
    console.log(idf )
     this.feedbackService.deleteFeedback(idf).subscribe(res=>{

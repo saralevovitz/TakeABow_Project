@@ -23,10 +23,10 @@ namespace TakeABowApi.Controllers
 
         [HttpPost]
         [Route("api/feedback/createFeedback")]
-        public bool createFeedback(Feedbacks feedback)
+        public bool createFeedback( string sendTo, [FromBody] Feedbacks feedback)
         {
             Feedbacks f = new Feedbacks(feedback);
-            bool res = logic.saveNewFeedback(f);
+            bool res = logic.saveNewFeedback(sendTo,f);
             if(res)
                return true;
             return false;

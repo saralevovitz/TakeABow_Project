@@ -11,6 +11,8 @@ import { Permissions } from '../models/permissions.model';
 export class PermissionsService {
 
   constructor(private http: HttpClient) { }
+ 
+  permission:Number
 
   sendPermission(permission: Permissions ):Observable<Boolean>{
     return this.http.post<Boolean>(environment.url + 'permissions/ViewConfirmation',permission);

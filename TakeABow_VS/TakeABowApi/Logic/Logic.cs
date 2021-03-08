@@ -25,7 +25,7 @@ namespace TakeABowApi.Logic
         {
             List<Dal.User> allUsers = new getFromDataBase().GetUsers();
             allUsers = allUsers.OrderByDescending(u => u.Feedbacks.ToList().Count(f => DateTime.Today.AddDays(-14) <= f.CreateDate)).ToList();
-            return allUsers.Take(5).Select(u => Converters.ConvertToCommon.U(u)).ToList();
+            return allUsers.Take(num).Select(u => Converters.ConvertToCommon.U(u)).ToList();
         }
         //פונקציה המחזירה רשימה של כל המשתמשים באפליקציה
         public List<Common.User> GetAllUsers(int userId)
@@ -68,8 +68,10 @@ namespace TakeABowApi.Logic
         public Common.User Login(int id, string pass)
         {
             var users = get.GetUsers();
-            Dal.User u = users.FirstOrDefault(user => user.Id == id && user.Password == pass);
+            Dal.User u = users.FirstOrDefault(user => user.Id == id && user.Password == pass&&!user.Is_Deleted );
+            if(u!=null)
             return Converters.ConvertToCommon.U(u);
+            return null;
         }
         //פונקציה השומרת פרטי משתמש חדש במערכת
         public int saveNewUser(Common.User u)
@@ -91,9 +93,9 @@ namespace TakeABowApi.Logic
         }
 
         /*Feedbacks*/
-        public bool saveNewFeedback(Common.Feedbacks f)
+        public bool saveNewFeedback(string sendTo, Common.Feedbacks f)
         {
-            return save.saveNewFeedback(Converters.ConvertToDal.Feedback(f));
+            return save.saveNewFeedback(sendTo,Converters.ConvertToDal.Feedback(f));
         }
 
         public List<Common.Feedbacks> getAllFeedbackByUser(int id)
@@ -178,9 +180,16 @@ namespace TakeABowApi.Logic
 
         public bool Block(Common.UsersBlocked ub)
         {
-            
             return save.Block(Converters.ConvertToDal.UsersBlocked(ub));
         }
+
+
+        public bool OpenUser(Common.UsersBlocked ub)
+        {
+           return save.OpenUser(Converters.ConvertToDal.UsersBlocked(ub));
+        }
+       
+
 
         public bool checkUserBlock(int myId, int userId)
         {

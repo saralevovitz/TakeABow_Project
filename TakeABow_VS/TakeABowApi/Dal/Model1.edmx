@@ -37,7 +37,7 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Property Name="WatchUserId" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="IsAllow" Type="bit" />
-          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -263,7 +263,7 @@ warning 6002: The table/view 'TakeABowDB.dbo.BlockIP' does not have a primary ke
           <Property Name="WatchUserId" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsAllow" Type="Boolean" />
-          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="TakeABowDBModel.FK_Permissions_User" FromRole="Permission" ToRole="User" />
         </EntityType>
         <Association Name="FK_Permissions_User">

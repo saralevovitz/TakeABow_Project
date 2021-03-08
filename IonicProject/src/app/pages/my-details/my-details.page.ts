@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 import { User } from 'src/app/shared/models/user.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-my-details',
@@ -11,7 +12,7 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class MyDetailsPage implements OnInit {
 
-  constructor(public httpClient: HttpClient, private router: Router,private userService:UserService) { }
+  constructor(public httpClient: HttpClient, private router: Router,private userService:UserService, private location: Location) { }
    user:User=new User();
    user1:User=new User();
    id:number=1934
@@ -21,9 +22,7 @@ export class MyDetailsPage implements OnInit {
 
 
   
-  toHomePage(){
-    this.router.navigate(['home']);
-  }
+  
   ngOnInit() {
   //   let u:User=new User();
   // localStorage.setItem("key",JSON.stringify(u)) 
@@ -41,5 +40,10 @@ console.log(this.page_title)
     //this.router.navigate(['my-account']);
   }
 
-
+  backToPage(){
+    this.location.back();
+  }
+  toHomePage(){
+    this.router.navigate(['home']);
+  }
 }

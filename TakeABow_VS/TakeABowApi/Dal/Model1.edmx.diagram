@@ -12,7 +12,7 @@
         <AssociationConnector Association="TakeABowDBModel.FK__Feedbacks__ToUse__3E52440B" />
         <EntityTypeShape EntityType="TakeABowDBModel.UsersBlocked" Width="1.5" PointX="3" PointY="4.625" />
         <AssociationConnector Association="TakeABowDBModel.FK_UsersBlocked_User" />
-        <EntityTypeShape EntityType="TakeABowDBModel.Permission" Width="1.5" PointX="5.375" PointY="4.875" />
+        <EntityTypeShape EntityType="TakeABowDBModel.Permission" Width="1.5" PointX="3" PointY="7.875" />
         <AssociationConnector Association="TakeABowDBModel.FK_Permissions_User" />
       </Diagram>
     </edmx:Diagrams>

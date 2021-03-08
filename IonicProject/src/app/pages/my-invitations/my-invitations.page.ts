@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Permissions } from 'src/app/shared/models/permissions.model';
@@ -11,7 +12,7 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 })
 export class MyInvitationsPage implements OnInit {
 
-  constructor(private router: Router, private permissionService: PermissionsService) { }
+  constructor(private router: Router, private permissionService: PermissionsService, private location: Location) { }
  
   permission: Permissions= new Permissions();
   permissionList: Permissions[]=[]
@@ -37,6 +38,11 @@ export class MyInvitationsPage implements OnInit {
   viewFeedback(){
     
     this.router.navigate(['view-feedbacks']);
+  }
+
+
+  backToPage(){
+    this.location.back();
   }
 }
 

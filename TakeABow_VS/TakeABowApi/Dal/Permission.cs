@@ -19,7 +19,7 @@ namespace TakeABowApi.Dal
         public int WatchUserId { get; set; }
         public System.DateTime CreateDate { get; set; }
         public Nullable<bool> IsAllow { get; set; }
-        public System.DateTime ExpireDate { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
     
         public virtual User User { get; set; }
     }

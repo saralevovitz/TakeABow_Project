@@ -10,6 +10,7 @@ import { User } from '../models/user.model';
 export class UserService {
 
   constructor(private http:HttpClient) { }
+  user:User=new User();
 
  UpDate(user:User):Observable<boolean>{
       return this.http.post<boolean>(environment.url + 'user/updateUser',user);
@@ -19,9 +20,8 @@ export class UserService {
   return this.http.get<User[]>(environment.url + `user/getAllUsers/${userLogedInId}`);
  }
 
-  func(user:User):Observable<boolean>{
-   // debugger;
-       return this.http.post<boolean>(environment.url + 'user/createUser',user);
+ createUser(user:User):Observable<Number>{
+     return this.http.post<Number>(environment.url + 'user/createUser',user);
   }
 
  GetUser(userId:Number):Observable<User>

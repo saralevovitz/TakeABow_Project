@@ -14,7 +14,7 @@ namespace TakeABowApi.Controllers
     {
 
             
-        int num_permission_id = 100;
+        //int num_permission_id = 100;
         TakeABowApi.Logic.Logic logic = new TakeABowApi.Logic.Logic();
 
         [HttpGet]
@@ -28,13 +28,10 @@ namespace TakeABowApi.Controllers
         [Route("api/permissions/ViewConfirmation")]//שליחת בקשת צפיה 
         public bool ViewConfirmation(Common.Permissions permission)
         {
-                       
-                Permissions p = new Permissions( permission.UserId, permission.WatchUserId, null,null);
+                Permissions p = new Permissions(permission.Id, permission.UserId, permission.WatchUserId, null,null);
                 if (logic.AddPermission(p))
                     return true;
                 return false;
-           
-
         }
 
 
@@ -42,7 +39,6 @@ namespace TakeABowApi.Controllers
         [Route("api/permissions/getAllPermissions/{toPermission}")]//רשימה של כל הבקשות צפיה לא כולל אלה שאושרו
         public List<Permissions> getAllPermissions(int toPermission)
         {
-
             if (logic.getAllPermissions(toPermission) == null)
                 return null;
             return logic.getAllPermissions(toPermission);
@@ -71,8 +67,7 @@ namespace TakeABowApi.Controllers
 
         [HttpGet]
         [Route("api/permissions/amountViewRequests/{toUserId}")]//כמות ההזמנות ששלחו אלי ועדיין לא ראיתי
-        public int amountViewRequests(int toUserId)
-        {
+        public int amountViewRequests(int toUserId){
             int mone = logic.amountViewRequests(toUserId);
             return mone;
         }

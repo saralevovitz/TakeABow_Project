@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 import { AlertController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -20,10 +20,11 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router:Router,
-    private userService: UserService,
-    private feedbackService:FeedbackService,
-    private permissionsService:PermissionsService,
-    private alertController: AlertController
+    public userService: UserService,
+    public feedbackService:FeedbackService,
+    public permissionsService:PermissionsService,
+    private alertController: AlertController,
+    private zone:NgZone
   ) {
     this.initializeApp();
   }
@@ -40,13 +41,22 @@ export class AppComponent {
     
     });
    if(this.idU!=null&&this.idU>0)
-    this.userService.GetUser(this.idU).subscribe((res:User)=>{this.user=res;
+    this.userService.GetUser(this.idU).subscribe((res:User)=>{
+    this.userService.user=res
     },err=>console.error(err))
     this.amountFeedbacks()
     this.amountViewRequests()
     
   }
 
+
+  amountFeedbacks(){
+    this.feedbackService.amountFeedbacks(this.idU).subscribe((res:Number)=>{
+    //this.feedbackService.feedback=res
+      this.amountFeedback=res;
+      
+   })
+  }
   toAllUsersPage(){
     this.router.navigate(['all-users']);
   }
@@ -60,6 +70,7 @@ export class AppComponent {
    }
 
     logOut(){
+      this.router.navigate(['home']);
       localStorage.clear();
     }
 
@@ -89,14 +100,18 @@ export class AppComponent {
     [
       {
         text: 'אישור',
-        role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
-      
+       this.user.Id=+localStorage.getItem('userIdLogin')
         this.user.Is_Deleted=true
         this.userService.UpDate(this.user).subscribe(res=>
-         this.ans=res
+        { 
+          this.ans=res;
+         this.exit();
+
+        }
          )}
+        
       }, 
       {
         text: 'ביטול',
@@ -106,6 +121,12 @@ export class AppComponent {
     ]
   });
    await alert.present();
+   if(this.ans==true){
+ //לסגור את האפליקציה סופית
+   }
+   else{
+     //להודיע שהיציאה נכשלה
+   }
  
  }
     addFeedback(){
@@ -116,24 +137,24 @@ export class AppComponent {
       this.router.navigate(['my-feedbacks']);
     }
   
-    amountFeedbacks(){
-      this.feedbackService.amountFeedbacks(this.idU).subscribe(res=>{
-        this.amountFeedback=res;
-     })
-    }
+    
   
     amountViewRequests(){
       console.log(this.idU)
       this.permissionsService.amountViewRequests(this.idU).subscribe(res=>{
-      this.amountViewRequest= res;
-    
+      this.permissionsService.permission= res;
+      this.amountViewRequest=res
       })  
       console.log("the amountViewRequest: "+ this.amountViewRequest)
     }
   
     exit(){
-      localStorage.clear();
-      this.router.navigate(['home']);
-     // alert('Are you sure you want to exit?');
+    localStorage.clear();
+    this.router.navigate(['home']);
+    }
+
+    backToPage()
+    {
+
     }
 }

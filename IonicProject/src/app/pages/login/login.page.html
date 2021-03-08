@@ -6,14 +6,16 @@
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">כניסה</ion-title>
         <ion-buttons slot="start">
             <ion-menu-button autoHide="false"></ion-menu-button>
+            <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content style="font-family: sans-serif; font-size: 25px;">
-
     <form>
-        <p> הכנס את פרטי הזיהוי שלך</p>
+        <p style="font-size: 20px; margin-right:10px">     
+            הכנס את פרטי הזיהוי שלך
+        </p>
         <ion-item>
             <ion-input name="name" type="text" placeholder="שם משתמש" [(ngModel)]="userLogin.Id" required></ion-input>
         </ion-item>
@@ -23,15 +25,7 @@
         </ion-item>
     </form>
     <br>
-
-
-    <!-- <ion-button name="toMyAccount" (click)="toMyAccountPage()">to my account</ion-button> -->
-    <button name="toHome" (click)="toHomePage()">
-    </button>
-
-
+    <ion-button (click)="toSignUpPage()" style="direction: ltr; position: absolute;">הרשמה</ion-button>
     <ion-button (click)="login()" style="direction: ltr; position: absolute; left:5%">היכנס</ion-button>
-    <!--<ion-icon name="log-in-outline" (click)="login()" style="height: 40px; width: 40px; color:green"></ion-icon>-->
-
-
+    
 </ion-content>
