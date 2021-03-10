@@ -38,50 +38,7 @@ export class ViewRequestsPage implements OnInit {
 
  async AlertView(fromUser: Number, idPermission:Number)
  {
-   console.log("the idP: "+ fromUser)
-
-  
-
-  //alertInputs.push({name:element, type:'radio', value:element, label: element})
-  
-//   var alert = await this.alertController.create(
-//     {
-//     cssClass: 'my-custom-class',
-//     header: 'אישור הזמנה',
-//     buttons: 
-//     [
-//       {
-//         text: 'אשר',
-//         role: 'cancel',
-//         cssClass: 'secondary',
-//         handler: () => {
-//           this.permission.IsAllow=true;
-//           this.permission.Id= idPermission;
-//           this.permission.UserId=+localStorage.getItem('userIdLogin');
-//           this.permission.WatchUserId=fromUser;
-//           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
-          
-//             console.log("res:"+ res))
-//         }
-//       }, 
-//       {
-//         text: 'דחה',
-//         handler: () => 
-//         {
-//           this.permission.IsAllow=false
-//           this.permission.Id= idPermission;
-//           this.permission.UserId=+localStorage.getItem('userIdLogin');
-//           this.permission.WatchUserId=fromUser;
-//           this.permissionsService.IsAllowPermission(this.permission).subscribe(res=>
-//           console.log("res:"+ res))
-//         }
-//       }
-//     ]
-//   });
-//    await alert.present();
-//  }
-//let alertInputs=[]
-var expireTimeAlert = await this.alertController.create(
+  var expireTimeAlert = await this.alertController.create(
   {
   cssClass: 'my-custom-class',
   header: 'אישור הזמנה',

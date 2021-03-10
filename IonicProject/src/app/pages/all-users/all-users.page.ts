@@ -33,12 +33,17 @@ export class AllUsersPage implements OnInit {
   constructor(public httpClient: HttpClient, private router: Router,private permissionService: PermissionsService,private userService:UserService, private userBlockedService: UserBlockedService,  private alertController: AlertController, private location: Location) { }
 
   ngOnInit() {
-    this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{this.user=res;
+    this.userService.GetUser(this.userLogedInId).subscribe((res:User)=>{
+      this.user=res;
     },err=>console.error(err))
 
     this.getAllUsers()
+    this.getPermissionsIsAllow()
   }
 
+  getPermissionsIsAllow(){
+  this.permissionService.getPermissionsIsAllow(this.userLogedInId)
+  }
   backToPage(){
     this.location.back();
   }
@@ -64,13 +69,12 @@ export class AllUsersPage implements OnInit {
      if(u.Email.toLowerCase().indexOf(s)!=-1||
      u.Id.toString().indexOf(s)!=-1||
      u.Email.indexOf(s)!=-1)
-       this.sortedUserList.push(u);
+     this.sortedUserList.push(u);
    }
  }
 
  async AlertView(toUser: number)
  {
-   console.log("the idPermission: "+ toUser)
   var alert = await this.alertController.create(
     {
     cssClass: 'my-custom-class',
@@ -79,7 +83,6 @@ export class AllUsersPage implements OnInit {
     [
       {
         text: 'שלח',
-        role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
           this.permission.UserId=toUser
@@ -89,6 +92,7 @@ export class AllUsersPage implements OnInit {
            console.log("ok")
            else
            console.log("error")
+         
         });
       },
     },

@@ -24,6 +24,7 @@ namespace TakeABowApi.Controllers
             return true;
         }
 
+
         [HttpPost]
         [Route("api/permissions/ViewConfirmation")]//שליחת בקשת צפיה 
         public bool ViewConfirmation(Common.Permissions permission)
@@ -41,7 +42,8 @@ namespace TakeABowApi.Controllers
         {
             if (logic.getAllPermissions(toPermission) == null)
                 return null;
-            return logic.getAllPermissions(toPermission);
+             List<Permissions> allPermissios =  logic.getAllPermissions(toPermission);
+            return allPermissios;
         }
 
 

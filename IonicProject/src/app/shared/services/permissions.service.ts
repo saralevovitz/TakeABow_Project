@@ -14,6 +14,9 @@ export class PermissionsService {
  
   permission:Number
 
+  getPermissionsIsAllow( userIdLogin:Number){
+    return this.http.post<Boolean>(environment.url + 'permissions/getPermissionsIsAllow',userIdLogin);
+  }
   sendPermission(permission: Permissions ):Observable<Boolean>{
     return this.http.post<Boolean>(environment.url + 'permissions/ViewConfirmation',permission);
   }

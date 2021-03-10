@@ -56,7 +56,7 @@ namespace TakeABowApi.Dal
             }
             catch (Exception ex)
             {
-                //  return new List<User>();
+                
                 throw;
             }
         }
