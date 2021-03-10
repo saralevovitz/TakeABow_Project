@@ -14,12 +14,12 @@ namespace TakeABowApi.Common
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Job { get; set; }
-        public char Gender { get; set; }
         public bool Is_Deleted { get; set; }
         public DateTime Create_Date { get; set; }
 
         public bool IsBlocked { get; set; }
-        
+        public bool? IsAllow { get; set; }
+
 
         public User()
         {
@@ -34,7 +34,6 @@ namespace TakeABowApi.Common
             this.Phone = user.Phone;
             this.Email = user.Email;
             this.Job = user.Job;
-            this.Gender = user.Gender;
             this.Password = user.Password;
             this.Is_Deleted = false;
             this.Create_Date = DateTime.Now;

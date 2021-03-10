@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Permissions } from 'src/app/shared/models/permissions.model';
 import { PermissionsService } from 'src/app/shared/services/permissions.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -12,12 +13,14 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 })
 export class ViewRequestsPage implements OnInit {
 
-  constructor(private router: Router, private permissionsService: PermissionsService, private alertController: AlertController, private location: Location) { }
+  constructor(private router: Router, private permissionsService: PermissionsService, private alertController: AlertController,
+     private location: Location,private userService:UserService) { }
   permission:Permissions= new Permissions()
- toPermission:number
+  toPermission:number
   permissionList: Permissions[]=[]
   pOk: boolean
- time:Number
+  time:Number
+  viewResult:boolean
  
   ngOnInit() {
     this.toPermission=+localStorage.getItem('userIdLogin');
@@ -38,14 +41,16 @@ export class ViewRequestsPage implements OnInit {
 
  async AlertView(fromUser: Number, idPermission:Number)
  {
+   console.log("the idP: "+ fromUser)
+
   var expireTimeAlert = await this.alertController.create(
   {
   cssClass: 'my-custom-class',
   header: 'אישור הזמנה',
   inputs: [
     {
-      label: 'יום',
-      name: 'day',
+      label: 'שבוע',
+      name: 'week',
       type: 'radio',
       value:'7',
       placeholder: 'Placeholder 1'
@@ -74,13 +79,12 @@ export class ViewRequestsPage implements OnInit {
                 this.permission.Id= idPermission;
                 this.permission.UserId=+localStorage.getItem('userIdLogin');
                 this.permission.WatchUserId=fromUser;
-                 this.time=alertData;
+                this.time=alertData;
            
              //  this.permission.ExpireDate=Date.now()+alertData;
              
-                this.permissionsService.IsAllowPermission(this.time,this.permission).subscribe(res=>
-                
-                  console.log("res:"+ res))
+                this.permissionsService.IsAllowPermission(this.time,this.permission).subscribe(viewResult=>
+                console.log("res:"+ viewResult))
               }
     }
   ]

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Feedback } from 'src/app/shared/models/feedback.model';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-top-feedbacks',
@@ -11,7 +12,7 @@ import { FeedbackService } from 'src/app/shared/services/feedback.service';
 })
 export class TopFeedbacksPage implements OnInit {
 
-  constructor(private router: Router, private feedbackService: FeedbackService ,private route: ActivatedRoute, private location: Location) { }
+  constructor(private router: Router, private feedbackService: FeedbackService ,private route: ActivatedRoute, private location: Location,private userService:UserService) { }
   
   feedbacksList: Feedback[]=[];
   

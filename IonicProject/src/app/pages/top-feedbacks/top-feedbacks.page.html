@@ -4,7 +4,7 @@
             <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
         </ion-buttons>
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">פידבקים</ion-title>
-        <ion-buttons slot="start">
+        <ion-buttons slot="start" *ngIf="userService.isLoggedInUser()">
             <ion-menu-button autoHide="false"></ion-menu-button>
             <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>
@@ -13,11 +13,11 @@
 
 <ion-content>
     <ion-label class="title" style="text-align: center; font-size: 20px;">הפידבקים של {{nameUserF}}</ion-label>
-        <ion-list *ngFor="let f of feedbacksList">
-            <ion-item>
-                <ion-icon name="thumbs-up-sharp" style="height: 30px; width: 30px; color: rgb(28, 129, 163); margin-left: 10px;"></ion-icon>
-            <ion-label>מ{{f.FromUserFullName+"   "+f.Feedback}}</ion-label>
+    <ion-list *ngFor="let f of feedbacksList">
+        <ion-item>
+            <ion-icon name="thumbs-up-sharp" style="height: 30px; width: 30px; color: rgb(28, 129, 163); margin-left: 10px;"></ion-icon>
+            <ion-label>מ{{f.FromUserFullName+" "+f.Feedback}}</ion-label>
             <ion-label>{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
         </ion-item>
-     </ion-list>
+    </ion-list>
 </ion-content>

@@ -40,14 +40,20 @@ namespace TakeABowApi.Dal
             try          
             {
                 using (TakeABowDBEntities db = new TakeABowDBEntities())
-               {               
+               {   
+                    
                 var userDb = db.Users.First(x => x.Id == u.Id);
-                userDb.FirstName = u.FirstName;
-                userDb.LastName = u.LastName;
-                userDb.Phone = u.Phone;
-                userDb.Job = u.Job;
-                userDb.Is_Deleted = u.Is_Deleted;
-                userDb.Password = u.Password;
+                    if (u.Is_Deleted == true)
+                        userDb.Is_Deleted = true;
+                    else
+                    {
+                        userDb.FirstName = u.FirstName;
+                        userDb.LastName = u.LastName;
+                        userDb.Phone = u.Phone;
+                        userDb.Job = u.Job;
+                        userDb.Is_Deleted = u.Is_Deleted;
+                        userDb.Password = u.Password;
+                    }
                 db.SaveChanges();
                 return true;
                }
@@ -75,35 +81,26 @@ namespace TakeABowApi.Dal
             }
         }
         /*Feedbacks*/
-        public  bool saveNewFeedback(string sendTo, Feedback f)
+        public  bool saveNewFeedback(int sendTo, Feedback f)
         {
             try
             {
                 using(TakeABowDBEntities db= new TakeABowDBEntities())
                 {
+                    var user = db.Users.FirstOrDefault(f1 => f1.Id == sendTo);
                     // var feedback = db.Feedbacks.Where(f1 => f1.UserBlocked.IsBlocked==false );//לעשות 2 תנאים ליצירת פידבק
-                    if(db.Users.FirstOrDefault(f1 => f1.Email == sendTo || f1.Id.ToString() ==sendTo)==null)//בדיקה אם המייל קיים משהו עם כזה מייל או ידי
+                    if (user==null)//בדיקה אם המייל קיים משהו עם כזה מייל או ידי
                     {
                         return false;
                     }
                     else//אם קיים
                     {
-                        if(db.Users.FirstOrDefault(f1 => f1.Email == sendTo) != null)//בודק אם למי ששלח זה כמו המייל שכבר קיים במערכת
-                        {
-                            var user = db.Users.FirstOrDefault(u => u.Email == sendTo);//אם קיים שולף את היוזר עם המייל הנוכחי
+                        
                             f.ToUserId = user.Id;//מוסיף באוביקט פידבק למי שלח
                             db.Feedbacks.Add(f); 
                             db.SaveChanges();
-                           return true;
-                        }
-                        else
-                        {
-                            var user = db.Users.FirstOrDefault(u => u.Id.ToString() == sendTo);//בודק למי שלח ע"י הידי
-                            f.ToUserId = user.Id;//מוסיף באוביקט של פידבק למי ששלח
-                            db.Feedbacks.Add(f);
-                            db.SaveChanges();
-                            return true;
-                        }
+                             return true;
+                       
                        
                     }
                    

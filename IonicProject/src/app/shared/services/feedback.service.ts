@@ -12,7 +12,7 @@ export class FeedbackService {
   constructor(private http:HttpClient) { }
 feedback: Number
 
-  addFeedback(sendTo:string ,feedback: Feedback):Observable<Boolean>{
+  addFeedback(sendTo:Number ,feedback: Feedback):Observable<Boolean>{
     return this.http.post<boolean>(environment.url + `feedback/createFeedback?sendTo=${sendTo}`,feedback);
     
   }

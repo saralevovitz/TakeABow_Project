@@ -169,5 +169,17 @@ namespace TakeABowApi.Dal
                 return false;
             }
         }
+
+        internal bool? checkUserAllow(int myId, int userId)
+        {
+            using (TakeABowDBEntities db = new TakeABowDBEntities())
+            {
+                var ub = db.Permissions.FirstOrDefault(u => u.UserId == userId && u.WatchUserId == myId);//בודק לפי היד של הבקשה אם הוא חסום, אם חסום מחזיר אמת 
+
+                if (ub == null)
+                    return null;
+                else return false;
+            }
+        }
     }
 }
