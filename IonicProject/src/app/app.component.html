@@ -1,18 +1,6 @@
 <ion-app>
   
-    <ion-header translucent="true">
-        <ion-toolbar>
-            <ion-buttons collapse="true" slot="end">
-                <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
-            </ion-buttons>
-            <ion-buttons *ngIf="isLoggedInUser()" slot="start">
-                <ion-menu-button  autoHide="false"></ion-menu-button>   
-                <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
-            </ion-buttons>
-       
-        </ion-toolbar>
-    </ion-header>
-    <ion-menu *ngIf="isLoggedInUser()" side="start" menuId="custom" contentId="main" class="my-custom-menu">
+       <ion-menu *ngIf="isLoggedInUser()" side="start" menuId="custom" contentId="main" class="my-custom-menu">
         
         <ion-toolbar color="primary">
 

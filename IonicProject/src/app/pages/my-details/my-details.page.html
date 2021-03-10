@@ -11,7 +11,8 @@
     </ion-toolbar>
 </ion-header>
 
-<form #f="ngForm" name="myDetails">
+<ion-content>
+<form #f="ngForm" name="myDetails" >
     <ion-item>
         <ion-input #firstName="ngModel" name="firstName" type="text" placeholder="שם פרטי" [(ngModel)]="user.FirstName" required minlength="2" maxlength="15" pattern="^[a-zA-Zא-ת_]*$"></ion-input>
     </ion-item>
@@ -58,3 +59,4 @@
     </ion-button>
 
 </form>
+</ion-content>

@@ -7,8 +7,6 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -55,6 +53,7 @@ export class HomePage {
   
   
     topFeedbacks(userId:Number){
+      
        this.userToTOP=userId;
        this.router.navigate(['top-feedbacks',{"userToTOP": this.userToTOP}]);
     

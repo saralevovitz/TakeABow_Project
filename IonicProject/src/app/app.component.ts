@@ -8,6 +8,7 @@ import { User } from './shared/models/user.model';
 import { UserService } from './shared/services/user.service';
 import { FeedbackService } from './shared/services/feedback.service';
 import { PermissionsService } from './shared/services/permissions.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent {
     public feedbackService:FeedbackService,
     public permissionsService:PermissionsService,
     private alertController: AlertController,
-    private zone:NgZone
+    private zone:NgZone,
+    private location: Location
   ) {
     this.initializeApp();
   }
@@ -46,17 +48,16 @@ export class AppComponent {
     },err=>console.error(err))
     this.amountFeedbacks()
     this.amountViewRequests()
-    
   }
 
 
   amountFeedbacks(){
     this.feedbackService.amountFeedbacks(this.idU).subscribe((res:Number)=>{
-    //this.feedbackService.feedback=res
       this.amountFeedback=res;
       
    })
   }
+  
   toAllUsersPage(){
     this.router.navigate(['all-users']);
   }
@@ -153,8 +154,4 @@ export class AppComponent {
     this.router.navigate(['home']);
     }
 
-    backToPage()
-    {
-
-    }
 }

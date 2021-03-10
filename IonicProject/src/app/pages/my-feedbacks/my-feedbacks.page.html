@@ -6,7 +6,7 @@
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">הפידבקים שלי</ion-title>
         <ion-buttons slot="start">
             <ion-menu-button autoHide="false"></ion-menu-button>
-            <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
+          <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -19,10 +19,7 @@
             <ion-label > מ{{f.FromUserFullName}} </ion-label>
             <ion-label> {{f.Feedback}}</ion-label>
             <ion-label >{{f.CreateDate|date:'dd/MM/yyyy'}}</ion-label>
-          
-                <ion-icon (click)="toDeleteFeedback(f.Id)" name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>    
-     
-        
+            <ion-icon (click)="toDeleteFeedback(f.Id)" name="trash-outline" style="height: 20px; width: 20px; text-align: left; "></ion-icon>    
           </ion-item>
       </button>
     </ion-list>

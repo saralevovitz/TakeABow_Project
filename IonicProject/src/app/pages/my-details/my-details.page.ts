@@ -24,11 +24,6 @@ export class MyDetailsPage implements OnInit {
   
   
   ngOnInit() {
-  //   let u:User=new User();
-  // localStorage.setItem("key",JSON.stringify(u)) 
-  //  u=JSON.parse(localStorage.getItem("key"))
-console.log(this.page_title)
-
   this.userService.GetUser(this.idU).subscribe((res:User)=>{this.user=res;
   },err=>console.error(err))
 
