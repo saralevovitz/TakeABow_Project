@@ -34,11 +34,15 @@ namespace TakeABowApi.Logic
             var users = allUsers.Select(u => Converters.ConvertToCommon.U(u)).ToList();
             foreach (var u in users)
             {
-                u.IsBlocked = checkUserBlock(userId, u.Id);
+                u.IsBlocked = CheckUserBlock(userId, u.Id);
+                u.IsAllow = CheckUserAllow(userId, u.Id);
             }
             return users;
 
         }
+
+       
+
         //פונקציה המחזירה משתמש מסוים
         public Common.User GetUser(int userId)
         {
@@ -93,7 +97,7 @@ namespace TakeABowApi.Logic
         }
 
         /*Feedbacks*/
-        public bool saveNewFeedback(string sendTo, Common.Feedbacks f)
+        public bool saveNewFeedback(int sendTo, Common.Feedbacks f)
         {
             return save.saveNewFeedback(sendTo,Converters.ConvertToDal.Feedback(f));
         }
@@ -191,9 +195,14 @@ namespace TakeABowApi.Logic
        
 
 
-        public bool checkUserBlock(int myId, int userId)
+        public bool CheckUserBlock(int myId, int userId)
         {
             return get.checkUserBlock(myId, userId);
+        }
+        private bool? CheckUserAllow(int myId, int userId)
+        {
+            return get.checkUserAllow(myId, userId);
+
         }
 
 

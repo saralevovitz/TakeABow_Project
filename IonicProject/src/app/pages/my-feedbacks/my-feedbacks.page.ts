@@ -5,6 +5,7 @@ import { Feedback } from 'src/app/shared/models/feedback.model';
 import { UsersBlocked } from 'src/app/shared/models/userBlocked.model';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { UserBlockedService } from 'src/app/shared/services/user-blocked.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-my-feedbacks',
@@ -13,7 +14,8 @@ import { UserBlockedService } from 'src/app/shared/services/user-blocked.service
 })
 export class MyFeedbacksPage implements OnInit {
 
-  constructor(private router: Router, private feedbackService: FeedbackService, private location: Location) { }
+  constructor(private router: Router, private feedbackService: FeedbackService, private location: Location,
+  private  userService:UserService) { }
 
   feedbacksList: Feedback[]=[]
   feedback: Feedback= new Feedback();

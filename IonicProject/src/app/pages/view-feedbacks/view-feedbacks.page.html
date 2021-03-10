@@ -4,7 +4,7 @@
             <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
         </ion-buttons>
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">צפיה בפידבקים</ion-title>
-        <ion-buttons slot="start">
+        <ion-buttons slot="start" *ngIf="userService.isLoggedInUser()">
             <ion-menu-button autoHide="false"></ion-menu-button>
             <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>

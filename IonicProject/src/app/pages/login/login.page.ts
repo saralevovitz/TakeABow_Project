@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
      this.isCorrect=res)
      if(this.isCorrect==false)
         this.countWrong++
+        
         else{
     localStorage.setItem('userIdLogin', this.userLogin.Id.toString())
     this.IdLogin=+ localStorage.getItem('userIdLogin')

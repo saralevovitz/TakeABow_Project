@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Permissions } from 'src/app/shared/models/permissions.model';
 import { PermissionsService } from 'src/app/shared/services/permissions.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -12,7 +13,8 @@ import { PermissionsService } from 'src/app/shared/services/permissions.service'
 })
 export class ViewRequestsPage implements OnInit {
 
-  constructor(private router: Router, private permissionsService: PermissionsService, private alertController: AlertController, private location: Location) { }
+  constructor(private router: Router, private permissionsService: PermissionsService, private alertController: AlertController,
+     private location: Location,private userService:UserService) { }
   permission:Permissions= new Permissions()
  toPermission:number
   permissionList: Permissions[]=[]

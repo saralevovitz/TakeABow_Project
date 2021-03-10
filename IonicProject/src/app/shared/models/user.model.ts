@@ -7,8 +7,8 @@ export class User {
     Phone: string
     Email: string
     Job: string
-    Gender: string
     Is_Deleted: boolean
     Create_Date: Date
     IsBlocked:boolean
+    IsAllow:boolean
 }

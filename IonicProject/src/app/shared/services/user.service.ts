@@ -12,6 +12,9 @@ export class UserService {
   constructor(private http:HttpClient) { }
   user:User=new User();
 
+  isLoggedInUser(){
+    return localStorage.getItem("userIdLogin")!=null;
+  }
  UpDate(user:User):Observable<boolean>{
       return this.http.post<boolean>(environment.url + 'user/updateUser',user);
  }

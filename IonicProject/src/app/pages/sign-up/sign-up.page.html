@@ -4,7 +4,7 @@
             <img style="height: 50px; width: 170px" src="/assets/image/logo2.png">
         </ion-buttons>
         <ion-title class="title" style="font-weight:bold; color: rgb(46, 53, 59); ">הרשמה</ion-title>
-        <ion-buttons slot="start">
+        <ion-buttons slot="start" *ngIf="userService.isLoggedInUser()">
             <ion-menu-button autoHide="false"></ion-menu-button>
             <ion-icon name="chevron-forward-outline" (click)="backToPage()"></ion-icon>
         </ion-buttons>
@@ -22,7 +22,7 @@
     <ion-label *ngIf="firstName.errors?.minlength">
         שם המשתמש צריך להיות באורך מינימאלי של 2
     </ion-label>
-   
+
     <ion-item>
         <ion-input name="lastName" type="text" #LastName="ngModel" placeholder="שם משפחה" [(ngModel)]="user.LastName" required required minlength="2" maxlength="15" pattern="^[a-zA-Zא-ת_]*$"></ion-input>
     </ion-item>
@@ -35,22 +35,22 @@
 
     <ion-item>
 
-    <ion-input name="phone"  #Phone="ngModel" type="tel" placeholder="טלפון" [(ngModel)]="user.Phone" required pattern="^[0-9]*$" minlength="9" maxlength="10"></ion-input>
+        <ion-input name="phone" #Phone="ngModel" type="tel" placeholder="טלפון" [(ngModel)]="user.Phone" required pattern="^[0-9]*$" minlength="9" maxlength="10"></ion-input>
     </ion-item>
     <ion-label *ngIf="Phone.errors?.pattern">
-    יכול להכין מספרים בלבד
+        יכול להכין מספרים בלבד
     </ion-label>
     <ion-label *ngIf="Phone.errors?.minlength">
-     אורך מינמלי 9
+        אורך מינמלי 9
     </ion-label>
 
     <ion-item>
-        <ion-input name="email"  #Email="ngModel" type="email" placeholder="מייל" [(ngModel)]="user.Email" required email></ion-input>
+        <ion-input name="email" #Email="ngModel" type="email" placeholder="מייל" [(ngModel)]="user.Email" required email></ion-input>
     </ion-item>
-    
-   
+
+
     <ion-item>
-        <ion-input name="job" #Job="ngModel" type="text" placeholder="תפקיד" [(ngModel)]="user.Job"  required minlength="2" maxlength="15" pattern="^[a-zA-Zא-ת_]*$"></ion-input>
+        <ion-input name="job" #Job="ngModel" type="text" placeholder="תפקיד" [(ngModel)]="user.Job" required minlength="2" maxlength="15" pattern="^[a-zA-Zא-ת_]*$"></ion-input>
     </ion-item>
     <ion-label *ngIf="Job.errors?.pattern">
         שם המשתמש יכול להכיל אותיות בלבד
@@ -59,7 +59,7 @@
         שם המשתמש צריך להיות באורך מינימאלי של 2
     </ion-label>
 
-    <ion-list>
+    <!-- <ion-list>
         <ion-label>מין</ion-label>
         <ion-radio-group [(ngModel)]="user.Gender" name="gender" >
             <ion-item>
@@ -71,7 +71,7 @@
                 <ion-radio value="f" slot="start"></ion-radio>
             </ion-item>
         </ion-radio-group>
-    </ion-list>
+    </ion-list> -->
 
     <ion-item>
         <ion-input name="password" #PassWord="ngModel" type="password" placeholder="סיסמא" [(ngModel)]="user.Password" required></ion-input>
@@ -83,7 +83,7 @@
 
     <ion-button (click)="login()" style="direction: ltr; position: absolute; left:5%">היכנס</ion-button>
 
-    <ion-button (click)="f.valid && signUp() " type="submit" >
+    <ion-button (click)="f.valid && signUp() " type="submit">
         <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
 

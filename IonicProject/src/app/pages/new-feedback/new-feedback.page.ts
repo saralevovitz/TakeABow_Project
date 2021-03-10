@@ -19,7 +19,7 @@ constructor(public httpClient: HttpClient, private router: Router,private userSe
 
   idU: number=+localStorage.getItem('userIdLogin')
   feedback: Feedback = new Feedback();
-  send: string
+  sendToUser: User;
   AllUsersList: User []= []
   sortedUserList:User[]=[]
   userLogedInId: Number=+localStorage.getItem('userIdLogin')
@@ -40,14 +40,13 @@ constructor(public httpClient: HttpClient, private router: Router,private userSe
   })
 
 }
-
-  AddFeedback(sendTo: string){
+  AddFeedback(){
     
-    console.log("ngMOdel "+sendTo)
+    console.log("ngMOdel "+this.sendToUser.Id)
    
    debugger
      this.feedback.FromUserId=this.idU
-    this.feedbackService.addFeedback(this.send, this.feedback).subscribe(res=>{
+    this.feedbackService.addFeedback(this.sendToUser.Id, this.feedback).subscribe(res=>{
        if(res==true)
         alert('הפידבק נשלח בהצלחה')
       else  alert('שגיאה, נסה שוב')})
@@ -73,9 +72,23 @@ constructor(public httpClient: HttpClient, private router: Router,private userSe
       u.Email.indexOf(s)!=-1)
         this.sortedUserList.push(u);
     }
-    this.send=s
-this.AddFeedback(this.send)
+    if(this.sortedUserList.length==1&&
+      (this.sortedUserList[0].Email.toLowerCase()==s||
+      this.sortedUserList[0].Id.toString()==s)
+      )
+      
+      this.chooseUser(this.sortUserList[0])
    
   }  
+  getUsersFullName()
+  {
+    if( this.sendToUser!=null)
+    return this.sendToUser.FirstName+" "+this.sendToUser.LastName;
+    return "";
+  }
+  chooseUser(user:User)
+  {
+this.sendToUser=user;
+  }
 
 }
