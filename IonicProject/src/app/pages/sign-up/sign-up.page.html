@@ -59,20 +59,6 @@
         שם המשתמש צריך להיות באורך מינימאלי של 2
     </ion-label>
 
-    <!-- <ion-list>
-        <ion-label>מין</ion-label>
-        <ion-radio-group [(ngModel)]="user.Gender" name="gender" >
-            <ion-item>
-                <ion-label>זכר</ion-label>
-                <ion-radio value="m" slot="start" ></ion-radio>
-            </ion-item>
-            <ion-item>
-                <ion-label>נקבה</ion-label>
-                <ion-radio value="f" slot="start"></ion-radio>
-            </ion-item>
-        </ion-radio-group>
-    </ion-list> -->
-
     <ion-item>
         <ion-input name="password" #PassWord="ngModel" type="password" placeholder="סיסמא" [(ngModel)]="user.Password" required></ion-input>
     </ion-item>
@@ -81,11 +67,10 @@
         <ion-input name="password2" #PassWord2="ngModel" type="password" placeholder="אשר סיסמא" [(ngModel)]="user.Password2" required></ion-input>
     </ion-item>
 
-    <ion-button (click)="login()" style="direction: ltr; position: absolute; left:5%">היכנס</ion-button>
+    <ion-button (click)="login()" style="direction: ltr; position: absolute; left:5%">כניסה</ion-button>
 
     <ion-button (click)="f.valid && signUp() " type="submit">
         <ion-icon name="save-outline" style="height: 20px; width: 20px; text-align: right; direction: rtl;"></ion-icon>
     </ion-button>
-
 
 </form>
